@@ -2,6 +2,7 @@
 import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const ContactInfo: React.FC = () => {
   return (
@@ -18,7 +19,12 @@ const ContactInfo: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* ACHS */}
           <div className="flex flex-col items-start">
-            <h3 className="text-xl font-bold text-azul mb-4">Asociación Chilena de Seguridad</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <Avatar className="w-12 h-12">
+                <AvatarImage src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS" />
+              </Avatar>
+              <h3 className="text-xl font-bold text-azul">Asociación Chilena de Seguridad</h3>
+            </div>
             
             <div className="mb-6">
               <p className="text-lg font-medium text-green-700">Teléfono</p>
@@ -48,7 +54,12 @@ const ContactInfo: React.FC = () => {
           
           {/* IST */}
           <div className="flex flex-col items-start">
-            <h3 className="text-xl font-bold text-azul mb-4">Instituto de Seguridad del Trabajo</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <Avatar className="w-12 h-12">
+                <AvatarImage src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST" />
+              </Avatar>
+              <h3 className="text-xl font-bold text-azul">Instituto de Seguridad del Trabajo</h3>
+            </div>
             
             <div className="mb-6">
               <p className="text-lg font-medium text-naranja">Teléfono</p>
@@ -78,7 +89,12 @@ const ContactInfo: React.FC = () => {
           
           {/* Mutual de Seguridad */}
           <div className="flex flex-col items-start">
-            <h3 className="text-xl font-bold text-azul mb-4">Mutual de Seguridad</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <Avatar className="w-12 h-12">
+                <AvatarImage src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad" />
+              </Avatar>
+              <h3 className="text-xl font-bold text-azul">Mutual de Seguridad</h3>
+            </div>
             
             <div className="mb-6">
               <p className="text-lg font-medium text-amarillo">Teléfono</p>
