@@ -74,13 +74,13 @@ const Index = () => {
     <div className="min-h-screen bg-white overflow-hidden">
       <Header />
       <main className="flex flex-col relative">
-        {/* Hero section with no bottom margin/padding */}
-        <div className="relative" style={{ marginBottom: 0, paddingBottom: 0 }}>
+        {/* Hero section with absolutely no spacing */}
+        <div className="relative" style={{ margin: 0, padding: 0 }}>
           <Hero />
         </div>
         
-        {/* LeyKarin with parallax background and preserveMargins enabled */}
-        <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#FFC000']} preserveMargins={true}>
+        {/* LeyKarin with parallax background and all spacing controls enabled */}
+        <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#FFC000']} preserveMargins={true} noSpacing={true}>
           <LeyKarin />
         </ParallaxBackground>
         

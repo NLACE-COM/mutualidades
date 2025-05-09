@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
   };
   
   return (
-    <section className="relative text-white overflow-hidden h-[70vh] border-b-0 perspective-1000" aria-label="Sección principal">
+    <section className={`relative text-white overflow-hidden ${isMobile ? 'h-[60vh]' : 'h-[70vh]'} border-b-0 perspective-1000`} aria-label="Sección principal">
       {/* Background image - hidden on mobile, with parallax effect */}
       {!isMobile && (
         <div 
