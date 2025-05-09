@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,7 +44,7 @@ const Footer: React.FC = () => {
             </div>
             
             <p className="text-sm text-gray-500 mt-auto">
-              Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social (www.suseso.cl)
+              Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social <a href="http://www.suseso.cl" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">www.suseso.cl</a>
             </p>
           </div>
         </div>
