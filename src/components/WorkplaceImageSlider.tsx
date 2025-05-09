@@ -30,7 +30,7 @@ const images = [
     caption: "Diversidad e inclusión"
   },
   {
-    src: "https://images.unsplash.com/photo-1565398950915-dd201c3ca96c",
+    src: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
     alt: "Capacitación en seguridad laboral",
     caption: "Formación continua"
   }
