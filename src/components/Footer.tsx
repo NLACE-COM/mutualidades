@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
           
           
           <div className="flex flex-col">
-            <h3 className="text-2xl font-bold text-azul mb-6">ENTIDADES ASOCIADAS</h3>
+            
             <div className="flex flex-wrap gap-8 mb-8 justify-center">
               <div className="bg-white p-4 rounded-lg flex items-center justify-center w-40 h-24 shadow-sm">
                 <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS" className="h-16 w-auto" />
@@ -48,10 +48,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-200 pt-8 text-center">
-          <p className="font-bold text-azul text-lg">Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social (SUSESO)</p>
-          <p className="text-sm text-gray-500 mt-4">© 2025 - Todos los derechos reservados</p>
-        </div>
+        
       </div>
     </footer>;
 };
