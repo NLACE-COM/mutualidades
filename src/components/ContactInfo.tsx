@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
@@ -10,7 +11,7 @@ const ContactInfo: React.FC = () => {
         </h2>
         
         <p className="text-center text-gray-700 mb-12 max-w-2xl mx-auto">
-          ¿Tienes dudas sobre cómo implementar un entorno laboral seguro y saludable? Llámanos y te responderemos a la brevedad.
+          ¿Tienes dudas sobre cómo implementar un entorno laboral seguro y saludable? Te responderemos a la brevedad.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -30,8 +31,7 @@ const ContactInfo: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  
-                  <p>600 600 22 47</p>
+                  <p className="font-bold">600 600 22 47</p>
                 </div>
               </div>
             </div>
@@ -65,8 +65,7 @@ const ContactInfo: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  
-                  <p>600 5840 000</p>
+                  <p className="font-bold">600 5840 000</p>
                 </div>
               </div>
             </div>
@@ -100,8 +99,7 @@ const ContactInfo: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  
-                  <p>600 2000 555</p>
+                  <p className="font-bold">600 2000 555</p>
                 </div>
               </div>
             </div>
