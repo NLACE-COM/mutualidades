@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 const Header: React.FC = () => {
@@ -7,10 +8,10 @@ const Header: React.FC = () => {
           <h1 className="text-2xl font-bold text-azul hidden md:block">
             
           </h1>
-          <div className="flex items-center space-x-4">
-            <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS Logo" className="h-10 w-auto" />
-            <img src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST Logo" className="h-10 w-auto" />
-            <img src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad Logo" className="h-10 w-auto" />
+          <div className="flex items-center space-x-6">
+            <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS Logo" className="h-14 w-auto" />
+            <img src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST Logo" className="h-14 w-auto" />
+            <img src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad Logo" className="h-14 w-auto" />
           </div>
         </div>
         <nav className="hidden md:flex space-x-6">
