@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,7 +49,7 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="border-t border-gray-200 pt-8 text-center">
-          <p className="text-xl font-bold text-azul">MUTUALIDADESDECHILE.CL</p>
+          <p className="font-bold text-azul text-lg">Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social (SUSESO)</p>
           <p className="text-sm text-gray-500 mt-4">© 2025 - Todos los derechos reservados</p>
         </div>
       </div>
