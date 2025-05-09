@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 const Header: React.FC = () => {
@@ -24,9 +23,7 @@ const Header: React.FC = () => {
           <a href="#importancia" className="text-gray-700 hover:text-azul transition-colors">
             Importancia
           </a>
-          <a href="#contacto" className="text-gray-700 hover:text-azul transition-colors">
-            Contacto
-          </a>
+          
         </nav>
         <Button className="bg-naranja hover:bg-naranja/90 text-white rounded-lg shadow-sm hidden md:block" asChild>
           
