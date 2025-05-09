@@ -16,7 +16,7 @@ const Hero: React.FC = () => {
           <div className="w-full md:w-1/2"></div>
           
           {/* Right side - Text content */}
-          <div className="w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-end md:justify-center pt-72 md:pt-0">
+          <div className="w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-start md:pt-16 pt-48">
             {/* Animated subtitle with staggered entry */}
             <p className="text-xl md:text-2xl mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]">
               Promovamos entornos de trabajo seguros y saludables, a través de una buena convivencia.
