@@ -5,7 +5,8 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
+  type CarouselApi
 } from "@/components/ui/carousel";
 import { useTilt } from "@/hooks/use-tilt";
 import { useParallax } from "@/hooks/use-parallax";
@@ -40,6 +41,7 @@ const images = [
 
 const WorkplaceImageSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const parallaxOffset = useParallax({ speed: 0.05 });
 
   // Create animated shapes for background
@@ -58,6 +60,24 @@ const WorkplaceImageSlider: React.FC = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Update active index when carousel changes
+  useEffect(() => {
+    if (!carouselApi) return;
+    
+    const handleSelect = () => {
+      setActiveIndex(carouselApi.selectedScrollSnap());
+    };
+    
+    carouselApi.on("select", handleSelect);
+    
+    // Set initial index
+    handleSelect();
+    
+    return () => {
+      carouselApi.off("select", handleSelect);
+    };
+  }, [carouselApi]);
 
   // Custom card component with tilt effect
   const ImageCard = ({ image, index }: { image: typeof images[0], index: number }) => {
@@ -124,11 +144,7 @@ const WorkplaceImageSlider: React.FC = () => {
             align: "center",
             loop: true,
           }}
-          onSelect={(api) => {
-            // Fix: Extract the current index from the carousel API
-            const currentIndex = api.selectedScrollSnap();
-            setActiveIndex(currentIndex);
-          }}
+          setApi={setCarouselApi}
         >
           <CarouselContent>
             {images.map((image, index) => (
@@ -159,6 +175,8 @@ const WorkplaceImageSlider: React.FC = () => {
               className={`h-2 rounded-full transition-all duration-300 ${
                 index === activeIndex ? 'w-8 bg-[#F5A034]' : 'w-2 bg-[#F5A034]/40'
               }`}
+              onClick={() => carouselApi?.scrollTo(index)}
+              style={{ cursor: 'pointer' }}
             />
           ))}
         </div>
