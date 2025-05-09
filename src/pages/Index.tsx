@@ -74,13 +74,13 @@ const Index = () => {
     <div className="min-h-screen bg-white overflow-hidden">
       <Header />
       <main className="flex flex-col relative">
-        {/* Hero section with absolutely no spacing and direct connection */}
-        <div className="relative" style={{ margin: 0, padding: 0, overflow: 'visible' }}>
+        {/* Hero section with seamless connection to LeyKarin */}
+        <div className="relative z-10">
           <Hero />
         </div>
         
-        {/* LeyKarin sits directly on top of Hero with no ParallaxBackground wrapper */}
-        <div className="relative" style={{ marginTop: '-40px' }}>
+        {/* LeyKarin with proper positioning */}
+        <div className="relative z-20">
           <LeyKarin />
         </div>
         
@@ -109,7 +109,7 @@ const Index = () => {
       </main>
       <Footer />
       
-      {/* Add custom CSS for animations */}
+      {/* Add custom CSS for animations and responsive behavior */}
       <style>{`
         @keyframes fadeInUp {
           from {
@@ -155,24 +155,41 @@ const Index = () => {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 80px; /* Increased height for better visual connection */
+          height: 80px;
           background: linear-gradient(to bottom, transparent 0%, rgba(243, 243, 233, 0.5) 50%, #f3f3e9 100%);
           z-index: 5;
         }
 
-        /* Add responsive styles for ultra-wide or low-height displays */
-        @media (min-height: 900px) {
-          section.hero {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
+        /* Responsive adjustments for all screen sizes */
+        @media (min-width: 1600px) {
+          .container {
+            max-width: 1400px;
           }
         }
-
-        @media (max-height: 600px) {
-          section.hero {
-            min-height: 100% !important;
-            padding-top: 2rem;
+        
+        /* Custom media query to handle short but wide screens */
+        @media (max-height: 700px) and (min-width: 1024px) {
+          .py-24 {
+            padding-top: 3rem;
             padding-bottom: 3rem;
+          }
+          
+          .py-20 {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+          }
+          
+          .py-16 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+          }
+        }
+        
+        /* Extra tall screens */
+        @media (min-height: 1000px) {
+          .py-24 {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
           }
         }
       `}</style>

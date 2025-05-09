@@ -27,37 +27,37 @@ const Hero: React.FC = () => {
   
   return (
     <section 
-      className="relative text-white overflow-visible border-b-0 perspective-1000" 
-      style={{ 
-        minHeight: isMobile ? '350px' : '450px',  // Fixed pixel values instead of vh units
-        height: 'auto',  // Let content determine final height
+      className="relative text-white overflow-hidden will-change-transform"
+      style={{
+        height: 'auto',
         zIndex: 1,
-        marginBottom: 0,
-        paddingTop: isMobile ? '3rem' : '4rem',    // More padding at top
-        paddingBottom: isMobile ? '4rem' : '5rem', // More padding at bottom to ensure content fits
-      }} 
+      }}
       aria-label="Sección principal"
     >
-      {/* Background image - hidden on mobile, with parallax effect */}
-      {!isMobile && (
-        <div 
-          className="absolute inset-0 transition-transform duration-300 ease-out"
-          style={{ 
-            transform: `translate3d(0, ${parallaxOffset * 0.5}px, 0)`
-          }}
-        >
+      {/* Background container with proper aspect ratio */}
+      <div className="absolute inset-0 w-full h-full">
+        {/* Background image - hidden on mobile, with parallax effect */}
+        {!isMobile && (
           <div 
-            className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-cover" 
-            role="img" 
-            aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"
-          ></div>
-        </div>
-      )}
-      
-      {/* Mobile background color */}
-      {isMobile && (
-        <div className="absolute inset-0 bg-gradient-to-b from-azul to-azul-light"></div>
-      )}
+            className="absolute inset-0 transition-transform duration-300 ease-out"
+            style={{ 
+              transform: `translate3d(0, ${parallaxOffset * 0.5}px, 0)`,
+              willChange: 'transform'
+            }}
+          >
+            <div 
+              className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-center bg-no-repeat bg-cover" 
+              role="img" 
+              aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"
+            ></div>
+          </div>
+        )}
+        
+        {/* Mobile background color */}
+        {isMobile && (
+          <div className="absolute inset-0 bg-gradient-to-b from-azul to-azul-light"></div>
+        )}
+      </div>
       
       {/* Floating shapes for added dimension */}
       {!isMobile && (
@@ -68,9 +68,11 @@ const Hero: React.FC = () => {
         </>
       )}
       
-      {/* Content */}
+      {/* Content container with flexible padding based on viewport size */}
       <div 
-        className="container mx-auto relative z-10 flex flex-col h-full justify-center"
+        className={`container relative mx-auto z-10 flex flex-col justify-center ${
+          isMobile ? 'py-12' : 'py-16 md:py-20 lg:py-24'
+        }`}
         style={{ 
           opacity: calculateOpacity(1),
         }}
@@ -79,13 +81,14 @@ const Hero: React.FC = () => {
           {/* Left side - Empty space for image (hidden on mobile) */}
           <div className={`${isMobile ? 'hidden' : 'w-full md:w-1/2'}`}></div>
           
-          {/* Right side - Text content (full width on mobile) */}
+          {/* Right side - Text content (full width on mobile) with automatic height */}
           <div 
             className={`${isMobile 
-              ? 'w-full px-4 flex flex-col justify-center items-center text-center py-8' 
-              : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-center py-8'}`}
+              ? 'w-full px-4 flex flex-col justify-center items-center text-center' 
+              : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-center'}`}
             style={{ 
-              transform: `translate3d(0, ${parallaxOffset * -0.2}px, 0)`
+              transform: `translate3d(0, ${parallaxOffset * -0.2}px, 0)`,
+              willChange: 'transform'
             }}
           >
             {/* Animated subtitle with staggered entry */}
@@ -111,10 +114,10 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      {/* Connection element to visually connect to LeyKarin - increased height */}
+      {/* Connection element for LeyKarin section - using a more reliable gradient approach */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#f3f3e9] z-2"
-        style={{ transform: 'translateY(50%)' }}
+        className="absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#f3f3e9]"
+        aria-hidden="true"
       ></div>
     </section>
   );

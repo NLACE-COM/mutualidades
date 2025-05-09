@@ -7,14 +7,13 @@ const LeyKarin: React.FC = () => {
   return (
     <section 
       id="leykarin" 
-      className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative pt-8 md:pt-16"
+      className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative"
       style={{
-        marginTop: 'calc(-30vh)', // Less aggressive negative margin (changed from -35vh)
-        zIndex: 10, // Higher z-index to overlap Hero
-        position: 'relative'
+        position: 'relative',
+        zIndex: 10,
       }}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-16 md:pt-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 fade-in-section">
             <h2 className="text-4xl font-bold mb-6 text-[#333333] leading-tight">LEY KARIN</h2>
