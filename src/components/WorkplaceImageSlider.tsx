@@ -124,7 +124,11 @@ const WorkplaceImageSlider: React.FC = () => {
             align: "center",
             loop: true,
           }}
-          onSelect={(index) => setActiveIndex(index)}
+          onSelect={(api) => {
+            // Fix: Extract the current index from the carousel API
+            const currentIndex = api.selectedScrollSnap();
+            setActiveIndex(currentIndex);
+          }}
         >
           <CarouselContent>
             {images.map((image, index) => (
