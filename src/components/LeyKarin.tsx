@@ -7,9 +7,9 @@ const LeyKarin: React.FC = () => {
   return (
     <section 
       id="leykarin" 
-      className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative"
+      className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative pt-8 md:pt-16"
       style={{
-        marginTop: 'calc(-35vh)', // Use viewport-based negative margin
+        marginTop: 'calc(-30vh)', // Less aggressive negative margin (changed from -35vh)
         zIndex: 10, // Higher z-index to overlap Hero
         position: 'relative'
       }}

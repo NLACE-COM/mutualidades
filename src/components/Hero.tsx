@@ -29,11 +29,11 @@ const Hero: React.FC = () => {
     <section 
       className="relative text-white overflow-visible border-b-0 perspective-1000" 
       style={{ 
-        minHeight: isMobile ? '60vh' : '70vh',
-        height: isMobile ? '60vh' : '70vh', 
+        minHeight: isMobile ? '50vh' : '70vh',  // Reduced from 60vh to 50vh for mobile
+        height: isMobile ? '50vh' : '70vh',     // Reduced from 60vh to 50vh for mobile
         zIndex: 1,
         marginBottom: 0,
-        paddingBottom: 0
+        paddingBottom: isMobile ? '2rem' : '3rem'  // Add padding to the bottom
       }} 
       aria-label="Sección principal"
     >
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
           
           {/* Right side - Text content (full width on mobile) */}
           <div 
-            className={`${isMobile ? 'w-full px-4 flex flex-col justify-center items-center text-center' : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-start md:pt-16 pt-48'}`}
+            className={`${isMobile ? 'w-full px-4 flex flex-col justify-center items-center text-center pt-8' : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-start md:pt-16 pt-48'}`}
             style={{ 
               transform: `translate3d(0, ${parallaxOffset * -0.2}px, 0)`
             }}
@@ -108,9 +108,9 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      {/* Connection element to visually connect to LeyKarin */}
+      {/* Connection element to visually connect to LeyKarin - increased height */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[#f3f3e9] z-2"
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#f3f3e9] z-2"
         style={{ transform: 'translateY(50%)' }}
       ></div>
     </section>

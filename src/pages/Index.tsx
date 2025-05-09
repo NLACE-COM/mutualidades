@@ -142,7 +142,7 @@ const Index = () => {
           transform: translateY(0);
         }
         
-        /* Add gradient connector styles */
+        /* Improved gradient connector styles */
         .section-connector {
           position: relative;
         }
@@ -153,8 +153,8 @@ const Index = () => {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 50px;
-          background: linear-gradient(to bottom, transparent, #f3f3e9);
+          height: 80px; /* Increased height for better visual connection */
+          background: linear-gradient(to bottom, transparent 0%, rgba(243, 243, 233, 0.5) 50%, #f3f3e9 100%);
           z-index: 5;
         }
       `}</style>
