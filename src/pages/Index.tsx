@@ -12,6 +12,7 @@ import LaborInspection from '../components/LaborInspection';
 import MutualSearch from '../components/MutualSearch';
 import Footer from '../components/Footer';
 import WorkplaceImageSlider from '../components/WorkplaceImageSlider';
+import TakeItSeriously from '../components/TakeItSeriously';
 
 const Index = () => {
   useEffect(() => {
@@ -46,7 +47,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main>
+      <main className="flex flex-col">
         <Hero />
         <LeyKarin />
         <SafeEnvironments />
