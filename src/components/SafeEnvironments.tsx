@@ -33,7 +33,7 @@ const SafeEnvironments: React.FC = () => {
   ];
 
   return (
-    <section id="entornos" className="bg-gradient-to-b from-gris to-white section-padding scroll-mt-20">
+    <section id="entornos" className="bg-gradient-to-b from-gris to-white py-10 md:py-16 mt-0 scroll-mt-20">
       <div className="container mx-auto px-4">
         <div className="relative">
           <div className="max-w-4xl mx-auto text-center mb-12 fade-in-section">
