@@ -58,14 +58,14 @@ const WorkplaceImageSlider: React.FC = () => {
           <CarouselContent>
             {images.map((image, index) => (
               <CarouselItem key={index} className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4">
-                <div className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative group">
+                <div className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative">
                   <img 
                     src={image.src} 
                     alt={image.alt} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    className="w-full h-full object-cover" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-azul/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">{image.caption}</p>
+                  <div className="absolute inset-x-0 bottom-0 bg-azul/90 py-2 px-3">
+                    <p className="text-white font-medium text-center">{image.caption}</p>
                   </div>
                 </div>
               </CarouselItem>
