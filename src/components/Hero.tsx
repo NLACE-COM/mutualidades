@@ -26,7 +26,17 @@ const Hero: React.FC = () => {
   };
   
   return (
-    <section className={`relative text-white overflow-hidden ${isMobile ? 'h-[60vh]' : 'h-[70vh]'} border-b-0 perspective-1000`} aria-label="Sección principal">
+    <section 
+      className="relative text-white overflow-visible border-b-0 perspective-1000" 
+      style={{ 
+        minHeight: isMobile ? '60vh' : '70vh',
+        height: isMobile ? '60vh' : '70vh', 
+        zIndex: 1,
+        marginBottom: 0,
+        paddingBottom: 0
+      }} 
+      aria-label="Sección principal"
+    >
       {/* Background image - hidden on mobile, with parallax effect */}
       {!isMobile && (
         <div 
@@ -97,6 +107,12 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Connection element to visually connect to LeyKarin */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[#f3f3e9] z-2"
+        style={{ transform: 'translateY(50%)' }}
+      ></div>
     </section>
   );
 };

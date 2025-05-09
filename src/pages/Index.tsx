@@ -74,15 +74,13 @@ const Index = () => {
     <div className="min-h-screen bg-white overflow-hidden">
       <Header />
       <main className="flex flex-col relative">
-        {/* Hero section with absolutely no spacing */}
-        <div className="relative" style={{ margin: 0, padding: 0 }}>
+        {/* Hero section with absolutely no spacing and direct connection */}
+        <div className="relative" style={{ margin: 0, padding: 0, overflow: 'visible' }}>
           <Hero />
         </div>
         
-        {/* LeyKarin with parallax background and all spacing controls enabled */}
-        <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#FFC000']} preserveMargins={true} noSpacing={true}>
-          <LeyKarin />
-        </ParallaxBackground>
+        {/* LeyKarin sits directly on top of Hero with no ParallaxBackground wrapper */}
+        <LeyKarin />
         
         {/* SafeEnvironments with parallax effect */}
         <SafeEnvironments />
@@ -142,6 +140,22 @@ const Index = () => {
         [data-stagger].visible {
           opacity: 1;
           transform: translateY(0);
+        }
+        
+        /* Add gradient connector styles */
+        .section-connector {
+          position: relative;
+        }
+        
+        .section-connector::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 50px;
+          background: linear-gradient(to bottom, transparent, #f3f3e9);
+          z-index: 5;
         }
       `}</style>
     </div>

@@ -49,6 +49,7 @@ interface ParallaxBackgroundProps {
   colors?: string[];
   preserveMargins?: boolean;
   noSpacing?: boolean;
+  connectWithPrevious?: boolean;
 }
 
 const ParallaxBackground: React.FC<ParallaxBackgroundProps> = ({ 
@@ -56,7 +57,8 @@ const ParallaxBackground: React.FC<ParallaxBackgroundProps> = ({
   density = 'medium',
   colors = ['#108CB0', '#F5A034', '#FFC000'],
   preserveMargins = true,
-  noSpacing = false
+  noSpacing = false,
+  connectWithPrevious = false
 }) => {
   // Determine number of shapes based on density
   const numShapes = density === 'low' ? 3 : density === 'medium' ? 6 : 9;
@@ -76,7 +78,8 @@ const ParallaxBackground: React.FC<ParallaxBackgroundProps> = ({
   // Apply style to preserve margins of children and eliminate extra spacing
   const containerStyle: React.CSSProperties = {
     ...(preserveMargins ? { marginTop: 0, marginBottom: 0 } : {}),
-    ...(noSpacing ? { padding: 0, margin: 0 } : {})
+    ...(noSpacing ? { padding: 0, margin: 0 } : {}),
+    ...(connectWithPrevious ? { marginTop: '-2rem', position: 'relative', zIndex: 5 } : {})
   };
 
   return (

@@ -5,7 +5,15 @@ import { Shield, BookOpen } from 'lucide-react';
 
 const LeyKarin: React.FC = () => {
   return (
-    <section id="leykarin" className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 mt-[-24rem] md:mt-[-28rem] relative z-10">
+    <section 
+      id="leykarin" 
+      className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative"
+      style={{
+        marginTop: 'calc(-35vh)', // Use viewport-based negative margin
+        zIndex: 10, // Higher z-index to overlap Hero
+        position: 'relative'
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 fade-in-section">
