@@ -6,12 +6,17 @@ const Header: React.FC = () => {
   return (
     <header className="bg-white shadow-sm py-4 sticky top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-azul">
+        <div className="flex items-center space-x-4">
+          <h1 className="text-2xl font-bold text-azul hidden md:block">
             <a href="/" className="flex items-center">
               MUTUALIDADESDECHILE.CL
             </a>
           </h1>
+          <div className="flex items-center space-x-4">
+            <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS Logo" className="h-10 w-auto" />
+            <img src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST Logo" className="h-10 w-auto" />
+            <img src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad Logo" className="h-10 w-auto" />
+          </div>
         </div>
         <nav className="hidden md:flex space-x-6">
           <a href="#leykarin" className="text-gray-700 hover:text-azul transition-colors">
