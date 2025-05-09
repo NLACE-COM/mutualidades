@@ -61,7 +61,7 @@ const Index = () => {
       <Footer />
       
       {/* Add custom CSS for animations */}
-      <style jsx global>{`
+      <style>{`
         @keyframes fadeInUp {
           from {
             opacity: 0;
