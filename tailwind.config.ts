@@ -63,17 +63,24 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom colors for Mutualidades de Chile
+				// Updated custom colors for Mutualidades de Chile
 				azul: {
-					DEFAULT: '#0048A6',
-					light: '#6392D9',
+					DEFAULT: '#003c4e', // Anteriormente #0048A6
+					light: '#108cb0', // Anteriormente #6392D9
 				},
-				celeste: '#00B2E3',
-				naranja: '#D85600',
+				celeste: '#108cb0', // Anteriormente #00B2E3
+				naranja: {
+					DEFAULT: '#be4f17', // Anteriormente #D85600
+					light: '#f5a034',
+					lighter: '#fbe2c2',
+				},
+				amarillo: '#ffc000',
 				gris: {
-					DEFAULT: '#F7F7F7',
-					oscuro: '#EBEBEB',
-				}
+					DEFAULT: '#f7f7f7', // Mantenemos el gris claro original para fondo
+					oscuro: '#EBEBEB', // Mantenemos esta variante
+				},
+				negro: '#000000',
+				blanco: '#ffffff',
 			},
 			fontFamily: {
 				montserrat: ['Montserrat', 'sans-serif'],
