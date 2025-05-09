@@ -42,9 +42,9 @@ const Index = () => {
         <SafeEnvironments />
         <PositiveWorkplace />
         <Importance />
-        <ContactInfo />
         <LaborInspection />
         <FrequentQuestions />
+        <ContactInfo />
       </main>
       <Footer />
     </div>
