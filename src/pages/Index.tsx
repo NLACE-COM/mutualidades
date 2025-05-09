@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import LeyKarin from '../components/LeyKarin';
@@ -12,50 +12,98 @@ import LaborInspection from '../components/LaborInspection';
 import MutualSearch from '../components/MutualSearch';
 import Footer from '../components/Footer';
 import WorkplaceImageSlider from '../components/WorkplaceImageSlider';
+import ParallaxBackground from '../components/ParallaxBackground';
 
 const Index = () => {
+  // Ref for handling scroll position
+  const scrollRef = useRef<number>(0);
+  
   useEffect(() => {
-    // Set up intersection observer for fade-in animations
+    // Set up intersection observer for fade-in animations with different directions
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             
-            // Add staggered animation for children with data-stagger attribute
-            const staggeredElements = entry.target.querySelectorAll('[data-stagger]');
+            // Add staggered animation for children with stagger-item class
+            const staggeredElements = entry.target.querySelectorAll('.stagger-item');
             staggeredElements.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add('visible');
-              }, index * 100); // 100ms delay between each element
+              }, index * 150); // 150ms delay between each element
             });
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+      { threshold: 0.15, rootMargin: '0px 0px -100px 0px' }
     );
 
-    // Observe all fade-in sections
-    document.querySelectorAll('.fade-in-section').forEach(section => {
+    // Observe all animated sections
+    document.querySelectorAll('.fade-in-section, .fade-in-left, .fade-in-right, .fade-in-up, .fade-in-down').forEach(section => {
       observer.observe(section);
     });
+    
+    // Handle scroll direction for parallax effects
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const scrollDirection = currentScrollPos > scrollRef.current ? 'down' : 'up';
+      
+      // Apply different parallax speeds based on scroll direction
+      document.querySelectorAll('.parallax-element').forEach((el) => {
+        const speed = parseFloat(el.getAttribute('data-speed') || '0.1');
+        const offset = scrollDirection === 'down' ? 
+          currentScrollPos * speed : 
+          currentScrollPos * (speed * 0.8);
+          
+        (el as HTMLElement).style.transform = `translateY(${offset}px)`;
+      });
+      
+      scrollRef.current = currentScrollPos;
+    };
+    
+    window.addEventListener('scroll', handleScroll);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-hidden">
       <Header />
-      <main className="flex flex-col overflow-hidden">
-        {/* Normal flow with direct stacking */}
-        <Hero />
-        <LeyKarin />
+      <main className="flex flex-col relative">
+        {/* Hero section with enhanced background */}
+        <div className="relative">
+          <Hero />
+        </div>
+        
+        {/* LeyKarin with parallax background */}
+        <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#FFC000']}>
+          <LeyKarin />
+        </ParallaxBackground>
+        
+        {/* SafeEnvironments with parallax effect */}
         <SafeEnvironments />
-        <WorkplaceImageSlider />
+        
+        {/* WorkplaceImageSlider with dynamic background */}
+        <ParallaxBackground density="medium" colors={['#F5A034', '#FFC000', '#108CB0']}>
+          <WorkplaceImageSlider />
+        </ParallaxBackground>
+        
         <PositiveWorkplace />
+        
+        {/* Importance with enhanced animations */}
         <Importance />
+        
         <LaborInspection />
-        <FrequentQuestions />
+        
+        {/* FAQ section with enhanced animations */}
+        <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#108CB0']}>
+          <FrequentQuestions />
+        </ParallaxBackground>
+        
         <ContactInfo />
         <MutualSearch />
       </main>

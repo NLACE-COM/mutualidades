@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
 @tailwind base;
@@ -92,12 +93,16 @@
 
   html {
     scroll-behavior: smooth;
+    height: 100%;
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground font-montserrat;
     font-size: 18px;
     line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -118,11 +123,78 @@
 
   .fade-in-section {
     opacity: 0;
-    animation: fade-in 0.8s ease-out forwards;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
   }
   
   .fade-in-section.visible {
     opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* New scroll-based animation classes */
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-down {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-left.visible,
+  .fade-in-right.visible,
+  .fade-in-up.visible,
+  .fade-in-down.visible {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+  /* Staggered animation classes */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .hover-tilt {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+  }
+
+  .hover-tilt:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
   }
 
   .section-padding {
@@ -131,6 +203,38 @@
   
   .aspect-4\/3 {
     aspect-ratio: 4/3;
+  }
+
+  /* Parallax container */
+  .parallax-container {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: float 4s ease-in-out infinite;
   }
 }
 
@@ -223,4 +327,28 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Parallax layer animations */
+.parallax-layer {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.parallax-depth-1 {
+  transform: translateZ(-100px) scale(1.5);
+}
+
+.parallax-depth-2 {
+  transform: translateZ(-50px) scale(1.25);
+}
+
+.parallax-depth-3 {
+  transform: translateZ(0) scale(1);
+}
+
+/* 3D Tilt effect */
+.tilt-card {
+  transition: transform 0.3s ease-out;
+  transform-style: preserve-3d;
 }
