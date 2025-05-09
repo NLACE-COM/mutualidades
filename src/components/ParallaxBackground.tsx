@@ -47,12 +47,14 @@ interface ParallaxBackgroundProps {
   children?: React.ReactNode;
   density?: 'low' | 'medium' | 'high';
   colors?: string[];
+  preserveMargins?: boolean;
 }
 
 const ParallaxBackground: React.FC<ParallaxBackgroundProps> = ({ 
   children,
   density = 'medium',
-  colors = ['#108CB0', '#F5A034', '#FFC000']
+  colors = ['#108CB0', '#F5A034', '#FFC000'],
+  preserveMargins = true
 }) => {
   // Determine number of shapes based on density
   const numShapes = density === 'low' ? 3 : density === 'medium' ? 6 : 9;
@@ -69,8 +71,13 @@ const ParallaxBackground: React.FC<ParallaxBackgroundProps> = ({
     rotate: Math.random() > 0.5,
   }));
 
+  // Apply style to preserve margins of children
+  const containerStyle: React.CSSProperties = preserveMargins 
+    ? { marginTop: 0, marginBottom: 0 } 
+    : {};
+
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden" style={containerStyle}>
       {shapes.map((shape) => (
         <BackgroundShape key={shape.id} {...shape} />
       ))}
