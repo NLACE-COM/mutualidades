@@ -29,11 +29,12 @@ const Hero: React.FC = () => {
     <section 
       className="relative text-white overflow-visible border-b-0 perspective-1000" 
       style={{ 
-        minHeight: isMobile ? '50vh' : '70vh',  // Reduced from 60vh to 50vh for mobile
-        height: isMobile ? '50vh' : '70vh',     // Reduced from 60vh to 50vh for mobile
+        minHeight: isMobile ? '40vh' : 'min(60vh, 500px)',  // Reduced heights and added absolute value fallback
+        height: 'auto',  // Changed to auto so content can dictate height
         zIndex: 1,
         marginBottom: 0,
-        paddingBottom: isMobile ? '2rem' : '3rem'  // Add padding to the bottom
+        paddingBottom: isMobile ? '2rem' : '3rem',
+        paddingTop: isMobile ? '2rem' : '3rem',  // Added padding to the top
       }} 
       aria-label="Sección principal"
     >
@@ -69,18 +70,18 @@ const Hero: React.FC = () => {
       
       {/* Content */}
       <div 
-        className="container mx-auto h-full relative z-10"
+        className="container mx-auto relative z-10"
         style={{ 
           opacity: calculateOpacity(1),
         }}
       >
-        <div className="flex flex-col md:flex-row h-full">
+        <div className="flex flex-col md:flex-row min-h-[250px]">
           {/* Left side - Empty space for image (hidden on mobile) */}
           <div className={`${isMobile ? 'hidden' : 'w-full md:w-1/2'}`}></div>
           
           {/* Right side - Text content (full width on mobile) */}
           <div 
-            className={`${isMobile ? 'w-full px-4 flex flex-col justify-center items-center text-center pt-8' : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-start md:pt-16 pt-48'}`}
+            className={`${isMobile ? 'w-full px-4 flex flex-col justify-center items-center text-center pt-8' : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-start md:pt-16 pt-12'}`}
             style={{ 
               transform: `translate3d(0, ${parallaxOffset * -0.2}px, 0)`
             }}
@@ -97,7 +98,7 @@ const Hero: React.FC = () => {
             
             {/* Card with glass effect and hover animation */}
             <div 
-              className={`${isMobile ? 'bg-white/20' : 'backdrop-blur-sm bg-white/10 hover:bg-white/20'} p-6 rounded-lg max-w-2xl border-t border-l border-white/30 transition-all duration-500 animate-[fadeInUp_1s_ease_0.6s_both] shadow-lg hover-lift`}
+              className={`${isMobile ? 'bg-white/20' : 'backdrop-blur-sm bg-white/10 hover:bg-white/20'} p-6 rounded-lg max-w-2xl border-t border-l border-white/30 transition-all duration-500 animate-[fadeInUp_1s_ease_0.6s_both] shadow-lg hover-lift mb-4`}
             >
               <p className="text-white text-base md:text-lg">
                 En un entorno seguro y saludable, las personas trabajadoras se sienten escuchadas, pueden 
