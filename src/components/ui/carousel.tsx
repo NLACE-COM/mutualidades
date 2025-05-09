@@ -1,8 +1,7 @@
-
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
-  type EmblaOptionsType
+  type EmblaCarouselType
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -59,7 +58,7 @@ const Carousel = React.forwardRef<
     ref
   ) => {
     // Default carousel options for smooth scrolling
-    const defaultOptions: EmblaOptionsType = {
+    const defaultOptions = {
       align: "start",
       loop: false,
       dragFree: false,

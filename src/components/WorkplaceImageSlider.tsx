@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Carousel,
@@ -98,9 +97,9 @@ const WorkplaceImageSlider: React.FC = () => {
     return () => {
       // Clean up all event listeners and interval
       if (carouselApi) {
-        carouselApi.off("pointerUp", onInteraction);
-        carouselApi.off("pointerDown");
-        carouselApi.off("select");
+        carouselApi.off("pointerUp", () => onInteraction());
+        carouselApi.off("pointerDown", () => {});
+        carouselApi.off("select", () => {});
       }
       
       if (autoScrollIntervalRef.current) {
