@@ -9,6 +9,7 @@ import Importance from '../components/Importance';
 import TakeItSeriously from '../components/TakeItSeriously';
 import ContactInfo from '../components/ContactInfo';
 import FrequentQuestions from '../components/FrequentQuestions';
+import LaborInspection from '../components/LaborInspection';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -44,6 +45,7 @@ const Index = () => {
         <Importance />
         <TakeItSeriously />
         <ContactInfo />
+        <LaborInspection />
         <FrequentQuestions />
       </main>
       <Footer />
