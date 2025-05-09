@@ -29,31 +29,24 @@ const Footer: React.FC = () => {
   }
 
   return <footer id="contacto" className="bg-white pt-16 pb-8 scroll-mt-20">
-      <div className="container mx-auto text-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          
-          
-          <div className="flex flex-col items-center">
-            
-            <div className="flex flex-wrap gap-8 mb-8 justify-center">
-              <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
-                <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS" className="h-24 w-auto" />
-              </div>
-              <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
-                <img src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST" className="h-24 w-auto" />
-              </div>
-              <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
-                <img src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad" className="h-24 w-auto" />
-              </div>
+      <div className="container mx-auto flex justify-center">
+        <div className="flex flex-col items-center text-center max-w-4xl">
+          <div className="flex flex-wrap gap-10 mb-10 justify-center">
+            <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
+              <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS" className="h-24 w-auto" />
             </div>
-            
-            <p className="text-sm text-gray-500 mt-auto mx-auto">
-              Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social <a href="http://www.suseso.cl" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">www.suseso.cl</a>
-            </p>
+            <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
+              <img src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST" className="h-24 w-auto" />
+            </div>
+            <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
+              <img src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad" className="h-24 w-auto" />
+            </div>
           </div>
+          
+          <p className="text-sm text-gray-500">
+            Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social <a href="http://www.suseso.cl" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">www.suseso.cl</a>
+          </p>
         </div>
-        
-        
       </div>
     </footer>;
 };
