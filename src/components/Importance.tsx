@@ -31,7 +31,7 @@ const Importance: React.FC = () => {
   return (
     <section id="importancia" className="bg-gradient-to-b from-white to-[#f3f3e9] section-padding scroll-mt-20 relative overflow-hidden">
       {/* Animated background shapes */}
-      <div ref={shapesRef} className="absolute inset-0 z-0 pointer-events-none">
+      <div ref={shapesRef} className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div className="bg-shape absolute top-0 right-0 w-1/3 h-1/2 bg-[#f5a034]/5 rounded-bl-full transition-transform duration-200"></div>
         <div className="bg-shape absolute bottom-0 left-0 w-1/4 h-1/3 bg-[#108cb0]/5 rounded-tr-full transition-transform duration-300 delay-100"></div>
         <div className="bg-shape absolute top-1/2 left-1/3 w-16 h-16 bg-[#ffc000]/5 rounded-full transition-transform duration-500 float"></div>
@@ -49,8 +49,9 @@ const Importance: React.FC = () => {
             <div className="relative overflow-hidden rounded-lg hover-lift">
               <img 
                 src="https://images.unsplash.com/photo-1573497161079-f3fd25cc6b90" 
-                alt="Trabajadores felices en su entorno laboral" 
+                alt="Profesionales sonrientes colaborando en un ambiente laboral positivo y seguro" 
                 className="w-full h-auto rounded-lg shadow-lg object-cover aspect-4/3 transition-transform duration-700 hover:scale-105"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#108cb0]/70 to-transparent flex items-end">
                 <div className="p-6 text-white">
@@ -65,15 +66,17 @@ const Importance: React.FC = () => {
               <div className="overflow-hidden rounded-lg hover-lift">
                 <img 
                   src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c" 
-                  alt="Colaboración entre trabajadores" 
+                  alt="Equipo diverso trabajando juntos en un ambiente de colaboración y respeto mutuo" 
                   className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110"
+                  loading="lazy"
                 />
               </div>
               <div className="overflow-hidden rounded-lg hover-lift">
                 <img 
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" 
-                  alt="Equipo de trabajo" 
+                  alt="Grupo de profesionales en una reunión productiva mostrando respeto y comunicación efectiva" 
                   className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -85,10 +88,10 @@ const Importance: React.FC = () => {
               style={tiltStyle}
               className="bg-white rounded-xl shadow-lg p-8 md:p-10 relative"
             >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-[#f5a034]/10 rounded-bl-full -z-0"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-[#f5a034]/10 rounded-bl-full -z-0" aria-hidden="true"></div>
               
               <div className="mb-8 flex items-start gap-4 stagger-item">
-                <div className="bg-[#ffc000]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500">
+                <div className="bg-[#ffc000]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500" aria-hidden="true">
                   <Star className="w-8 h-8 text-[#ffc000]" />
                 </div>
                 <p className="text-lg">
@@ -97,7 +100,7 @@ const Importance: React.FC = () => {
               </div>
               
               <div className="mb-8 flex items-start gap-4 stagger-item" style={{ transitionDelay: '150ms' }}>
-                <div className="bg-[#f5a034]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500">
+                <div className="bg-[#f5a034]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500" aria-hidden="true">
                   <Heart className="w-8 h-8 text-[#f5a034]" />
                 </div>
                 <p className="text-lg">
@@ -106,7 +109,7 @@ const Importance: React.FC = () => {
               </div>
               
               <div className="mb-8 flex items-start gap-4 stagger-item" style={{ transitionDelay: '300ms' }}>
-                <div className="bg-[#108cb0]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500">
+                <div className="bg-[#108cb0]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500" aria-hidden="true">
                   <Users className="w-8 h-8 text-[#108cb0]" />
                 </div>
                 <p className="text-lg">

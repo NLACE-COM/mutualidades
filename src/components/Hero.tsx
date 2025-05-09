@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
   };
   
   return (
-    <section className="relative text-white overflow-hidden h-[70vh] border-b-0 perspective-1000">
+    <section className="relative text-white overflow-hidden h-[70vh] border-b-0 perspective-1000" aria-label="Sección principal">
       {/* Background image - hidden on mobile, with parallax effect */}
       {!isMobile && (
         <div 
@@ -35,7 +35,11 @@ const Hero: React.FC = () => {
             transform: `translate3d(0, ${parallaxOffset * 0.5}px, 0)`
           }}
         >
-          <div className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-contain opacity-100"></div>
+          <div 
+            className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-contain opacity-100" 
+            role="img" 
+            aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"
+          ></div>
         </div>
       )}
       
@@ -47,9 +51,9 @@ const Hero: React.FC = () => {
       {/* Floating shapes for added dimension */}
       {!isMobile && (
         <>
-          <div className="absolute top-[20%] left-[20%] w-32 h-32 rounded-full bg-[#F5A034]/10 float-slow"></div>
-          <div className="absolute top-[40%] right-[30%] w-24 h-24 rounded-full bg-[#108CB0]/10 float"></div>
-          <div className="absolute bottom-[30%] left-[40%] w-16 h-16 rounded-full bg-[#FFC000]/10 float-fast"></div>
+          <div className="absolute top-[20%] left-[20%] w-32 h-32 rounded-full bg-[#F5A034]/10 float-slow" aria-hidden="true"></div>
+          <div className="absolute top-[40%] right-[30%] w-24 h-24 rounded-full bg-[#108CB0]/10 float" aria-hidden="true"></div>
+          <div className="absolute bottom-[30%] left-[40%] w-16 h-16 rounded-full bg-[#FFC000]/10 float-fast" aria-hidden="true"></div>
         </>
       )}
       

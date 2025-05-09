@@ -15,14 +15,15 @@ const LeyKarin: React.FC = () => {
             <div className="relative">
               <img 
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf" 
-                alt="Trabajadores en ambiente seguro" 
+                alt="Personas trabajadoras en un entorno laboral seguro con elementos de protección adecuados" 
                 className="rounded-lg shadow-lg mb-8 w-full object-cover h-64"
+                loading="lazy"
               />
-              <div className="absolute -bottom-4 -right-4 bg-[#f5a034]/10 w-full h-full rounded-lg -z-10"></div>
+              <div className="absolute -bottom-4 -right-4 bg-[#f5a034]/10 w-full h-full rounded-lg -z-10" aria-hidden="true"></div>
             </div>
             
             <div className="flex items-center gap-4 bg-white p-4 rounded-lg border-l-4 border-[#108cb0]">
-              <Shield className="text-[#108cb0] w-8 h-8" />
+              <Shield className="text-[#108cb0] w-8 h-8" aria-hidden="true" />
               <p className="font-medium">
                 Una ley que protege a todas las personas en su entorno laboral
               </p>
@@ -30,10 +31,10 @@ const LeyKarin: React.FC = () => {
           </div>
           
           <Card className="md:col-span-7 border-none shadow-xl rounded-lg overflow-hidden bg-white relative fade-in-section">
-            <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#f5a034] to-[#ffc000]"></div>
+            <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#f5a034] to-[#ffc000]" aria-hidden="true"></div>
             <CardContent className="p-8">
               <div className="flex items-start gap-4 mb-6">
-                <BookOpen className="w-10 h-10 text-[#f5a034] flex-shrink-0 mt-1" />
+                <BookOpen className="w-10 h-10 text-[#f5a034] flex-shrink-0 mt-1" aria-hidden="true" />
                 <div>
                   <h3 className="text-xl font-bold mb-2 text-[#333333]">¿Qué es la Ley Karin?</h3>
                   <p className="text-lg mb-4">
@@ -53,8 +54,9 @@ const LeyKarin: React.FC = () => {
               <div className="mt-8 flex justify-center">
                 <img 
                   src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2"
-                  alt="Equipo de trabajo colaborando"
+                  alt="Equipo de profesionales colaborando en un ambiente de respeto y comunicación efectiva"
                   className="rounded-lg w-full max-w-md h-48 object-cover"
+                  loading="lazy"
                 />
               </div>
             </CardContent>

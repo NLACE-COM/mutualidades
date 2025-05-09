@@ -47,7 +47,7 @@ const SafeEnvironments: React.FC = () => {
             </p>
           </div>
           
-          <div className="absolute inset-0 -z-10 flex justify-center">
+          <div className="absolute inset-0 -z-10 flex justify-center" aria-hidden="true">
             <div className="w-full max-w-md h-full bg-naranja/5 rounded-full blur-3xl"></div>
           </div>
         </div>
@@ -59,9 +59,9 @@ const SafeEnvironments: React.FC = () => {
               className="border-none shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 bg-white group relative fade-in-section"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-celeste to-naranja transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-celeste to-naranja transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" aria-hidden="true"></div>
               <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-azul">{item.title}</h3>
@@ -75,8 +75,9 @@ const SafeEnvironments: React.FC = () => {
           <div className="relative">
             <img 
               src="https://images.unsplash.com/photo-1552581234-26160f608093" 
-              alt="Trabajadores en reunión de capacitación"
+              alt="Grupo de profesionales participando activamente en una capacitación sobre prevención de acoso laboral"
               className="w-full h-52 object-cover rounded-lg shadow-lg"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-azul/70 to-transparent flex items-end">
               <p className="p-4 text-white">Capacitación continua para prevenir el acoso laboral</p>
@@ -86,8 +87,9 @@ const SafeEnvironments: React.FC = () => {
           <div className="relative">
             <img 
               src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c" 
-              alt="Equipo de trabajo colaborando"
+              alt="Equipo de trabajo dialogando y colaborando en un ambiente de respeto y profesionalismo"
               className="w-full h-52 object-cover rounded-lg shadow-lg"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-azul/70 to-transparent flex items-end">
               <p className="p-4 text-white">Colaboración y respeto en el ambiente laboral</p>
@@ -102,9 +104,9 @@ const SafeEnvironments: React.FC = () => {
               className="border-none shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 bg-white group relative fade-in-section"
               style={{ animationDelay: `${(index + 3) * 0.1}s` }}
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amarillo to-naranja transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amarillo to-naranja transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" aria-hidden="true"></div>
               <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
                   {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-azul">{item.title}</h3>
