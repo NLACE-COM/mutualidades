@@ -9,6 +9,7 @@ import Importance from '../components/Importance';
 import ContactInfo from '../components/ContactInfo';
 import FrequentQuestions from '../components/FrequentQuestions';
 import LaborInspection from '../components/LaborInspection';
+import MutualSearch from '../components/MutualSearch';
 import Footer from '../components/Footer';
 import WorkplaceImageSlider from '../components/WorkplaceImageSlider';
 
@@ -55,6 +56,7 @@ const Index = () => {
         <LaborInspection />
         <FrequentQuestions />
         <ContactInfo />
+        <MutualSearch />
       </main>
       <Footer />
       
