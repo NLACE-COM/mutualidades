@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -42,6 +42,7 @@ const images = [
 const WorkplaceImageSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const autoScrollIntervalRef = useRef<number | null>(null);
   const parallaxOffset = useParallax({ speed: 0.05 });
 
   // Create animated shapes for background
@@ -52,30 +53,59 @@ const WorkplaceImageSlider: React.FC = () => {
     { top: '80%', left: '80%', size: '2rem', color: '#108CB0', delay: 1.5, className: 'float-slow' },
   ];
 
-  // Set up auto-slide
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % images.length);
-    }, 5000);
+  // Function to start auto-scrolling
+  const startAutoScroll = () => {
+    // Clear any existing interval
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+    }
+    
+    // Set up new interval that uses the carousel API directly
+    if (carouselApi) {
+      autoScrollIntervalRef.current = window.setInterval(() => {
+        carouselApi.scrollNext();
+      }, 5000) as unknown as number;
+    }
+  };
 
-    return () => clearInterval(interval);
-  }, []);
-
-  // Update active index when carousel changes
+  // Set up auto-scroll when carouselApi is available
   useEffect(() => {
     if (!carouselApi) return;
     
-    const handleSelect = () => {
-      setActiveIndex(carouselApi.selectedScrollSnap());
+    // Start the auto-scroll
+    startAutoScroll();
+    
+    // Handle user interaction events to restart auto-scroll
+    const onInteraction = () => {
+      // Restart the auto-scroll after user interaction
+      startAutoScroll();
     };
     
-    carouselApi.on("select", handleSelect);
+    // Listen for carousel select events
+    carouselApi.on("select", () => {
+      setActiveIndex(carouselApi.selectedScrollSnap());
+    });
     
-    // Set initial index
-    handleSelect();
+    // Add event listeners for interaction
+    carouselApi.on("dragEnd", onInteraction);
+    carouselApi.on("pointerDown", () => {
+      // Stop auto-scroll when user interacts
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
+    });
     
     return () => {
-      carouselApi.off("select", handleSelect);
+      // Clean up all event listeners and interval
+      if (carouselApi) {
+        carouselApi.off("dragEnd", onInteraction);
+        carouselApi.off("pointerDown");
+        carouselApi.off("select");
+      }
+      
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
     };
   }, [carouselApi]);
 
@@ -83,11 +113,12 @@ const WorkplaceImageSlider: React.FC = () => {
   const ImageCard = ({ image, index }: { image: typeof images[0], index: number }) => {
     const { ref, tiltStyle } = useTilt({ max: 5, scale: 1.02 });
     
+    // Use consistent animation instead of active-based transforms
     return (
       <div 
         ref={ref} 
         style={tiltStyle}
-        className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative hover-lift"
+        className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative transition-all duration-500"
       >
         <img 
           src={image.src} 
@@ -95,7 +126,7 @@ const WorkplaceImageSlider: React.FC = () => {
           className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
           loading="lazy"
         />
-        <div className="absolute inset-x-0 bottom-0 bg-[#108CB0]/90 py-2 px-3 transform transition-transform duration-300">
+        <div className="absolute inset-x-0 bottom-0 bg-[#108CB0]/90 py-2 px-3 transition-transform duration-300">
           <p className="text-white font-medium text-center">{image.caption}</p>
         </div>
       </div>
@@ -145,6 +176,8 @@ const WorkplaceImageSlider: React.FC = () => {
           opts={{
             align: "center",
             loop: true,
+            skipSnaps: false,
+            dragFree: false
           }}
           setApi={setCarouselApi}
         >
@@ -152,12 +185,7 @@ const WorkplaceImageSlider: React.FC = () => {
             {images.map((image, index) => (
               <CarouselItem 
                 key={index} 
-                className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4 transform transition-transform duration-500"
-                style={{
-                  transform: index === activeIndex 
-                    ? 'scale(1.05) translateY(-5px)' 
-                    : 'scale(1) translateY(0)'
-                }}
+                className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4"
               >
                 <ImageCard image={image} index={index} />
               </CarouselItem>

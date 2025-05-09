@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -56,8 +57,18 @@ const Carousel = React.forwardRef<
     },
     ref
   ) => {
+    // Default carousel options for smooth scrolling
+    const defaultOptions: CarouselOptions = {
+      align: "start",
+      loop: false,
+      dragFree: false, 
+      speed: 20, // Slower animation for smoother transitions
+      inViewThreshold: 0.5,
+    }
+
     const [carouselRef, api] = useEmblaCarousel(
       {
+        ...defaultOptions,
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
       },
@@ -76,11 +87,11 @@ const Carousel = React.forwardRef<
     }, [])
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev()
+      api?.scrollPrev({ animation: "smooth" })
     }, [api])
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext()
+      api?.scrollNext({ animation: "smooth" })
     }, [api])
 
     const handleKeyDown = React.useCallback(
@@ -115,6 +126,7 @@ const Carousel = React.forwardRef<
 
       return () => {
         api?.off("select", onSelect)
+        api?.off("reInit", onSelect)
       }
     }, [api, onSelect])
 
@@ -159,10 +171,13 @@ const CarouselContent = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "flex",
+          "flex will-change-transform", // Added will-change for smoother animations
           orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
           className
         )}
+        style={{ 
+          transition: "transform 0.5s ease" // Add smooth transition for content
+        }}
         {...props}
       />
     </div>
@@ -182,7 +197,7 @@ const CarouselItem = React.forwardRef<
       role="group"
       aria-roledescription="slide"
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-full",
+        "min-w-0 shrink-0 grow-0 basis-full transition-opacity duration-300", // Added smooth opacity transition
         orientation === "horizontal" ? "pl-4" : "pt-4",
         className
       )}
