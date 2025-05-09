@@ -87,7 +87,7 @@ const WorkplaceImageSlider: React.FC = () => {
     });
     
     // Add event listeners for interaction
-    carouselApi.on("dragEnd", onInteraction);
+    carouselApi.on("pointerUp", onInteraction);
     carouselApi.on("pointerDown", () => {
       // Stop auto-scroll when user interacts
       if (autoScrollIntervalRef.current) {
@@ -98,7 +98,7 @@ const WorkplaceImageSlider: React.FC = () => {
     return () => {
       // Clean up all event listeners and interval
       if (carouselApi) {
-        carouselApi.off("dragEnd", onInteraction);
+        carouselApi.off("pointerUp", onInteraction);
         carouselApi.off("pointerDown");
         carouselApi.off("select");
       }

@@ -2,6 +2,7 @@
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
+  type EmblaOptionsType
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
@@ -58,11 +59,10 @@ const Carousel = React.forwardRef<
     ref
   ) => {
     // Default carousel options for smooth scrolling
-    const defaultOptions: CarouselOptions = {
+    const defaultOptions: EmblaOptionsType = {
       align: "start",
       loop: false,
-      dragFree: false, 
-      speed: 20, // Slower animation for smoother transitions
+      dragFree: false,
       inViewThreshold: 0.5,
     }
 
@@ -87,11 +87,11 @@ const Carousel = React.forwardRef<
     }, [])
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev({ animation: "smooth" })
+      api?.scrollPrev()
     }, [api])
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext({ animation: "smooth" })
+      api?.scrollNext()
     }, [api])
 
     const handleKeyDown = React.useCallback(
@@ -121,12 +121,12 @@ const Carousel = React.forwardRef<
       }
 
       onSelect(api)
-      api.on("reInit", onSelect)
       api.on("select", onSelect)
+      api.on("reInit", onSelect)
 
       return () => {
-        api?.off("select", onSelect)
-        api?.off("reInit", onSelect)
+        api.off("select", onSelect)
+        api.off("reInit", onSelect)
       }
     }, [api, onSelect])
 
