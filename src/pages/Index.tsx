@@ -47,9 +47,14 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <main className="flex flex-col overflow-hidden">
-        <div className="flex flex-col">
+        {/* Hero and LeyKarin in positioned container */}
+        <div className="relative">
           <Hero />
-          <LeyKarin />
+          <div className="absolute bottom-0 left-0 right-0 translate-y-[60%]">
+            <LeyKarin />
+          </div>
+          {/* Spacer to account for LeyKarin's absolute positioning */}
+          <div className="h-[30vh]"></div>
         </div>
         <SafeEnvironments />
         <WorkplaceImageSlider />

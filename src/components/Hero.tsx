@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Hero: React.FC = () => {
@@ -26,7 +27,7 @@ const Hero: React.FC = () => {
               TÓMATELO<br />EN SERIO
             </h1>
             
-            {/* Card with glass effect and hover animation - removed bottom margin */}
+            {/* Card with glass effect and hover animation - no margin bottom */}
             <div className="backdrop-blur-sm p-6 rounded-lg max-w-2xl mb-0 border-t border-l border-white/30 bg-white/10 hover:bg-white/20 transition-all duration-300 animate-[fadeInUp_1s_ease_0.6s_both] shadow-lg">
               <p className="text-white text-base md:text-lg">
                 En un entorno seguro y saludable, las personas trabajadoras se sienten escuchadas, pueden 
