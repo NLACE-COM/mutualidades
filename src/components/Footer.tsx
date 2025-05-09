@@ -33,15 +33,33 @@ const Footer: React.FC = () => {
       <div className="container mx-auto flex justify-center">
         <div className="flex flex-col items-center text-center max-w-4xl">
           <div className="flex flex-wrap gap-10 mb-10 justify-center">
-            <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
+            <a 
+              href="https://www.achs.cl/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm hover:shadow-md transition-shadow"
+              aria-label="Visitar sitio web de ACHS"
+            >
               <img src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" alt="ACHS" className="h-24 w-auto" />
-            </div>
-            <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
+            </a>
+            <a 
+              href="https://ist.cl/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm hover:shadow-md transition-shadow"
+              aria-label="Visitar sitio web de IST"
+            >
               <img src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="IST" className="h-24 w-auto" />
-            </div>
-            <div className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm">
+            </a>
+            <a 
+              href="https://www.mutual.cl/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm hover:shadow-md transition-shadow"
+              aria-label="Visitar sitio web de Mutual de Seguridad"
+            >
               <img src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Mutual de Seguridad" className="h-24 w-auto" />
-            </div>
+            </a>
           </div>
           
           <p className="text-sm text-gray-500">
