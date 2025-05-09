@@ -28,7 +28,7 @@ const Header: React.FC = () => {
           </a>
         </nav>
         <Button className="bg-naranja hover:bg-naranja/90 text-white rounded-lg shadow-sm hidden md:block" asChild>
-          <a href="#leykarin">TÓMATELO EN SERIO</a>
+          
         </Button>
         <Button variant="ghost" className="md:hidden" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
