@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-
 const ContactInfo: React.FC = () => {
-  return (
-    <section id="contacto-info" className="bg-white py-16">
+  return <section id="contacto-info" className="bg-white py-16">
       <div className="container mx-auto">
         <h2 className="text-4xl font-bold text-center text-naranja mb-4">
           Estamos para ayudarte
@@ -33,7 +30,7 @@ const ContactInfo: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <p className="text-blue-600 font-medium">Llámanos</p>
+                  
                   <p>600 600 22 47</p>
                 </div>
               </div>
@@ -68,7 +65,7 @@ const ContactInfo: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <p className="text-blue-600 font-medium">Llámanos</p>
+                  
                   <p>600 5840 000</p>
                 </div>
               </div>
@@ -103,7 +100,7 @@ const ContactInfo: React.FC = () => {
                   <Phone size={24} />
                 </div>
                 <div>
-                  <p className="text-blue-600 font-medium">Llámanos</p>
+                  
                   <p>600 2000 555</p>
                 </div>
               </div>
@@ -123,8 +120,6 @@ const ContactInfo: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactInfo;
