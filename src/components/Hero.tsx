@@ -3,11 +3,10 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative bg-gradient-to-r from-[#108cb0] to-[#108cb0] text-white py-24 md:py-32 overflow-hidden">
-      {/* Background image with overlay */}
+    <section className="relative bg-[#108cb0] text-white py-24 md:py-32 overflow-hidden">
+      {/* Background image without overlay */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-contain opacity-100"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#108cb0]/40 to-[#108cb0]/90"></div>
       </div>
       
       {/* Content */}
@@ -17,7 +16,7 @@ const Hero: React.FC = () => {
           <div className="w-full md:w-1/2"></div>
           
           {/* Right side - Text content */}
-          <div className="w-full md:w-1/2 px-4 md:px-6 mt-72 md:mt-0">
+          <div className="w-full md:w-1/2 px-4 md:px-6 mt-72 md:mt-0 md:flex md:flex-col md:justify-center md:h-[600px]">
             {/* Animated subtitle with staggered entry */}
             <p className="text-xl md:text-2xl mb-8 font-medium animate-[fadeInUp_1s_ease_0.2s_both]">
               Promovamos entornos de trabajo seguros y saludables, a través de una buena convivencia.
