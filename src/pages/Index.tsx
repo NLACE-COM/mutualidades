@@ -47,8 +47,10 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <main className="flex flex-col overflow-hidden">
-        <Hero />
-        <LeyKarin />
+        <div className="flex flex-col">
+          <Hero />
+          <LeyKarin />
+        </div>
         <SafeEnvironments />
         <WorkplaceImageSlider />
         <PositiveWorkplace />
