@@ -12,7 +12,6 @@ import LaborInspection from '../components/LaborInspection';
 import MutualSearch from '../components/MutualSearch';
 import Footer from '../components/Footer';
 import WorkplaceImageSlider from '../components/WorkplaceImageSlider';
-import TakeItSeriously from '../components/TakeItSeriously';
 
 const Index = () => {
   useEffect(() => {

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative text-white overflow-hidden h-screen py-0 my-0 border-b-0">
+    <section className="relative text-white overflow-hidden h-screen border-b-0 pb-0 pt-0 m-0">
       {/* Background image without overlay */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-contain opacity-100"></div>
@@ -38,8 +38,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white/10 to-transparent"></div>
+      {/* Remove the bottom decorative gradient that might be adding space */}
       <div className="absolute -bottom-10 right-10 w-40 h-40 bg-[#ffc000]/20 rounded-full blur-3xl"></div>
       <div className="absolute top-10 left-10 w-40 h-40 bg-[#f5a034]/20 rounded-full blur-3xl"></div>
     </section>
