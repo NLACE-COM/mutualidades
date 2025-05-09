@@ -10,7 +10,6 @@ import ContactInfo from '../components/ContactInfo';
 import FrequentQuestions from '../components/FrequentQuestions';
 import LaborInspection from '../components/LaborInspection';
 import Footer from '../components/Footer';
-import TestimonialsSlider from '../components/TestimonialsSlider';
 import WorkplaceImageSlider from '../components/WorkplaceImageSlider';
 
 const Index = () => {
@@ -52,7 +51,6 @@ const Index = () => {
         <SafeEnvironments />
         <WorkplaceImageSlider />
         <PositiveWorkplace />
-        <TestimonialsSlider />
         <Importance />
         <LaborInspection />
         <FrequentQuestions />
