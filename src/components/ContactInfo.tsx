@@ -7,9 +7,13 @@ const ContactInfo: React.FC = () => {
   return (
     <section id="contacto-info" className="bg-white py-16">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-bold text-center text-naranja mb-12">
+        <h2 className="text-4xl font-bold text-center text-naranja mb-4">
           Estamos para ayudarte
         </h2>
+        
+        <p className="text-center text-gray-700 mb-12 max-w-2xl mx-auto">
+          ¿Tienes dudas sobre cómo implementar un entorno laboral seguro y saludable? Llámanos y te responderemos a la brevedad.
+        </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* ACHS */}
