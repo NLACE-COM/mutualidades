@@ -80,7 +80,9 @@ const Index = () => {
         </div>
         
         {/* LeyKarin sits directly on top of Hero with no ParallaxBackground wrapper */}
-        <LeyKarin />
+        <div className="relative" style={{ marginTop: '-40px' }}>
+          <LeyKarin />
+        </div>
         
         {/* SafeEnvironments with parallax effect */}
         <SafeEnvironments />
@@ -156,6 +158,22 @@ const Index = () => {
           height: 80px; /* Increased height for better visual connection */
           background: linear-gradient(to bottom, transparent 0%, rgba(243, 243, 233, 0.5) 50%, #f3f3e9 100%);
           z-index: 5;
+        }
+
+        /* Add responsive styles for ultra-wide or low-height displays */
+        @media (min-height: 900px) {
+          section.hero {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+          }
+        }
+
+        @media (max-height: 600px) {
+          section.hero {
+            min-height: 100% !important;
+            padding-top: 2rem;
+            padding-bottom: 3rem;
+          }
         }
       `}</style>
     </div>

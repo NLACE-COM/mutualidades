@@ -29,12 +29,12 @@ const Hero: React.FC = () => {
     <section 
       className="relative text-white overflow-visible border-b-0 perspective-1000" 
       style={{ 
-        minHeight: isMobile ? '40vh' : 'min(60vh, 500px)',  // Reduced heights and added absolute value fallback
-        height: 'auto',  // Changed to auto so content can dictate height
+        minHeight: isMobile ? '350px' : '450px',  // Fixed pixel values instead of vh units
+        height: 'auto',  // Let content determine final height
         zIndex: 1,
         marginBottom: 0,
-        paddingBottom: isMobile ? '2rem' : '3rem',
-        paddingTop: isMobile ? '2rem' : '3rem',  // Added padding to the top
+        paddingTop: isMobile ? '3rem' : '4rem',    // More padding at top
+        paddingBottom: isMobile ? '4rem' : '5rem', // More padding at bottom to ensure content fits
       }} 
       aria-label="Sección principal"
     >
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
           }}
         >
           <div 
-            className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-contain opacity-100" 
+            className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-cover" 
             role="img" 
             aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"
           ></div>
@@ -70,18 +70,20 @@ const Hero: React.FC = () => {
       
       {/* Content */}
       <div 
-        className="container mx-auto relative z-10"
+        className="container mx-auto relative z-10 flex flex-col h-full justify-center"
         style={{ 
           opacity: calculateOpacity(1),
         }}
       >
-        <div className="flex flex-col md:flex-row min-h-[250px]">
+        <div className="flex flex-col md:flex-row">
           {/* Left side - Empty space for image (hidden on mobile) */}
           <div className={`${isMobile ? 'hidden' : 'w-full md:w-1/2'}`}></div>
           
           {/* Right side - Text content (full width on mobile) */}
           <div 
-            className={`${isMobile ? 'w-full px-4 flex flex-col justify-center items-center text-center pt-8' : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-start md:pt-16 pt-12'}`}
+            className={`${isMobile 
+              ? 'w-full px-4 flex flex-col justify-center items-center text-center py-8' 
+              : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-center py-8'}`}
             style={{ 
               transform: `translate3d(0, ${parallaxOffset * -0.2}px, 0)`
             }}
@@ -92,13 +94,13 @@ const Hero: React.FC = () => {
             </p>
             
             {/* Main headline with animated entry */}
-            <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-6xl lg:text-7xl'} font-bold mb-8 leading-tight text-[#ffc000] animate-[fadeInUp_1s_ease_0.4s_both]`}>
+            <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl lg:text-7xl'} font-bold mb-8 leading-tight text-[#ffc000] animate-[fadeInUp_1s_ease_0.4s_both]`}>
               TÓMATELO<br />EN SERIO
             </h1>
             
             {/* Card with glass effect and hover animation */}
             <div 
-              className={`${isMobile ? 'bg-white/20' : 'backdrop-blur-sm bg-white/10 hover:bg-white/20'} p-6 rounded-lg max-w-2xl border-t border-l border-white/30 transition-all duration-500 animate-[fadeInUp_1s_ease_0.6s_both] shadow-lg hover-lift mb-4`}
+              className={`${isMobile ? 'bg-white/20' : 'backdrop-blur-sm bg-white/10 hover:bg-white/20'} p-6 rounded-lg max-w-2xl border-t border-l border-white/30 transition-all duration-500 animate-[fadeInUp_1s_ease_0.6s_both] shadow-lg hover-lift mb-8`}
             >
               <p className="text-white text-base md:text-lg">
                 En un entorno seguro y saludable, las personas trabajadoras se sienten escuchadas, pueden 
