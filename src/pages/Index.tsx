@@ -8,6 +8,7 @@ import PositiveWorkplace from '../components/PositiveWorkplace';
 import Importance from '../components/Importance';
 import TakeItSeriously from '../components/TakeItSeriously';
 import ContactInfo from '../components/ContactInfo';
+import FrequentQuestions from '../components/FrequentQuestions';
 import Footer from '../components/Footer';
 
 const Index = () => {
@@ -43,6 +44,7 @@ const Index = () => {
         <Importance />
         <TakeItSeriously />
         <ContactInfo />
+        <FrequentQuestions />
       </main>
       <Footer />
     </div>
