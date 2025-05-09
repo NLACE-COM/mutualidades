@@ -38,11 +38,11 @@ const images = [
 
 const WorkplaceImageSlider: React.FC = () => {
   return (
-    <section className="py-16 bg-gradient-to-b from-azul/10 to-gris">
+    <section className="py-16 bg-[#f3f3e9]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 fade-in-section">
-          <h2 className="text-4xl font-bold text-azul">CONSTRUYENDO JUNTOS</h2>
-          <div className="w-20 h-1 bg-naranja mx-auto my-6"></div>
+          <h2 className="text-4xl font-bold text-[#333333]">CONSTRUYENDO JUNTOS</h2>
+          <div className="w-20 h-1 bg-[#F5A034] mx-auto my-6"></div>
           <p className="text-lg text-gray-700 mb-8">
             Un entorno laboral seguro y saludable se construye con el compromiso de todos
           </p>
@@ -64,7 +64,7 @@ const WorkplaceImageSlider: React.FC = () => {
                     alt={image.alt} 
                     className="w-full h-full object-cover" 
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-azul/90 py-2 px-3">
+                  <div className="absolute inset-x-0 bottom-0 bg-[#108CB0]/90 py-2 px-3">
                     <p className="text-white font-medium text-center">{image.caption}</p>
                   </div>
                 </div>
@@ -72,8 +72,8 @@ const WorkplaceImageSlider: React.FC = () => {
             ))}
           </CarouselContent>
           <div className="flex justify-center mt-8 gap-4">
-            <CarouselPrevious className="static rounded-full transform-none mx-2 bg-naranja hover:bg-naranja/80 text-white" />
-            <CarouselNext className="static rounded-full transform-none mx-2 bg-naranja hover:bg-naranja/80 text-white" />
+            <CarouselPrevious className="static rounded-full transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white" />
+            <CarouselNext className="static rounded-full transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white" />
           </div>
         </Carousel>
       </div>

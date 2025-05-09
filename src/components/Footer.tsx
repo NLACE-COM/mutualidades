@@ -28,7 +28,8 @@ const Footer: React.FC = () => {
     alert("Mensaje enviado con éxito");
   }
 
-  return <footer id="contacto" className="bg-white pt-16 pb-8 scroll-mt-20">
+  return (
+    <footer id="contacto" className="bg-[#f3f3e9] pt-16 pb-8 scroll-mt-20">
       <div className="container mx-auto flex justify-center">
         <div className="flex flex-col items-center text-center max-w-4xl">
           <div className="flex flex-wrap gap-10 mb-10 justify-center">
@@ -44,11 +45,12 @@ const Footer: React.FC = () => {
           </div>
           
           <p className="text-sm text-gray-500">
-            Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social <a href="http://www.suseso.cl" className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer">www.suseso.cl</a>
+            Las Mutualidades de Empleadores son fiscalizadas por la Superintendencia de Seguridad Social <a href="http://www.suseso.cl" className="text-[#108cb0] hover:underline" target="_blank" rel="noopener noreferrer">www.suseso.cl</a>
           </p>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
 
 export default Footer;

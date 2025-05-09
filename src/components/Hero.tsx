@@ -12,11 +12,11 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-r from-azul to-celeste text-white py-24 md:py-32 overflow-hidden">
+    <section className="relative bg-gradient-to-r from-[#108cb0] to-[#108cb0] text-white py-24 md:py-32 overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1552664730-d307ca884978')] bg-cover bg-center bg-fixed opacity-30"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-azul/90 to-celeste/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#108cb0]/90 to-[#108cb0]/70"></div>
       </div>
       
       {/* Content */}
@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
           </p>
           
           {/* Main headline with animated entry */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-10 leading-tight text-amarillo animate-[fadeInUp_1s_ease_0.4s_both]">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-10 leading-tight text-[#ffc000] animate-[fadeInUp_1s_ease_0.4s_both]">
             TÓMATELO<br />EN SERIO
           </h1>
           
@@ -56,8 +56,8 @@ const Hero: React.FC = () => {
 
       {/* Decorative elements */}
       <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white/10 to-transparent"></div>
-      <div className="absolute -bottom-10 right-10 w-40 h-40 bg-amarillo/20 rounded-full blur-3xl"></div>
-      <div className="absolute top-10 left-10 w-40 h-40 bg-naranja/20 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-10 right-10 w-40 h-40 bg-[#ffc000]/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-10 left-10 w-40 h-40 bg-[#f5a034]/20 rounded-full blur-3xl"></div>
     </section>
   );
 };
