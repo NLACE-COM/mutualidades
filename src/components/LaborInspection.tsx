@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Check, ChartBar } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
@@ -192,11 +191,13 @@ const LaborInspection: React.FC = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>
+        {`
         .counter-animation {
           display: inline-block;
         }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };
