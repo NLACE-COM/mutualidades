@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative text-white overflow-hidden h-screen mb-0 border-b-0">
+    <section className="relative text-white overflow-hidden h-screen py-0 my-0 border-b-0">
       {/* Background image without overlay */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-left-top bg-no-repeat bg-contain opacity-100"></div>
