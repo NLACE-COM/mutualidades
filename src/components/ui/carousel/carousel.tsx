@@ -1,7 +1,8 @@
 
 import * as React from "react"
 import useEmblaCarousel, { 
-  type UseEmblaCarouselType
+  type UseEmblaCarouselType,
+  type EmblaOptionsType,
 } from "embla-carousel-react"
 import { CarouselContext, type CarouselProps, type CarouselOptions } from "./carousel-context"
 import { cn } from "@/lib/utils"
@@ -23,14 +24,17 @@ export const Carousel = React.forwardRef<
     ref
   ) => {
     // Default carousel options for smooth scrolling
-    const defaultOptions: CarouselOptions = {
+    const defaultOptions: EmblaOptionsType = {
       loop: false,
       dragFree: false,
       inViewThreshold: 0.5,
     }
 
-    // Create embla carousel hook directly inside the function component
-    const [emblaRef, emblaApi] = useEmblaCarousel(
+    // Create a ref for the carousel
+    const emblaNodeRef = React.useRef<HTMLDivElement>(null)
+    
+    // Use the embla carousel hook
+    const [_, emblaApi] = useEmblaCarousel(
       {
         ...defaultOptions,
         ...opts,
@@ -98,7 +102,7 @@ export const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          carouselRef: emblaRef,
+          carouselRef: emblaNodeRef,
           api: emblaApi,
           opts,
           orientation: orientation,
