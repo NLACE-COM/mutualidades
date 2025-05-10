@@ -1,16 +1,16 @@
 
 import * as React from "react"
 import useEmblaCarousel, {
-  type EmblaCarouselType,
-  type EmblaOptionsType,
-  type EmblaPluginType
+  type UseEmblaCarouselType,
+  type EmblaOptionsType as EmblaOptions,
+  type EmblaPluginType as EmblaPlugin
 } from "embla-carousel-react"
 
 // Define the types
-export type CarouselApi = EmblaCarouselType
+export type CarouselApi = UseEmblaCarouselType[1]
 export type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-export type CarouselOptions = EmblaOptionsType
-export type CarouselPlugin = EmblaPluginType
+export type CarouselOptions = EmblaOptions
+export type CarouselPlugin = EmblaPlugin
 
 export type CarouselProps = {
   opts?: CarouselOptions

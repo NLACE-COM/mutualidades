@@ -1,6 +1,9 @@
 
 import * as React from "react"
-import useEmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from "embla-carousel-react"
+import useEmblaCarousel, { 
+  type UseEmblaCarouselType, 
+  type EmblaOptionsType as EmblaOptions 
+} from "embla-carousel-react"
 import { CarouselContext, type CarouselProps } from "./carousel-context"
 import { cn } from "@/lib/utils"
 
@@ -21,7 +24,7 @@ export const Carousel = React.forwardRef<
     ref
   ) => {
     // Default carousel options for smooth scrolling with proper typing
-    const defaultOptions: EmblaOptionsType = {
+    const defaultOptions: EmblaOptions = {
       align: "start",
       loop: false,
       dragFree: false,
@@ -39,7 +42,7 @@ export const Carousel = React.forwardRef<
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
-    const onSelect = React.useCallback((api: EmblaCarouselType) => {
+    const onSelect = React.useCallback((api: UseEmblaCarouselType[1]) => {
       if (!api) {
         return
       }
