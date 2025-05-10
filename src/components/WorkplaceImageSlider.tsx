@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
   type CarouselApi
 } from "@/components/ui/carousel";
+import { useToast } from '@/hooks/use-toast';
 
 // Original images array
 const images = [
@@ -41,6 +42,7 @@ const images = [
 const WorkplaceImageSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const { toast } = useToast();
   
   // Basic image card component
   const ImageCard = ({ image }: { image: typeof images[0] }) => {    
@@ -59,20 +61,36 @@ const WorkplaceImageSlider: React.FC = () => {
     );
   };
 
-  // Track selected index
-  React.useEffect(() => {
-    if (!carouselApi) return;
+  // Track selected index and debug
+  useEffect(() => {
+    if (!carouselApi) {
+      console.log("Carousel API not initialized yet");
+      return;
+    }
+    
+    console.log("Carousel API initialized in WorkplaceImageSlider");
     
     const onSelect = () => {
-      setActiveIndex(carouselApi.selectedScrollSnap());
+      const selectedIndex = carouselApi.selectedScrollSnap();
+      console.log("Selected index:", selectedIndex);
+      setActiveIndex(selectedIndex);
     };
     
     carouselApi.on("select", onSelect);
+    // Initialize carousel
+    carouselApi.reInit();
+    onSelect();
     
     return () => {
       carouselApi.off("select", onSelect);
     };
   }, [carouselApi]);
+
+  // Debug initialization
+  useEffect(() => {
+    console.log("WorkplaceImageSlider mounted");
+    return () => console.log("WorkplaceImageSlider unmounted");
+  }, []);
 
   return (
     <section className="py-16 bg-[#f3f3e9] relative overflow-hidden" aria-labelledby="construyendo-juntos-heading">
@@ -90,47 +108,60 @@ const WorkplaceImageSlider: React.FC = () => {
           </p>
         </div>
 
-        <Carousel 
-          className="w-full max-w-6xl mx-auto"
-          opts={{
-            loop: true,
-            align: "center",
-            containScroll: "trimSnaps",
-          }}
-          setApi={setCarouselApi}
-        >
-          <CarouselContent>
-            {images.map((image, index) => (
-              <CarouselItem 
-                key={index} 
-                className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4"
-              >
-                <ImageCard image={image} />
-              </CarouselItem>
+        <div className="max-w-6xl mx-auto">
+          <Carousel 
+            className="w-full" 
+            opts={{
+              loop: true,
+              align: "center",
+              containScroll: "trimSnaps",
+            }}
+            setApi={setCarouselApi}
+          >
+            <CarouselContent>
+              {images.map((image, index) => (
+                <CarouselItem 
+                  key={index} 
+                  className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4"
+                >
+                  <ImageCard image={image} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            
+            <div className="flex justify-center mt-8 gap-4">
+              <CarouselPrevious className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform" />
+              <CarouselNext className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform" />
+            </div>
+          </Carousel>
+
+          {/* Indicator dots */}
+          <div className="flex justify-center mt-6 gap-2" role="tablist" aria-label="Navegación de imágenes">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex ? 'w-8 bg-[#F5A034]' : 'w-2 bg-[#F5A034]/40'
+                }`}
+                onClick={() => {
+                  if (carouselApi) {
+                    console.log(`Clicking on dot ${index}`);
+                    carouselApi.scrollTo(index);
+                  } else {
+                    console.error("Carousel API not available");
+                    toast({
+                      title: "Error",
+                      description: "No se pudo navegar a la imagen seleccionada",
+                      variant: "destructive"
+                    });
+                  }
+                }}
+                role="tab"
+                aria-selected={index === activeIndex}
+                aria-label={`Imagen ${index + 1}`}
+              />
             ))}
-          </CarouselContent>
-          <div className="flex justify-center mt-8 gap-4">
-            <CarouselPrevious className="static rounded-full transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform" />
-            <CarouselNext className="static rounded-full transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform" />
           </div>
-        </Carousel>
-        
-        {/* Indicator dots */}
-        <div className="flex justify-center mt-6 gap-2" role="tablist" aria-label="Navegación de imágenes">
-          {images.map((_, index) => (
-            <div 
-              key={index}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeIndex ? 'w-8 bg-[#F5A034]' : 'w-2 bg-[#F5A034]/40'
-              }`}
-              onClick={() => carouselApi?.scrollTo(index)}
-              style={{ cursor: 'pointer' }}
-              role="tab"
-              aria-selected={index === activeIndex}
-              aria-label={`Imagen ${index + 1}`}
-              tabIndex={0}
-            />
-          ))}
         </div>
       </div>
     </section>

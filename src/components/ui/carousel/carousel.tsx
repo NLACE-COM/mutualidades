@@ -20,19 +20,18 @@ export const Carousel = React.forwardRef<
     },
     ref
   ) => {
-    // Define default options
+    // Define simplified options with explicit type assertions
     const defaultOptions = {
       loop: true,
       align: "center" as const,
       containScroll: "trimSnaps" as const,
-      dragFree: true,
     }
 
     // Create a ref for the carousel
     const emblaNodeRef = React.useRef<HTMLDivElement>(null)
     
     // Use the embla carousel hook with properly typed options
-    const [_, emblaApi] = useEmblaCarousel(
+    const [emblaRef, emblaApi] = useEmblaCarousel(
       {
         ...defaultOptions,
         ...opts,
@@ -43,6 +42,13 @@ export const Carousel = React.forwardRef<
     
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+
+    // Log when API is initialized for debugging
+    React.useEffect(() => {
+      if (emblaApi) {
+        console.log("Embla API initialized successfully")
+      }
+    }, [emblaApi])
 
     const onSelect = React.useCallback(() => {
       if (!emblaApi) return
@@ -100,7 +106,7 @@ export const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          carouselRef: emblaNodeRef,
+          carouselRef: emblaRef, // Use the emblaRef directly
           api: emblaApi,
           opts,
           orientation: orientation,
