@@ -20,11 +20,11 @@ export const Carousel = React.forwardRef<
     },
     ref
   ) => {
-    // Default carousel options for smooth scrolling
+    // Default carousel options for smooth scrolling with proper type compatibility
     const defaultOptions = {
       loop: true,
-      align: "center",
-      containScroll: false,
+      align: "center" as const, // Use 'as const' to ensure proper typing
+      containScroll: "trimSnaps" as const, // Use 'as const' for proper typing
       dragFree: true,
       skipSnaps: true,
       watchDrag: true,
@@ -34,7 +34,7 @@ export const Carousel = React.forwardRef<
     // Create a ref for the carousel
     const emblaNodeRef = React.useRef<HTMLDivElement>(null)
     
-    // Use the embla carousel hook
+    // Use the embla carousel hook with properly typed options
     const [_, emblaApi] = useEmblaCarousel(
       {
         ...defaultOptions,

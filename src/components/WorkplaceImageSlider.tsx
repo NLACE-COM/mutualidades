@@ -185,10 +185,10 @@ const WorkplaceImageSlider: React.FC = () => {
           className="w-full max-w-6xl mx-auto"
           opts={{
             loop: true,
-            align: "center",
-            containScroll: false,
-            skipSnaps: true,
+            align: "center" as const,
+            containScroll: "trimSnaps" as const,
             dragFree: true,
+            skipSnaps: true,
             watchDrag: true,
           }}
           setApi={setCarouselApi}
