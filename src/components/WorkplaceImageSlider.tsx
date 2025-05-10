@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState } from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -8,11 +8,9 @@ import {
   CarouselPrevious,
   type CarouselApi
 } from "@/components/ui/carousel";
-import { useTilt } from "@/hooks/use-tilt";
-import { useParallax } from "@/hooks/use-parallax";
 
 // Original images array
-const originalImages = [
+const images = [
   {
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
     alt: "Grupo diverso de profesionales colaborando en una reunión de trabajo",
@@ -40,96 +38,14 @@ const originalImages = [
   }
 ];
 
-// Duplicate the images to create a seamless looping effect
-const images = [...originalImages, ...originalImages];
-
 const WorkplaceImageSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
-  const autoScrollIntervalRef = useRef<number | null>(null);
-  const parallaxOffset = useParallax({ speed: 0.05 });
-  const lastDirection = useRef<'forward' | 'backward'>('forward');
-
-  // Create animated shapes for background
-  const shapes = [
-    { top: '15%', left: '5%', size: '4rem', color: '#108CB0', delay: 0, className: 'float-slow' },
-    { top: '70%', left: '10%', size: '3rem', color: '#F5A034', delay: 1, className: 'float' },
-    { top: '20%', left: '85%', size: '5rem', color: '#FFC000', delay: 0.5, className: 'float-fast' },
-    { top: '80%', left: '80%', size: '2rem', color: '#108CB0', delay: 1.5, className: 'float-slow' },
-  ];
-
-  // Always scroll in the forward direction to create a continuous loop
-  const scrollNext = useCallback(() => {
-    if (carouselApi) {
-      carouselApi.scrollNext();
-      lastDirection.current = 'forward';
-    }
-  }, [carouselApi]);
-
-  // Function to start auto-scrolling - always in the forward direction
-  const startAutoScroll = useCallback(() => {
-    // Clear any existing interval
-    if (autoScrollIntervalRef.current) {
-      clearInterval(autoScrollIntervalRef.current);
-    }
-    
-    // Set up new interval that always scrolls forward
-    autoScrollIntervalRef.current = window.setInterval(() => {
-      scrollNext();
-    }, 4000) as unknown as number;
-  }, [scrollNext]);
-
-  // Set up auto-scroll when carouselApi is available
-  useEffect(() => {
-    if (!carouselApi) return;
-    
-    // Start the auto-scroll
-    startAutoScroll();
-    
-    // Handle user interaction events
-    const onInteraction = () => {
-      // Restart the auto-scroll after user interaction
-      startAutoScroll();
-    };
-    
-    // Listen for carousel select events
-    carouselApi.on("select", () => {
-      setActiveIndex(carouselApi.selectedScrollSnap() % originalImages.length);
-    });
-    
-    // Add event listeners for interaction
-    carouselApi.on("pointerUp", onInteraction);
-    carouselApi.on("pointerDown", () => {
-      // Stop auto-scroll when user interacts
-      if (autoScrollIntervalRef.current) {
-        clearInterval(autoScrollIntervalRef.current);
-      }
-    });
-    
-    return () => {
-      // Clean up all event listeners and interval
-      if (carouselApi) {
-        carouselApi.off("pointerUp", onInteraction);
-        carouselApi.off("pointerDown", () => {});
-        carouselApi.off("select", () => {});
-      }
-      
-      if (autoScrollIntervalRef.current) {
-        clearInterval(autoScrollIntervalRef.current);
-      }
-    };
-  }, [carouselApi, startAutoScroll]);
-
-  // Custom card component with tilt effect
-  const ImageCard = ({ image, index }: { image: typeof originalImages[0], index: number }) => {
-    const { ref, tiltStyle } = useTilt({ max: 5, scale: 1.02 });
-    
+  
+  // Basic image card component
+  const ImageCard = ({ image }: { image: typeof images[0] }) => {    
     return (
-      <div 
-        ref={ref} 
-        style={tiltStyle}
-        className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative transition-all duration-500"
-      >
+      <div className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative transition-all duration-500">
         <img 
           src={image.src} 
           alt={image.alt} 
@@ -143,31 +59,24 @@ const WorkplaceImageSlider: React.FC = () => {
     );
   };
 
+  // Track selected index
+  React.useEffect(() => {
+    if (!carouselApi) return;
+    
+    const onSelect = () => {
+      setActiveIndex(carouselApi.selectedScrollSnap());
+    };
+    
+    carouselApi.on("select", onSelect);
+    
+    return () => {
+      carouselApi.off("select", onSelect);
+    };
+  }, [carouselApi]);
+
   return (
     <section className="py-16 bg-[#f3f3e9] relative overflow-hidden" aria-labelledby="construyendo-juntos-heading">
-      {/* Animated background shapes */}
-      {shapes.map((shape, i) => (
-        <div
-          key={i}
-          className={`absolute rounded-full pointer-events-none ${shape.className}`}
-          style={{
-            top: shape.top,
-            left: shape.left,
-            width: shape.size,
-            height: shape.size,
-            backgroundColor: shape.color,
-            opacity: 0.1,
-            animationDelay: `${shape.delay}s`,
-            transform: `translateY(${parallaxOffset * 0.5}px)`,
-          }}
-          aria-hidden="true"
-        />
-      ))}
-
-      <div 
-        className="container mx-auto px-4"
-        style={{ transform: `translateY(${parallaxOffset * 0.2}px)` }}
-      >
+      <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-12 fade-in-section">
           <h2 id="construyendo-juntos-heading" className="text-4xl font-bold text-[#333333] relative">
             CONSTRUYENDO JUNTOS
@@ -185,11 +94,8 @@ const WorkplaceImageSlider: React.FC = () => {
           className="w-full max-w-6xl mx-auto"
           opts={{
             loop: true,
-            align: "center" as const,
-            containScroll: "trimSnaps" as const,
-            dragFree: true,
-            skipSnaps: true,
-            watchDrag: true,
+            align: "center",
+            containScroll: "trimSnaps",
           }}
           setApi={setCarouselApi}
         >
@@ -199,7 +105,7 @@ const WorkplaceImageSlider: React.FC = () => {
                 key={index} 
                 className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4"
               >
-                <ImageCard image={image} index={index} />
+                <ImageCard image={image} />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -209,9 +115,9 @@ const WorkplaceImageSlider: React.FC = () => {
           </div>
         </Carousel>
         
-        {/* Indicator dots - only showing indicators for unique images */}
+        {/* Indicator dots */}
         <div className="flex justify-center mt-6 gap-2" role="tablist" aria-label="Navegación de imágenes">
-          {originalImages.map((_, index) => (
+          {images.map((_, index) => (
             <div 
               key={index}
               className={`h-2 rounded-full transition-all duration-300 ${
