@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
+import { trackNavClick } from '../utils/analytics';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -16,6 +17,12 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Function to handle navigation clicks with analytics tracking
+  const handleNavClick = (linkName: string, href: string) => {
+    trackNavClick(linkName, href);
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className={`py-4 sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white/90 backdrop-blur-sm'}`}>
       <div className="container mx-auto flex justify-between items-center">
@@ -29,22 +36,28 @@ const Header: React.FC = () => {
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <a href="#leykarin" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full">
+          <a href="#leykarin" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("Ley Karin", "#leykarin")}>
             Ley Karin
           </a>
-          <a href="#entornos" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full">
+          <a href="#entornos" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("Entornos Seguros", "#entornos")}>
             Entornos Seguros
           </a>
-          <a href="#importancia" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full">
+          <a href="#importancia" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("Importancia", "#importancia")}>
             Importancia
           </a>
-          <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full">
+          <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("Inspección", "#inspeccion-trabajo")}>
             Inspección
           </a>
-          <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full">
+          <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("FAQ", "#preguntas-frecuentes")}>
             FAQ
           </a>
-          <a href="#contacto-info" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full">
+          <a href="#contacto-info" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("Contacto", "#contacto-info")}>
             Contacto
           </a>
         </nav>
@@ -66,22 +79,28 @@ const Header: React.FC = () => {
         {mobileMenuOpen && (
           <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-50">
             <nav className="flex flex-col space-y-4">
-              <a href="#leykarin" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#leykarin" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
+                 onClick={() => handleNavClick("Ley Karin (móvil)", "#leykarin")}>
                 Ley Karin
               </a>
-              <a href="#entornos" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#entornos" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
+                 onClick={() => handleNavClick("Entornos Seguros (móvil)", "#entornos")}>
                 Entornos Seguros
               </a>
-              <a href="#importancia" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#importancia" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
+                 onClick={() => handleNavClick("Importancia (móvil)", "#importancia")}>
                 Importancia
               </a>
-              <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
+                 onClick={() => handleNavClick("Inspección (móvil)", "#inspeccion-trabajo")}>
                 Inspección
               </a>
-              <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
+                 onClick={() => handleNavClick("FAQ (móvil)", "#preguntas-frecuentes")}>
                 FAQ
               </a>
-              <a href="#contacto-info" className="text-gray-700 hover:text-azul py-2" onClick={() => setMobileMenuOpen(false)}>
+              <a href="#contacto-info" className="text-gray-700 hover:text-azul py-2" 
+                 onClick={() => handleNavClick("Contacto (móvil)", "#contacto-info")}>
                 Contacto
               </a>
             </nav>

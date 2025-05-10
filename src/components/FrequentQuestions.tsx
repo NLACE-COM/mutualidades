@@ -7,8 +7,19 @@ import {
   AccordionTrigger
 } from "@/components/ui/accordion";
 import { Link } from 'react-router-dom';
+import { trackAccordionInteraction, trackExternalLinkClick } from '../utils/analytics';
 
 const FrequentQuestions: React.FC = () => {
+  // Handler for accordion state changes
+  const handleAccordionChange = (value: string, isOpen: boolean, title: string) => {
+    trackAccordionInteraction(title, isOpen);
+  };
+  
+  // Handler for external link clicks
+  const handleExternalLinkClick = (linkName: string, url: string) => {
+    trackExternalLinkClick(linkName, url);
+  };
+
   return (
     <section id="preguntas-frecuentes" className="bg-gris py-16">
       <div className="container mx-auto">
@@ -17,7 +28,23 @@ const FrequentQuestions: React.FC = () => {
         </h2>
         
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full" onValueChange={(value) => {
+            // Only track when an item is opened (value is not empty)
+            if (value) {
+              const title = {
+                'item-1': '¿A quiénes protege la Ley Karin?',
+                'item-2': '¿Qué se entiende por acoso sexual?',
+                'item-3': '¿Qué se entiende por acoso laboral?',
+                'item-4': '¿Qué se entiende por violencia en el trabajo?',
+                'item-5': '¿Dónde puedo realizar una denuncia?',
+                'item-6': '¿Cuáles son las medidas básicas que deben tomar las personas que trabajan?',
+                'item-7': '¿Cuáles son las responsabilidades básicas del empleador?',
+                'item-8': '¿Cuál es el rol de los organismos administradores de la Ley 16.744?'
+              }[value as string] || value;
+              
+              handleAccordionChange(value, true, title);
+            }
+          }}>
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-lg font-semibold text-azul hover:no-underline">
                 ¿A quiénes protege la Ley Karin?
@@ -70,8 +97,8 @@ const FrequentQuestions: React.FC = () => {
               </AccordionTrigger>
               <AccordionContent className="text-base">
                 Para denunciar acoso laboral, sexual o violencia en el trabajo puedes hacerlo ante tu empleador, 
-                la <Link to="https://www.dt.gob.cl/portal/1626/w3-channel.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Inspección del Trabajo</Link> o 
-                <Link to="https://www.contraloria.cl/portalweb/web/cgr/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline"> Contraloría General de la República</Link> para 
+                la <Link to="https://www.dt.gob.cl/portal/1626/w3-channel.html" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline" onClick={() => handleExternalLinkClick("Dirección del Trabajo", "https://www.dt.gob.cl/portal/1626/w3-channel.html")}>Inspección del Trabajo</Link> o 
+                <Link to="https://www.contraloria.cl/portalweb/web/cgr/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline" onClick={() => handleExternalLinkClick("Contraloría General", "https://www.contraloria.cl/portalweb/web/cgr/")}> Contraloría General de la República</Link> para 
                 los funcionarios públicos o los tribunales laborales.
               </AccordionContent>
             </AccordionItem>
@@ -114,7 +141,9 @@ const FrequentQuestions: React.FC = () => {
                   <li>Para la elaboración del procedimiento de investigación y sanción, el empleador podrá contar con la asistencia técnica del organismo administrador (en empresas con menos de 10 trabajadores).</li>
                   <li>Disponer de programas de atención psicológica temprana al denunciante, en caso de acoso laboral, sexual o violencia en el trabajo.</li>
                   <li>Implementar normas complementarias para el proceso de calificación del origen de las enfermedades asociadas a estos eventos.</li>
-                  <li>Para conocer a qué mutualidad estás adherido <a href="https://www.asociaciondemutuales.cl/buscador-mutualidades/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">pincha aquí</a></li>
+                  <li>Para conocer a qué mutualidad estás adherido <a href="https://www.asociaciondemutuales.cl/buscador-mutualidades/" 
+                        onClick={() => handleExternalLinkClick("Buscador de Mutualidades", "https://www.asociaciondemutuales.cl/buscador-mutualidades/")}
+                        target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">pincha aquí</a></li>
                 </ul>
               </AccordionContent>
             </AccordionItem>

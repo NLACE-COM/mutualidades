@@ -9,6 +9,7 @@ import {
   type CarouselApi
 } from "@/components/ui/carousel";
 import { useToast } from '@/hooks/use-toast';
+import { trackCarouselSlide } from '../utils/analytics';
 
 // Original images array
 const images = [
@@ -74,6 +75,11 @@ const WorkplaceImageSlider: React.FC = () => {
       const selectedIndex = carouselApi.selectedScrollSnap();
       console.log("Selected index:", selectedIndex);
       setActiveIndex(selectedIndex);
+      
+      // Track carousel slide view for analytics
+      if (selectedIndex >= 0 && selectedIndex < images.length) {
+        trackCarouselSlide(selectedIndex, images[selectedIndex].caption);
+      }
     };
     
     carouselApi.on("select", onSelect);
@@ -130,8 +136,18 @@ const WorkplaceImageSlider: React.FC = () => {
             </CarouselContent>
             
             <div className="flex justify-center mt-8 gap-4">
-              <CarouselPrevious className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform" />
-              <CarouselNext className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform" />
+              <CarouselPrevious 
+                className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
+                onClick={() => {
+                  // Navigation event is tracked in useEffect via onSelect
+                }} 
+              />
+              <CarouselNext 
+                className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
+                onClick={() => {
+                  // Navigation event is tracked in useEffect via onSelect
+                }} 
+              />
             </div>
           </Carousel>
 
@@ -147,6 +163,7 @@ const WorkplaceImageSlider: React.FC = () => {
                   if (carouselApi) {
                     console.log(`Clicking on dot ${index}`);
                     carouselApi.scrollTo(index);
+                    // Event tracking happens in the useEffect onSelect handler
                   } else {
                     console.error("Carousel API not available");
                     toast({
