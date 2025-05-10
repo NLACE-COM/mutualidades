@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { 
   Carousel,
@@ -173,7 +174,6 @@ const WorkplaceImageSlider: React.FC = () => {
         <Carousel 
           className="w-full max-w-6xl mx-auto"
           opts={{
-            align: "center",
             loop: true,
             skipSnaps: false,
             dragFree: false

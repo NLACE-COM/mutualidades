@@ -7,8 +7,8 @@ import useEmblaCarousel, {
 // Define the types
 export type CarouselApi = UseEmblaCarouselType[1]
 export type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-export type CarouselOptions = NonNullable<UseEmblaCarouselType[0]>
-export type CarouselPlugin = NonNullable<UseEmblaCarouselType[2]>
+export type CarouselOptions = UseEmblaCarouselType[0]
+export type CarouselPlugin = any // Embla plugins don't have a specific exported type
 
 export type CarouselProps = {
   opts?: CarouselOptions

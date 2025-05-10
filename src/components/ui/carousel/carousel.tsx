@@ -22,9 +22,8 @@ export const Carousel = React.forwardRef<
     },
     ref
   ) => {
-    // Default carousel options for smooth scrolling with proper typing
+    // Default carousel options for smooth scrolling
     const defaultOptions: CarouselOptions = {
-      align: "start",
       loop: false,
       dragFree: false,
       inViewThreshold: 0.5,
@@ -122,8 +121,7 @@ export const Carousel = React.forwardRef<
           carouselRef: emblaRef,
           api: api,
           opts,
-          orientation:
-            orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+          orientation: orientation,
           scrollPrev,
           scrollNext,
           canScrollPrev,
