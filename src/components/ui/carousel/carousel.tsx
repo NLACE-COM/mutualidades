@@ -1,6 +1,6 @@
 
 import * as React from "react"
-import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react"
+import useEmblaCarousel from "embla-carousel-react"
 import { CarouselContext, type CarouselProps } from "./carousel-context"
 import { cn } from "@/lib/utils"
 
@@ -20,11 +20,11 @@ export const Carousel = React.forwardRef<
     },
     ref
   ) => {
-    // Define default options that are type-safe
-    const defaultOptions: EmblaOptionsType = {
+    // Define default options
+    const defaultOptions = {
       loop: true,
-      align: "center",
-      containScroll: "trimSnaps",
+      align: "center" as const,
+      containScroll: "trimSnaps" as const,
       dragFree: true,
     }
 
