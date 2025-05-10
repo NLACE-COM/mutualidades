@@ -1,7 +1,8 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
-  type Options as EmblaOptionsType
+  type EmblaOptionsType
 } from "embla-carousel-react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
