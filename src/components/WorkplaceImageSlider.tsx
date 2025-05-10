@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { useToast } from '@/hooks/use-toast';
 import { trackCarouselSlide } from '../utils/analytics';
+import AutoPlay from 'embla-carousel-autoplay';
 
 // Original images array
 const images = [
@@ -98,6 +99,18 @@ const WorkplaceImageSlider: React.FC = () => {
     return () => console.log("WorkplaceImageSlider unmounted");
   }, []);
 
+  // Create autoplay plugin instance
+  const autoplayPlugin = React.useMemo(
+    () =>
+      AutoPlay({
+        delay: 4000,
+        stopOnInteraction: true,
+        stopOnMouseEnter: true,
+        rootNode: (emblaRoot) => emblaRoot.parentElement,
+      }),
+    []
+  );
+
   return (
     <section className="py-16 bg-[#f3f3e9] relative overflow-hidden" aria-labelledby="construyendo-juntos-heading">
       <div className="container mx-auto px-4">
@@ -114,15 +127,18 @@ const WorkplaceImageSlider: React.FC = () => {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative">
+          {/* Add relative positioning for proper navigation button placement */}
           <Carousel 
             className="w-full" 
             opts={{
               loop: true,
               align: "center",
               containScroll: "trimSnaps",
+              dragFree: false,
             }}
             setApi={setCarouselApi}
+            plugins={[autoplayPlugin]}
           >
             <CarouselContent>
               {images.map((image, index) => (
@@ -135,23 +151,20 @@ const WorkplaceImageSlider: React.FC = () => {
               ))}
             </CarouselContent>
             
-            <div className="flex justify-center mt-8 gap-4">
+            {/* Fix navigation buttons - use absolute positioning */}
+            <div className="absolute -left-12 top-1/2 transform -translate-y-1/2 z-10">
               <CarouselPrevious 
-                className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
-                onClick={() => {
-                  // Navigation event is tracked in useEffect via onSelect
-                }} 
+                className="relative bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
               />
+            </div>
+            <div className="absolute -right-12 top-1/2 transform -translate-y-1/2 z-10">
               <CarouselNext 
-                className="relative static transform-none mx-2 bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
-                onClick={() => {
-                  // Navigation event is tracked in useEffect via onSelect
-                }} 
+                className="relative bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
               />
             </div>
           </Carousel>
 
-          {/* Indicator dots */}
+          {/* Indicator dots moved below for better UI organization */}
           <div className="flex justify-center mt-6 gap-2" role="tablist" aria-label="Navegación de imágenes">
             {images.map((_, index) => (
               <button

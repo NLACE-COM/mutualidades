@@ -25,6 +25,9 @@ export const Carousel = React.forwardRef<
       loop: true,
       align: "center" as const,
       containScroll: "trimSnaps" as const,
+      slidesToScroll: 1,
+      duration: 25, // Increased transition duration for smoother slides
+      skipSnaps: false,
     }
 
     // Use the embla carousel hook with properly typed options
@@ -38,7 +41,7 @@ export const Carousel = React.forwardRef<
     )
     
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-    const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const [canScrollNext, setCanScrollNext] = React.useState(true) // Default to true to ensure buttons work
 
     // Log when API is initialized for debugging
     React.useEffect(() => {
@@ -55,11 +58,17 @@ export const Carousel = React.forwardRef<
     }, [emblaApi])
 
     const scrollPrev = React.useCallback(() => {
-      emblaApi?.scrollPrev()
+      if (emblaApi) {
+        emblaApi.scrollPrev()
+        console.log("Scrolling to previous slide")
+      }
     }, [emblaApi])
 
     const scrollNext = React.useCallback(() => {
-      emblaApi?.scrollNext()
+      if (emblaApi) {
+        emblaApi.scrollNext()
+        console.log("Scrolling to next slide")
+      }
     }, [emblaApi])
 
     const handleKeyDown = React.useCallback(
@@ -103,7 +112,7 @@ export const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          carouselRef: emblaRef, // This is now compatible with the updated type
+          carouselRef: emblaRef,
           api: emblaApi,
           opts,
           orientation: orientation,
