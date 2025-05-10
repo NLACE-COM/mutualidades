@@ -19,7 +19,7 @@ export const CarouselContent = React.forwardRef<
           className
         )}
         style={{ 
-          transition: "transform 0.5s ease" // Add smooth transition for content
+          transition: "transform 0.8s cubic-bezier(0.25, 1, 0.5, 1)" // Custom easing for smoother carousel motion
         }}
         {...props}
       />

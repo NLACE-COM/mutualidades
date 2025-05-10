@@ -1,10 +1,7 @@
 
 import * as React from "react"
-import useEmblaCarousel, { 
-  type UseEmblaCarouselType,
-  type EmblaOptionsType,
-} from "embla-carousel-react"
-import { CarouselContext, type CarouselProps, type CarouselOptions } from "./carousel-context"
+import useEmblaCarousel from "embla-carousel-react"
+import { CarouselContext, type CarouselProps } from "./carousel-context"
 import { cn } from "@/lib/utils"
 
 export const Carousel = React.forwardRef<
@@ -24,10 +21,14 @@ export const Carousel = React.forwardRef<
     ref
   ) => {
     // Default carousel options for smooth scrolling
-    const defaultOptions: EmblaOptionsType = {
-      loop: false,
-      dragFree: false,
-      inViewThreshold: 0.5,
+    const defaultOptions = {
+      loop: true,
+      align: "center",
+      containScroll: false,
+      dragFree: true,
+      skipSnaps: true,
+      watchDrag: true,
+      inViewThreshold: 0,
     }
 
     // Create a ref for the carousel

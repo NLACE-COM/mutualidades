@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { 
   Carousel,
   CarouselContent,
@@ -11,7 +11,8 @@ import {
 import { useTilt } from "@/hooks/use-tilt";
 import { useParallax } from "@/hooks/use-parallax";
 
-const images = [
+// Original images array
+const originalImages = [
   {
     src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
     alt: "Grupo diverso de profesionales colaborando en una reunión de trabajo",
@@ -39,11 +40,15 @@ const images = [
   }
 ];
 
+// Duplicate the images to create a seamless looping effect
+const images = [...originalImages, ...originalImages];
+
 const WorkplaceImageSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
   const autoScrollIntervalRef = useRef<number | null>(null);
   const parallaxOffset = useParallax({ speed: 0.05 });
+  const lastDirection = useRef<'forward' | 'backward'>('forward');
 
   // Create animated shapes for background
   const shapes = [
@@ -53,20 +58,26 @@ const WorkplaceImageSlider: React.FC = () => {
     { top: '80%', left: '80%', size: '2rem', color: '#108CB0', delay: 1.5, className: 'float-slow' },
   ];
 
-  // Function to start auto-scrolling
-  const startAutoScroll = () => {
+  // Always scroll in the forward direction to create a continuous loop
+  const scrollNext = useCallback(() => {
+    if (carouselApi) {
+      carouselApi.scrollNext();
+      lastDirection.current = 'forward';
+    }
+  }, [carouselApi]);
+
+  // Function to start auto-scrolling - always in the forward direction
+  const startAutoScroll = useCallback(() => {
     // Clear any existing interval
     if (autoScrollIntervalRef.current) {
       clearInterval(autoScrollIntervalRef.current);
     }
     
-    // Set up new interval that uses the carousel API directly
-    if (carouselApi) {
-      autoScrollIntervalRef.current = window.setInterval(() => {
-        carouselApi.scrollNext();
-      }, 5000) as unknown as number;
-    }
-  };
+    // Set up new interval that always scrolls forward
+    autoScrollIntervalRef.current = window.setInterval(() => {
+      scrollNext();
+    }, 4000) as unknown as number;
+  }, [scrollNext]);
 
   // Set up auto-scroll when carouselApi is available
   useEffect(() => {
@@ -75,7 +86,7 @@ const WorkplaceImageSlider: React.FC = () => {
     // Start the auto-scroll
     startAutoScroll();
     
-    // Handle user interaction events to restart auto-scroll
+    // Handle user interaction events
     const onInteraction = () => {
       // Restart the auto-scroll after user interaction
       startAutoScroll();
@@ -83,7 +94,7 @@ const WorkplaceImageSlider: React.FC = () => {
     
     // Listen for carousel select events
     carouselApi.on("select", () => {
-      setActiveIndex(carouselApi.selectedScrollSnap());
+      setActiveIndex(carouselApi.selectedScrollSnap() % originalImages.length);
     });
     
     // Add event listeners for interaction
@@ -98,7 +109,7 @@ const WorkplaceImageSlider: React.FC = () => {
     return () => {
       // Clean up all event listeners and interval
       if (carouselApi) {
-        carouselApi.off("pointerUp", () => onInteraction());
+        carouselApi.off("pointerUp", onInteraction);
         carouselApi.off("pointerDown", () => {});
         carouselApi.off("select", () => {});
       }
@@ -107,13 +118,12 @@ const WorkplaceImageSlider: React.FC = () => {
         clearInterval(autoScrollIntervalRef.current);
       }
     };
-  }, [carouselApi]);
+  }, [carouselApi, startAutoScroll]);
 
   // Custom card component with tilt effect
-  const ImageCard = ({ image, index }: { image: typeof images[0], index: number }) => {
+  const ImageCard = ({ image, index }: { image: typeof originalImages[0], index: number }) => {
     const { ref, tiltStyle } = useTilt({ max: 5, scale: 1.02 });
     
-    // Use consistent animation instead of active-based transforms
     return (
       <div 
         ref={ref} 
@@ -175,8 +185,11 @@ const WorkplaceImageSlider: React.FC = () => {
           className="w-full max-w-6xl mx-auto"
           opts={{
             loop: true,
-            skipSnaps: false,
-            dragFree: false
+            align: "center",
+            containScroll: false,
+            skipSnaps: true,
+            dragFree: true,
+            watchDrag: true,
           }}
           setApi={setCarouselApi}
         >
@@ -196,9 +209,9 @@ const WorkplaceImageSlider: React.FC = () => {
           </div>
         </Carousel>
         
-        {/* Indicator dots */}
+        {/* Indicator dots - only showing indicators for unique images */}
         <div className="flex justify-center mt-6 gap-2" role="tablist" aria-label="Navegación de imágenes">
-          {images.map((_, index) => (
+          {originalImages.map((_, index) => (
             <div 
               key={index}
               className={`h-2 rounded-full transition-all duration-300 ${
