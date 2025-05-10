@@ -29,55 +29,33 @@ export const Carousel = React.forwardRef<
       inViewThreshold: 0.5,
     }
 
-    // Create a ref that will be passed to useEmblaCarousel and the context
-    const emblaRef = React.useRef<HTMLDivElement>(null)
+    // Create embla carousel hook directly inside the function component
+    const [emblaRef, emblaApi] = useEmblaCarousel(
+      {
+        ...defaultOptions,
+        ...opts,
+        axis: orientation === "horizontal" ? "x" : "y",
+      },
+      plugins
+    )
     
-    const [api, setInternalApi] = React.useState<UseEmblaCarouselType[1] | null>(null)
-
-    // Initialize the carousel
-    React.useEffect(() => {
-      if (!emblaRef.current) return
-
-      const [emblaNode, emblaApi] = useEmblaCarousel(
-        {
-          ...defaultOptions,
-          ...opts,
-          axis: orientation === "horizontal" ? "x" : "y",
-        },
-        plugins
-      )
-
-      if (emblaRef.current && emblaNode) {
-        Object.keys(emblaNode).forEach(key => {
-          // @ts-ignore - assign all properties from emblaNode to emblaRef.current
-          emblaRef.current[key] = emblaNode[key];
-        })
-      }
-
-      setInternalApi(emblaApi)
-
-      return () => {
-        emblaApi?.destroy()
-      }
-    }, [defaultOptions, opts, orientation, plugins])
-
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
     const onSelect = React.useCallback(() => {
-      if (!api) return
+      if (!emblaApi) return
       
-      setCanScrollPrev(api.canScrollPrev())
-      setCanScrollNext(api.canScrollNext())
-    }, [api])
+      setCanScrollPrev(emblaApi.canScrollPrev())
+      setCanScrollNext(emblaApi.canScrollNext())
+    }, [emblaApi])
 
     const scrollPrev = React.useCallback(() => {
-      api?.scrollPrev()
-    }, [api])
+      emblaApi?.scrollPrev()
+    }, [emblaApi])
 
     const scrollNext = React.useCallback(() => {
-      api?.scrollNext()
-    }, [api])
+      emblaApi?.scrollNext()
+    }, [emblaApi])
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -92,34 +70,36 @@ export const Carousel = React.forwardRef<
       [scrollPrev, scrollNext]
     )
 
+    // Effect for external API access
     React.useEffect(() => {
-      if (!api || !setApi) {
+      if (!emblaApi || !setApi) {
         return
       }
+      
+      setApi(emblaApi)
+    }, [emblaApi, setApi])
 
-      setApi(api)
-    }, [api, setApi])
-
+    // Effect for event handlers
     React.useEffect(() => {
-      if (!api) {
+      if (!emblaApi) {
         return
       }
 
       onSelect()
-      api.on("select", onSelect)
-      api.on("reInit", onSelect)
+      emblaApi.on("select", onSelect)
+      emblaApi.on("reInit", onSelect)
 
       return () => {
-        api.off("select", onSelect)
-        api.off("reInit", onSelect)
+        emblaApi.off("select", onSelect)
+        emblaApi.off("reInit", onSelect)
       }
-    }, [api, onSelect])
+    }, [emblaApi, onSelect])
 
     return (
       <CarouselContext.Provider
         value={{
           carouselRef: emblaRef,
-          api: api,
+          api: emblaApi,
           opts,
           orientation: orientation,
           scrollPrev,
