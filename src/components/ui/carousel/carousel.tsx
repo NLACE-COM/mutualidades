@@ -1,10 +1,9 @@
 
 import * as React from "react"
 import useEmblaCarousel, { 
-  type UseEmblaCarouselType, 
-  type EmblaOptionsType as EmblaOptions 
+  type UseEmblaCarouselType
 } from "embla-carousel-react"
-import { CarouselContext, type CarouselProps } from "./carousel-context"
+import { CarouselContext, type CarouselProps, type CarouselOptions } from "./carousel-context"
 import { cn } from "@/lib/utils"
 
 export const Carousel = React.forwardRef<
@@ -24,32 +23,54 @@ export const Carousel = React.forwardRef<
     ref
   ) => {
     // Default carousel options for smooth scrolling with proper typing
-    const defaultOptions: EmblaOptions = {
+    const defaultOptions: CarouselOptions = {
       align: "start",
       loop: false,
       dragFree: false,
       inViewThreshold: 0.5,
     }
 
-    const [carouselRef, api] = useEmblaCarousel(
-      {
-        ...defaultOptions,
-        ...opts,
-        axis: orientation === "horizontal" ? "x" : "y",
-      },
-      plugins
-    )
+    // Create a ref that will be passed to useEmblaCarousel and the context
+    const emblaRef = React.useRef<HTMLDivElement>(null)
+    
+    const [api, setInternalApi] = React.useState<UseEmblaCarouselType[1] | null>(null)
+
+    // Initialize the carousel
+    React.useEffect(() => {
+      if (!emblaRef.current) return
+
+      const [emblaNode, emblaApi] = useEmblaCarousel(
+        {
+          ...defaultOptions,
+          ...opts,
+          axis: orientation === "horizontal" ? "x" : "y",
+        },
+        plugins
+      )
+
+      if (emblaRef.current && emblaNode) {
+        Object.keys(emblaNode).forEach(key => {
+          // @ts-ignore - assign all properties from emblaNode to emblaRef.current
+          emblaRef.current[key] = emblaNode[key];
+        })
+      }
+
+      setInternalApi(emblaApi)
+
+      return () => {
+        emblaApi?.destroy()
+      }
+    }, [defaultOptions, opts, orientation, plugins])
+
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
 
-    const onSelect = React.useCallback((api: UseEmblaCarouselType[1]) => {
-      if (!api) {
-        return
-      }
-
+    const onSelect = React.useCallback(() => {
+      if (!api) return
+      
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
-    }, [])
+    }, [api])
 
     const scrollPrev = React.useCallback(() => {
       api?.scrollPrev()
@@ -85,20 +106,20 @@ export const Carousel = React.forwardRef<
         return
       }
 
-      onSelect(api)
-      api.on("select", () => onSelect(api))
-      api.on("reInit", () => onSelect(api))
+      onSelect()
+      api.on("select", onSelect)
+      api.on("reInit", onSelect)
 
       return () => {
-        api.off("select", () => onSelect(api))
-        api.off("reInit", () => onSelect(api))
+        api.off("select", onSelect)
+        api.off("reInit", onSelect)
       }
     }, [api, onSelect])
 
     return (
       <CarouselContext.Provider
         value={{
-          carouselRef,
+          carouselRef: emblaRef,
           api: api,
           opts,
           orientation:
