@@ -27,9 +27,6 @@ export const Carousel = React.forwardRef<
       containScroll: "trimSnaps" as const,
     }
 
-    // Create a ref for the carousel
-    const emblaNodeRef = React.useRef<HTMLDivElement>(null)
-    
     // Use the embla carousel hook with properly typed options
     const [emblaRef, emblaApi] = useEmblaCarousel(
       {
@@ -106,7 +103,7 @@ export const Carousel = React.forwardRef<
     return (
       <CarouselContext.Provider
         value={{
-          carouselRef: emblaRef, // Use the emblaRef directly
+          carouselRef: emblaRef, // This is now compatible with the updated type
           api: emblaApi,
           opts,
           orientation: orientation,
