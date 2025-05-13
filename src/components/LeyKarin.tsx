@@ -1,18 +1,11 @@
-
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, BookOpen } from 'lucide-react';
-
 const LeyKarin: React.FC = () => {
-  return (
-    <section 
-      id="leykarin" 
-      className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative"
-      style={{
-        position: 'relative',
-        zIndex: 10,
-      }}
-    >
+  return <section id="leykarin" className="bg-[#f3f3e9] scroll-mt-20 pb-16 md:pb-24 relative" style={{
+    position: 'relative',
+    zIndex: 10
+  }}>
       <div className="container mx-auto px-4 pt-16 md:pt-24">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-5 fade-in-section">
@@ -20,12 +13,7 @@ const LeyKarin: React.FC = () => {
             <div className="w-20 h-1 bg-[#f5a034] mb-8"></div>
             
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf" 
-                alt="Personas trabajadoras en un entorno laboral seguro con elementos de protección adecuados" 
-                className="rounded-lg shadow-lg mb-8 w-full object-cover h-64"
-                loading="lazy"
-              />
+              <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf" alt="Personas trabajadoras en un entorno laboral seguro con elementos de protección adecuados" className="rounded-lg shadow-lg mb-8 w-full object-cover h-64" loading="lazy" />
               <div className="absolute -bottom-4 -right-4 bg-[#f5a034]/10 w-full h-full rounded-lg -z-10" aria-hidden="true"></div>
             </div>
             
@@ -59,19 +47,12 @@ const LeyKarin: React.FC = () => {
               </p>
               
               <div className="mt-8 flex justify-center">
-                <img 
-                  src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2"
-                  alt="Equipo de profesionales colaborando en un ambiente de respeto y comunicación efectiva"
-                  className="rounded-lg w-full max-w-md h-48 object-cover"
-                  loading="lazy"
-                />
+                <img alt="Equipo de profesionales colaborando en un ambiente de respeto y comunicación efectiva" className="rounded-lg w-full max-w-md h-48 object-cover" loading="lazy" src="/lovable-uploads/e5efd92e-3647-4fbb-9f0d-a74bade87366.jpg" />
               </div>
             </CardContent>
           </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default LeyKarin;
