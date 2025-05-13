@@ -13,6 +13,7 @@ import WorkplaceImageSlider from './WorkplaceImageSlider';
 import ParallaxBackground from './ParallaxBackground';
 import AnimationsObserver from './AnimationsObserver';
 import ScrollTracker from './ScrollTracker';
+import RolesResponsabilidades from './RolesResponsabilidades';
 
 const HomeContent: React.FC = () => {
   // Refs for each section to track visibility
@@ -22,6 +23,7 @@ const HomeContent: React.FC = () => {
     importancia: useRef<HTMLElement | null>(null),
     inspeccion: useRef<HTMLElement | null>(null),
     preguntas: useRef<HTMLElement | null>(null),
+    roles: useRef<HTMLElement | null>(null),
     contacto: useRef<HTMLElement | null>(null)
   };
   
@@ -32,6 +34,7 @@ const HomeContent: React.FC = () => {
     'importancia': 'Importancia',
     'inspeccion-trabajo': 'Inspección del Trabajo',
     'preguntas-frecuentes': 'Preguntas Frecuentes',
+    'roles-responsabilidades': 'Roles y Responsabilidades',
     'contacto-info': 'Información de Contacto',
     'buscador-mutualidades': 'Buscador de Mutualidades'
   };
@@ -78,6 +81,11 @@ const HomeContent: React.FC = () => {
         <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#108CB0']}>
           <FrequentQuestions />
         </ParallaxBackground>
+      </div>
+      
+      {/* New Roles y Responsabilidades section */}
+      <div ref={(el) => { sectionRefs.roles.current = el as HTMLElement | null }}>
+        <RolesResponsabilidades />
       </div>
       
       <div ref={(el) => { sectionRefs.contacto.current = el as HTMLElement | null }}>

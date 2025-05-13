@@ -60,6 +60,19 @@ export const trackAccordionInteraction = (accordionTitle: string, isOpen: boolea
 };
 
 /**
+ * Track tab changes
+ * @param {string} tabName - Name of the tab being viewed
+ */
+export const trackTabChange = (tabName: string) => {
+  if (!window.gtag) return;
+  window.gtag('event', 'tab_change', {
+    'event_category': 'Content Interaction',
+    'event_label': tabName
+  });
+  console.log(`📊 Analytics: Tab changed to - ${tabName}`);
+};
+
+/**
  * Track carousel interactions
  * @param {number} slideIndex - Index of the slide being viewed
  * @param {string} slideCaption - Caption or title of the slide
