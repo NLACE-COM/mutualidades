@@ -12,11 +12,11 @@ import { useToast } from '@/hooks/use-toast';
 import { trackCarouselSlide } from '../utils/analytics';
 import AutoPlay from 'embla-carousel-autoplay';
 
-// Original images array
+// Updated images array with the new uploaded image
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-    alt: "Grupo diverso de profesionales colaborando en una reunión de trabajo",
+    src: "/lovable-uploads/eba1bd2d-d6b5-460a-9804-7a278c1931c6.png",
+    alt: "Personas trabajando en un huerto urbano colaborativo",
     caption: "Diálogo y colaboración"
   },
   {
