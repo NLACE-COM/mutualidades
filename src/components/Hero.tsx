@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
             }}
           >
             <div 
-              className="absolute inset-0 bg-[url('/lovable-uploads/e3ae013f-26b3-4e07-8d93-03dae9c815b9.png')] bg-center bg-no-repeat bg-cover" 
+              className="absolute inset-0 bg-[url('/lovable-uploads/470feb03-0913-4b9b-b12f-7c6a20f42ef0.png')] bg-center bg-no-repeat bg-cover" 
               role="img" 
               aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"
             ></div>
