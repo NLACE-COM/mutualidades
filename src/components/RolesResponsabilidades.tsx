@@ -46,7 +46,7 @@ const RolesResponsabilidades: React.FC = () => {
   const rolesData: RoleData[] = [
     {
       id: "mutualidades",
-      title: "Mutualidades",
+      title: "Mutualidades (Organismos Administradores del Seguro de la Ley 16.744)",
       icon: <Hospital className="h-5 w-5 mr-2" />,
       content: {
         description: [
