@@ -48,7 +48,7 @@ const Importance: React.FC = () => {
           <div className="md:col-span-5 fade-in-left">
             <div className="relative overflow-hidden rounded-lg hover-lift">
               <img 
-                src="/lovable-uploads/470feb03-0913-4b9b-b12f-7c6a20f42ef0.png" 
+                src="https://images.unsplash.com/photo-1573497161079-f3fd25cc6b90" 
                 alt="Profesionales sonrientes colaborando en un ambiente laboral positivo y seguro" 
                 className="w-full h-auto rounded-lg shadow-lg object-cover aspect-4/3 transition-transform duration-700 hover:scale-105"
                 loading="lazy"
@@ -73,7 +73,7 @@ const Importance: React.FC = () => {
               </div>
               <div className="overflow-hidden rounded-lg hover-lift">
                 <img 
-                  src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" 
                   alt="Grupo de profesionales en una reunión productiva mostrando respeto y comunicación efectiva" 
                   className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110"
                   loading="lazy"
