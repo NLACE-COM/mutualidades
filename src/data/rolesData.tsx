@@ -1,5 +1,5 @@
 
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Briefcase, Building, Shield, User, Gavel, Hospital, FileText } from "lucide-react";
 
 export interface RoleData {
