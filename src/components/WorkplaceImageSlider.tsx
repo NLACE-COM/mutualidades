@@ -15,8 +15,8 @@ import AutoPlay from 'embla-carousel-autoplay';
 // Updated images array with the new uploaded image
 const images = [
   {
-    src: "/lovable-uploads/eba1bd2d-d6b5-460a-9804-7a278c1931c6.png",
-    alt: "Personas trabajando en un huerto urbano colaborativo",
+    src: "/lovable-uploads/8335f531-b033-4166-a9c4-04ef0dc69462.png",
+    alt: "Personas trabajando en carpintería con equipo de protección",
     caption: "Diálogo y colaboración"
   },
   {
