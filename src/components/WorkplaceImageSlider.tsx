@@ -1,70 +1,28 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { 
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
 } from "@/components/ui/carousel";
-import { trackCarouselSlide } from '../utils/analytics';
 import AutoPlay from 'embla-carousel-autoplay';
 import { workplaceImages } from '../data/carouselImages';
 import ImageCard from './carousel/ImageCard';
 import CarouselIndicators from './carousel/CarouselIndicators';
 import SectionHeader from './carousel/SectionHeader';
+import useCarousel from '@/hooks/use-carousel';
 
 const WorkplaceImageSlider: React.FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  // Use our custom carousel hook
+  const { activeIndex, setCarouselApi, carouselApi, autoplayOptions } = 
+    useCarousel({ items: workplaceImages });
   
-  // Track selected index and debug
-  useEffect(() => {
-    if (!carouselApi) {
-      console.log("Carousel API not initialized yet");
-      return;
-    }
-    
-    console.log("Carousel API initialized in WorkplaceImageSlider");
-    
-    const onSelect = () => {
-      const selectedIndex = carouselApi.selectedScrollSnap();
-      console.log("Selected index:", selectedIndex);
-      setActiveIndex(selectedIndex);
-      
-      // Track carousel slide view for analytics
-      if (selectedIndex >= 0 && selectedIndex < workplaceImages.length) {
-        trackCarouselSlide(selectedIndex, workplaceImages[selectedIndex].caption);
-      }
-    };
-    
-    carouselApi.on("select", onSelect);
-    // Initialize carousel
-    carouselApi.reInit();
-    onSelect();
-    
-    return () => {
-      carouselApi.off("select", onSelect);
-    };
-  }, [carouselApi]);
-
-  // Debug initialization
-  useEffect(() => {
-    console.log("WorkplaceImageSlider mounted");
-    return () => console.log("WorkplaceImageSlider unmounted");
-  }, []);
-
   // Create autoplay plugin instance
   const autoplayPlugin = React.useMemo(
-    () =>
-      AutoPlay({
-        delay: 4000,
-        stopOnInteraction: true,
-        stopOnMouseEnter: true,
-        rootNode: (emblaRoot) => emblaRoot.parentElement,
-      }),
-    []
+    () => AutoPlay(autoplayOptions),
+    [autoplayOptions]
   );
 
   return (
