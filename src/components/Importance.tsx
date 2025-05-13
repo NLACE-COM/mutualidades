@@ -1,35 +1,32 @@
-
 import React, { useRef, useEffect } from 'react';
 import { Star, Heart, Users } from 'lucide-react';
 import { useTilt } from '@/hooks/use-tilt';
-
 const Importance: React.FC = () => {
-  const { ref: cardRef, tiltStyle } = useTilt({ max: 5 });
+  const {
+    ref: cardRef,
+    tiltStyle
+  } = useTilt({
+    max: 5
+  });
   const shapesRef = useRef<HTMLDivElement>(null);
-  
+
   // Create parallax effect for background shapes
   useEffect(() => {
     if (!shapesRef.current) return;
-    
     const handleMouseMove = (e: MouseEvent) => {
       const shapes = shapesRef.current?.querySelectorAll('.bg-shape');
       if (!shapes) return;
-      
       shapes.forEach((shape, i) => {
-        const speed = 1 - (i * 0.1);
+        const speed = 1 - i * 0.1;
         const x = (window.innerWidth - e.pageX * speed) / 100;
         const y = (window.innerHeight - e.pageY * speed) / 100;
-        
         (shape as HTMLElement).style.transform = `translate(${x}px, ${y}px)`;
       });
     };
-    
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
   }, []);
-
-  return (
-    <section id="importancia" className="bg-gradient-to-b from-white to-[#f3f3e9] section-padding scroll-mt-20 relative overflow-hidden">
+  return <section id="importancia" className="bg-gradient-to-b from-white to-[#f3f3e9] section-padding scroll-mt-20 relative overflow-hidden">
       {/* Animated background shapes */}
       <div ref={shapesRef} className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div className="bg-shape absolute top-0 right-0 w-1/3 h-1/2 bg-[#f5a034]/5 rounded-bl-full transition-transform duration-200"></div>
@@ -47,12 +44,7 @@ const Importance: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-5 fade-in-left">
             <div className="relative overflow-hidden rounded-lg hover-lift">
-              <img 
-                src="/lovable-uploads/936e8afb-3b45-48ae-9fb7-d26b2e235aa6.png" 
-                alt="Dos mujeres trabajando juntas en un entorno creativo y colaborativo" 
-                className="w-full h-auto rounded-lg shadow-lg object-cover aspect-4/3 transition-transform duration-700 hover:scale-105"
-                loading="lazy"
-              />
+              <img src="/lovable-uploads/936e8afb-3b45-48ae-9fb7-d26b2e235aa6.png" alt="Dos mujeres trabajando juntas en un entorno creativo y colaborativo" className="w-full h-auto rounded-lg shadow-lg object-cover aspect-4/3 transition-transform duration-700 hover:scale-105" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#108cb0]/70 to-transparent flex items-end">
                 <div className="p-6 text-white">
                   <p className="text-lg font-semibold transform transition-transform duration-300">
@@ -64,30 +56,16 @@ const Importance: React.FC = () => {
             
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="overflow-hidden rounded-lg hover-lift">
-                <img 
-                  src="/lovable-uploads/83040761-4c26-44a4-9dfa-4d0b4db3ea55.png" 
-                  alt="Mujeres sonrientes trabajando juntas en un taller creativo" 
-                  className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110"
-                  loading="lazy"
-                />
+                <img alt="Mujeres sonrientes trabajando juntas en un taller creativo" className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110" loading="lazy" src="/lovable-uploads/d83a31df-75c9-4094-97cb-c8573483dc57.jpg" />
               </div>
               <div className="overflow-hidden rounded-lg hover-lift">
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" 
-                  alt="Grupo de profesionales en una reunión productiva mostrando respeto y comunicación efectiva" 
-                  className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110"
-                  loading="lazy"
-                />
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Grupo de profesionales en una reunión productiva mostrando respeto y comunicación efectiva" className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110" loading="lazy" />
               </div>
             </div>
           </div>
           
           <div className="md:col-span-7 fade-in-right">
-            <div 
-              ref={cardRef}
-              style={tiltStyle}
-              className="bg-white rounded-xl shadow-lg p-8 md:p-10 relative"
-            >
+            <div ref={cardRef} style={tiltStyle} className="bg-white rounded-xl shadow-lg p-8 md:p-10 relative">
               <div className="absolute top-0 right-0 w-20 h-20 bg-[#f5a034]/10 rounded-bl-full -z-0" aria-hidden="true"></div>
               
               <div className="mb-8 flex items-start gap-4 stagger-item">
@@ -99,7 +77,9 @@ const Importance: React.FC = () => {
                 </p>
               </div>
               
-              <div className="mb-8 flex items-start gap-4 stagger-item" style={{ transitionDelay: '150ms' }}>
+              <div className="mb-8 flex items-start gap-4 stagger-item" style={{
+              transitionDelay: '150ms'
+            }}>
                 <div className="bg-[#f5a034]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500" aria-hidden="true">
                   <Heart className="w-8 h-8 text-[#f5a034]" />
                 </div>
@@ -108,7 +88,9 @@ const Importance: React.FC = () => {
                 </p>
               </div>
               
-              <div className="mb-8 flex items-start gap-4 stagger-item" style={{ transitionDelay: '300ms' }}>
+              <div className="mb-8 flex items-start gap-4 stagger-item" style={{
+              transitionDelay: '300ms'
+            }}>
                 <div className="bg-[#108cb0]/20 p-3 rounded-full transform transition-transform hover:scale-110 hover:rotate-[360deg] duration-500" aria-hidden="true">
                   <Users className="w-8 h-8 text-[#108cb0]" />
                 </div>
@@ -117,10 +99,9 @@ const Importance: React.FC = () => {
                 </p>
               </div>
               
-              <div 
-                className="mt-10 p-6 bg-gradient-to-r from-[#f5a034]/20 to-[#ffc000]/20 rounded-lg border-l-4 border-[#f5a034] transform transition-transform hover:translate-y-[-5px] duration-300 stagger-item"
-                style={{ transitionDelay: '450ms' }}
-              >
+              <div className="mt-10 p-6 bg-gradient-to-r from-[#f5a034]/20 to-[#ffc000]/20 rounded-lg border-l-4 border-[#f5a034] transform transition-transform hover:translate-y-[-5px] duration-300 stagger-item" style={{
+              transitionDelay: '450ms'
+            }}>
                 <p className="text-xl font-semibold text-[#333333] text-center">
                   No te restes y sé parte de este cambio cultural en las organizaciones.
                 </p>
@@ -129,8 +110,6 @@ const Importance: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Importance;
