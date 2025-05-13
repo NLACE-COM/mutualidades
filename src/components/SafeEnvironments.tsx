@@ -86,8 +86,8 @@ const SafeEnvironments: React.FC = () => {
           
           <div className="relative">
             <img 
-              src="/lovable-uploads/f43ad5b6-1400-4573-88d8-b7791d745ae6.png" 
-              alt="Trabajadores colaborando en un ambiente industrial con equipos de seguridad"
+              src="/lovable-uploads/b21542fe-1ea6-48ef-a56f-7b6bd93a4ac4.png" 
+              alt="Trabajadores con cascos de seguridad colaborando y saludándose con un apretón de manos en un entorno industrial"
               className="w-full h-52 object-cover rounded-lg shadow-lg"
               loading="lazy"
             />
