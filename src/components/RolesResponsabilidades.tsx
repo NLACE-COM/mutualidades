@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Briefcase, Building, Shield, User, Gavel, Hospital, FileText } from "lucide-react";
@@ -64,7 +63,8 @@ const RolesResponsabilidades: React.FC = () => {
     },
     {
       id: "suseso",
-      title: "SUSESO",
+      title: "Superintendencia de Seguridad Social (SUSESO)",
+      shortTitle: "SUSESO",
       icon: <Shield className="h-5 w-5 mr-2" />,
       content: {
         description: [
