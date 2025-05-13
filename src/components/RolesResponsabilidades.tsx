@@ -1,16 +1,19 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { trackTabChange } from '../utils/analytics';
 import SectionHeader from './carousel/SectionHeader';
 import { rolesData } from '../data/rolesData';
 import RoleContent from './roles/RoleContent';
 import RoleTabsList from './roles/RoleTabsList';
+import { useIsMobile } from '../hooks/use-mobile';
 
 const RolesResponsabilidades: React.FC = () => {
   const [activeTab, setActiveTab] = useState("mutualidades");
+  const contentRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   
-  // Handle tab change for analytics tracking
+  // Handle tab change for analytics tracking and scrolling
   const handleTabChange = (value: string) => {
     setActiveTab(value);
     const tabTitles: Record<string, string> = {
@@ -22,17 +25,24 @@ const RolesResponsabilidades: React.FC = () => {
     };
     
     trackTabChange(tabTitles[value] || value);
+    
+    // Scroll to content on mobile for better UX
+    if (isMobile && contentRef.current) {
+      setTimeout(() => {
+        contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
   };
 
   return (
-    <section id="roles-responsabilidades" className="py-16 bg-white">
-      <div className="container mx-auto fade-in-section">
+    <section id="roles-responsabilidades" className="py-8 md:py-16 bg-white">
+      <div className="container mx-auto px-4 md:px-auto fade-in-section">
         <SectionHeader 
           title="ROLES Y RESPONSABILIDADES" 
           description="Conoce la función de cada entidad en la implementación de la Ley Karin y cómo contribuyen a crear entornos laborales más seguros."
         />
         
-        <div className="max-w-5xl mx-auto mt-10">
+        <div className="max-w-5xl mx-auto mt-6 md:mt-10" ref={contentRef}>
           <Tabs 
             defaultValue="mutualidades" 
             className="w-full"
@@ -48,8 +58,8 @@ const RolesResponsabilidades: React.FC = () => {
             ))}
           </Tabs>
           
-          <div className="mt-10 text-center">
-            <p className="text-lg text-gray-700">
+          <div className="mt-6 md:mt-10 text-center">
+            <p className="text-base md:text-lg text-gray-700">
               Es importante conocer los roles de cada entidad para saber a quién acudir en caso de necesitar ayuda o información.
             </p>
           </div>
