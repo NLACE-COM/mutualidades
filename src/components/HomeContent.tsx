@@ -1,4 +1,3 @@
-
 import React, { useRef } from 'react';
 import Hero from './Hero';
 import LeyKarin from './LeyKarin';
