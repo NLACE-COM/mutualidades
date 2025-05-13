@@ -59,7 +59,7 @@ const Importance: React.FC = () => {
                 <img alt="Mujeres sonrientes trabajando juntas en un taller creativo" className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110" loading="lazy" src="/lovable-uploads/d83a31df-75c9-4094-97cb-c8573483dc57.jpg" />
               </div>
               <div className="overflow-hidden rounded-lg hover-lift">
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Grupo de profesionales en una reunión productiva mostrando respeto y comunicación efectiva" className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110" loading="lazy" />
+                <img alt="Grupo de profesionales en una reunión productiva mostrando respeto y comunicación efectiva" className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110" loading="lazy" src="/lovable-uploads/a2a4eafa-9d40-43b0-800b-60af45b9c919.jpg" />
               </div>
             </div>
           </div>
