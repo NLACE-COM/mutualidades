@@ -8,61 +8,17 @@ import {
   CarouselPrevious,
   type CarouselApi
 } from "@/components/ui/carousel";
-import { useToast } from '@/hooks/use-toast';
 import { trackCarouselSlide } from '../utils/analytics';
 import AutoPlay from 'embla-carousel-autoplay';
-
-// Actualizada la matriz de imágenes con las nuevas imágenes subidas
-const images = [
-  {
-    src: "/lovable-uploads/79ff89a6-c347-4a06-94c3-38f662489887.png",
-    alt: "Personas trabajando en un huerto urbano colaborativo",
-    caption: "Diálogo y colaboración"
-  },
-  {
-    src: "/lovable-uploads/de41e8a3-a45a-4cea-a814-839e9b10e2b6.png",
-    alt: "Carpinteros trabajando con equipo de protección adecuado",
-    caption: "Respeto y profesionalismo"
-  },
-  {
-    src: "/lovable-uploads/fa20eb89-0e4b-4c57-a136-780c7b1a868b.png",
-    alt: "Personal en ambiente industrial con equipos de protección y seguridad adecuados",
-    caption: "Seguridad y protección"
-  },
-  {
-    src: "/lovable-uploads/f2b225bf-26c4-4396-9cde-8ebc28787d90.png",
-    alt: "Trabajadores de construcción con cascos y chalecos de seguridad",
-    caption: "Diversidad e inclusión"
-  },
-  {
-    src: "/lovable-uploads/379429e0-e72a-4404-b38c-b2dbe6e63660.png",
-    alt: "Equipo de profesionales colaborando en una oficina moderna",
-    caption: "Formación continua"
-  }
-];
+import { workplaceImages } from '../data/carouselImages';
+import ImageCard from './carousel/ImageCard';
+import CarouselIndicators from './carousel/CarouselIndicators';
+import SectionHeader from './carousel/SectionHeader';
 
 const WorkplaceImageSlider: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
-  const { toast } = useToast();
   
-  // Basic image card component
-  const ImageCard = ({ image }: { image: typeof images[0] }) => {    
-    return (
-      <div className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative transition-all duration-500">
-        <img 
-          src={image.src} 
-          alt={image.alt} 
-          className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
-          loading="lazy"
-        />
-        <div className="absolute inset-x-0 bottom-0 bg-[#108CB0]/90 py-2 px-3 transition-transform duration-300">
-          <p className="text-white font-medium text-center">{image.caption}</p>
-        </div>
-      </div>
-    );
-  };
-
   // Track selected index and debug
   useEffect(() => {
     if (!carouselApi) {
@@ -78,8 +34,8 @@ const WorkplaceImageSlider: React.FC = () => {
       setActiveIndex(selectedIndex);
       
       // Track carousel slide view for analytics
-      if (selectedIndex >= 0 && selectedIndex < images.length) {
-        trackCarouselSlide(selectedIndex, images[selectedIndex].caption);
+      if (selectedIndex >= 0 && selectedIndex < workplaceImages.length) {
+        trackCarouselSlide(selectedIndex, workplaceImages[selectedIndex].caption);
       }
     };
     
@@ -114,21 +70,12 @@ const WorkplaceImageSlider: React.FC = () => {
   return (
     <section className="py-16 bg-[#f3f3e9] relative overflow-hidden" aria-labelledby="construyendo-juntos-heading">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-12 fade-in-section">
-          <h2 id="construyendo-juntos-heading" className="text-4xl font-bold text-[#333333] relative">
-            CONSTRUYENDO JUNTOS
-            <div className="absolute -z-10 w-full h-full flex justify-center items-center opacity-10" aria-hidden="true">
-              <div className="bg-[#F5A034] w-32 h-32 rounded-full blur-2xl"></div>
-            </div>
-          </h2>
-          <div className="w-20 h-1 bg-[#F5A034] mx-auto my-6"></div>
-          <p className="text-lg text-gray-700 mb-8">
-            Un entorno laboral seguro y saludable se construye con el compromiso de todos
-          </p>
-        </div>
+        <SectionHeader 
+          title="CONSTRUYENDO JUNTOS" 
+          description="Un entorno laboral seguro y saludable se construye con el compromiso de todos"
+        />
 
         <div className="max-w-6xl mx-auto relative">
-          {/* Add relative positioning for proper navigation button placement */}
           <Carousel 
             className="w-full" 
             opts={{
@@ -141,7 +88,7 @@ const WorkplaceImageSlider: React.FC = () => {
             plugins={[autoplayPlugin]}
           >
             <CarouselContent>
-              {images.map((image, index) => (
+              {workplaceImages.map((image, index) => (
                 <CarouselItem 
                   key={index} 
                   className="sm:basis-1/2 md:basis-1/3 lg:basis-1/4 pl-4"
@@ -151,7 +98,6 @@ const WorkplaceImageSlider: React.FC = () => {
               ))}
             </CarouselContent>
             
-            {/* Fix navigation buttons - use absolute positioning */}
             <div className="absolute -left-12 top-1/2 transform -translate-y-1/2 z-10">
               <CarouselPrevious 
                 className="relative bg-[#F5A034] hover:bg-[#F5A034]/80 text-white hover:scale-110 transition-transform"
@@ -164,34 +110,11 @@ const WorkplaceImageSlider: React.FC = () => {
             </div>
           </Carousel>
 
-          {/* Indicator dots moved below for better UI organization */}
-          <div className="flex justify-center mt-6 gap-2" role="tablist" aria-label="Navegación de imágenes">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === activeIndex ? 'w-8 bg-[#F5A034]' : 'w-2 bg-[#F5A034]/40'
-                }`}
-                onClick={() => {
-                  if (carouselApi) {
-                    console.log(`Clicking on dot ${index}`);
-                    carouselApi.scrollTo(index);
-                    // Event tracking happens in the useEffect onSelect handler
-                  } else {
-                    console.error("Carousel API not available");
-                    toast({
-                      title: "Error",
-                      description: "No se pudo navegar a la imagen seleccionada",
-                      variant: "destructive"
-                    });
-                  }
-                }}
-                role="tab"
-                aria-selected={index === activeIndex}
-                aria-label={`Imagen ${index + 1}`}
-              />
-            ))}
-          </div>
+          <CarouselIndicators 
+            images={workplaceImages}
+            activeIndex={activeIndex}
+            carouselApi={carouselApi}
+          />
         </div>
       </div>
     </section>
