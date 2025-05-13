@@ -65,8 +65,8 @@ const Importance: React.FC = () => {
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div className="overflow-hidden rounded-lg hover-lift">
                 <img 
-                  src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c" 
-                  alt="Equipo diverso trabajando juntos en un ambiente de colaboración y respeto mutuo" 
+                  src="/lovable-uploads/83040761-4c26-44a4-9dfa-4d0b4db3ea55.png" 
+                  alt="Mujeres sonrientes trabajando juntas en un taller creativo" 
                   className="w-full h-40 object-cover rounded-lg shadow-md transition-transform duration-700 hover:scale-110"
                   loading="lazy"
                 />
