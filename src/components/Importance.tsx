@@ -48,8 +48,8 @@ const Importance: React.FC = () => {
           <div className="md:col-span-5 fade-in-left">
             <div className="relative overflow-hidden rounded-lg hover-lift">
               <img 
-                src="https://images.unsplash.com/photo-1573497161079-f3fd25cc6b90" 
-                alt="Profesionales sonrientes colaborando en un ambiente laboral positivo y seguro" 
+                src="/lovable-uploads/936e8afb-3b45-48ae-9fb7-d26b2e235aa6.png" 
+                alt="Dos mujeres trabajando juntas en un entorno creativo y colaborativo" 
                 className="w-full h-auto rounded-lg shadow-lg object-cover aspect-4/3 transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
