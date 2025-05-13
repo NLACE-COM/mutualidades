@@ -74,7 +74,7 @@ const SafeEnvironments: React.FC = () => {
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="relative">
             <img 
-              src="https://images.unsplash.com/photo-1552581234-26160f608093" 
+              src="/lovable-uploads/16405927-b1e6-474d-a725-c025481732c6.png" 
               alt="Grupo de profesionales participando activamente en una capacitación sobre prevención de acoso laboral"
               className="w-full h-52 object-cover rounded-lg shadow-lg"
               loading="lazy"
