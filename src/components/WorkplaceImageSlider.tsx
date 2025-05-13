@@ -12,31 +12,31 @@ import { useToast } from '@/hooks/use-toast';
 import { trackCarouselSlide } from '../utils/analytics';
 import AutoPlay from 'embla-carousel-autoplay';
 
-// Updated images array with the new uploaded image
+// Actualizada la matriz de imágenes con las nuevas imágenes subidas
 const images = [
   {
-    src: "/lovable-uploads/eba1bd2d-d6b5-460a-9804-7a278c1931c6.png",
+    src: "/lovable-uploads/79ff89a6-c347-4a06-94c3-38f662489887.png",
     alt: "Personas trabajando en un huerto urbano colaborativo",
     caption: "Diálogo y colaboración"
   },
   {
-    src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-    alt: "Equipo de trabajo en un ambiente moderno y colaborativo discutiendo ideas",
+    src: "/lovable-uploads/de41e8a3-a45a-4cea-a814-839e9b10e2b6.png",
+    alt: "Carpinteros trabajando con equipo de protección adecuado",
     caption: "Respeto y profesionalismo"
   },
   {
-    src: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf",
+    src: "/lovable-uploads/fa20eb89-0e4b-4c57-a136-780c7b1a868b.png",
     alt: "Personal en ambiente industrial con equipos de protección y seguridad adecuados",
     caption: "Seguridad y protección"
   },
   {
-    src: "https://images.unsplash.com/photo-1551434678-e076c223a692",
-    alt: "Equipo multidisciplinario y multicultural trabajando en conjunto en proyecto",
+    src: "/lovable-uploads/f2b225bf-26c4-4396-9cde-8ebc28787d90.png",
+    alt: "Trabajadores de construcción con cascos y chalecos de seguridad",
     caption: "Diversidad e inclusión"
   },
   {
-    src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
-    alt: "Sesión de capacitación profesional sobre prevención de acoso laboral",
+    src: "/lovable-uploads/379429e0-e72a-4404-b38c-b2dbe6e63660.png",
+    alt: "Equipo de profesionales colaborando en una oficina moderna",
     caption: "Formación continua"
   }
 ];
