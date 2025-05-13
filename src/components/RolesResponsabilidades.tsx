@@ -10,6 +10,7 @@ import SectionHeader from './carousel/SectionHeader';
 interface RoleData {
   id: string;
   title: string;
+  shortTitle?: string; // Added shortTitle for tabs display
   icon: React.ReactNode;
   content: {
     description: string[];
@@ -47,6 +48,7 @@ const RolesResponsabilidades: React.FC = () => {
     {
       id: "mutualidades",
       title: "Mutualidades (Organismos Administradores del Seguro de la Ley 16.744)",
+      shortTitle: "Mutualidades",
       icon: <Hospital className="h-5 w-5 mr-2" />,
       content: {
         description: [
@@ -152,7 +154,7 @@ const RolesResponsabilidades: React.FC = () => {
                   className="flex items-center justify-center py-3 data-[state=active]:bg-azul data-[state=active]:text-white"
                 >
                   {role.icon}
-                  <span className="hidden md:inline">{role.title}</span>
+                  <span className="hidden md:inline">{role.shortTitle || role.title}</span>
                 </TabsTrigger>
               ))}
             </TabsList>
