@@ -18,25 +18,29 @@ const RoleContent: React.FC<RoleContentProps> = ({ role }) => {
   };
 
   return (
-    <div className="bg-gray-50 p-4 md:p-6 rounded-lg shadow-sm border border-gray-100">
-      <h3 className={`${isMobile ? 'text-xl' : 'text-2xl'} font-bold text-azul mb-4 flex items-center`}>
+    <div className="bg-gray-50 p-3 md:p-6 rounded-lg shadow-sm border border-gray-100">
+      <h3 className={`${isMobile ? 'text-lg' : 'text-2xl'} font-bold text-azul mb-3 md:mb-4 flex items-center`}>
         {role.icon}
         <span className="ml-2">{role.title}</span>
       </h3>
       
-      <Separator className="my-4 bg-azul/20" />
+      <Separator className="my-3 md:my-4 bg-azul/20" />
       
-      <div className="mb-6">
-        <h4 className="text-lg font-semibold text-naranja mb-3">Rol y Responsabilidades:</h4>
-        <ul className="space-y-3 list-disc pl-5">
+      <div className="mb-4 md:mb-6">
+        <h4 className={`${isMobile ? 'text-base' : 'text-lg'} font-semibold text-naranja mb-2 md:mb-3`}>
+          Rol y Responsabilidades:
+        </h4>
+        <ul className="space-y-2 md:space-y-3 list-disc pl-4 md:pl-5">
           {role.content.description.map((item, index) => (
-            <li key={index} className="text-gray-700 text-sm md:text-base">{item}</li>
+            <li key={index} className="text-gray-700 text-xs md:text-base">{item}</li>
           ))}
         </ul>
       </div>
       
-      <div className="bg-blue-50 p-3 md:p-4 rounded-md border-l-4 border-azul text-sm md:text-base">
-        <h4 className="text-base md:text-lg font-semibold mb-2">Fuente:</h4>
+      <div className="bg-blue-50 p-2 md:p-4 rounded-md border-l-4 border-azul text-xs md:text-base">
+        <h4 className={`${isMobile ? 'text-sm' : 'text-base md:text-lg'} font-semibold mb-1 md:mb-2`}>
+          Fuente:
+        </h4>
         <a 
           href={role.content.source.url}
           target="_blank"
@@ -44,7 +48,7 @@ const RoleContent: React.FC<RoleContentProps> = ({ role }) => {
           className="text-blue-600 hover:underline flex items-center"
           onClick={() => handleExternalLinkClick(role.content.source.name, role.content.source.url)}
         >
-          <FileText className="h-4 w-4 mr-2" />
+          <FileText className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
           {role.content.source.name}
         </a>
       </div>
