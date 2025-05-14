@@ -18,7 +18,8 @@ const LaborInspection: React.FC = () => {
 
   const { animatedValues, startCountAnimation } = useCounterAnimation(targetValues);
   
-  useIntersectionObserver(statsSectionRef, startCountAnimation);
+  // Use a higher threshold to ensure animation starts when more of the element is visible
+  useIntersectionObserver(statsSectionRef, startCountAnimation, 0.4);
 
   return (
     <section id="inspeccion-trabajo" className="py-16 bg-gradient-to-br from-azul/5 to-azul/15">
@@ -44,6 +45,9 @@ const LaborInspection: React.FC = () => {
         {`
         .counter-animation {
           display: inline-block;
+          font-variant-numeric: tabular-nums;
+          text-align: center;
+          min-width: 2ch;
         }
         `}
       </style>
