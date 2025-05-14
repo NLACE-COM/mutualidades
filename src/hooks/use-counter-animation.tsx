@@ -44,6 +44,7 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
   
   const [hasAnimated, setHasAnimated] = useState(false);
   const animationRef = useRef<NodeJS.Timeout | null>(null);
+  const isAnimatingRef = useRef<boolean>(false);
 
   // Cleanup on unmount
   useEffect(() => {
@@ -55,8 +56,10 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
   }, []);
 
   const startCountAnimation = () => {
-    // Prevent restarting animation if already completed
-    if (hasAnimated) return;
+    // Prevent restarting animation if already completed or in progress
+    if (hasAnimated || isAnimatingRef.current) return;
+    
+    isAnimatingRef.current = true;
     
     // Stop any existing animation
     if (animationRef.current) {
@@ -74,19 +77,38 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
     let frame = 0;
     let lastProgress = 0;
     
-    // Staggered start times for a more natural feel (in ms)
+    // Fixed minimum delay for cases to ensure animation starts properly
+    // Small stagger delays for a more natural feel (in ms)
     const staggerDelays = {
-      cases: 0,
+      cases: 10, // Set a small delay instead of 0 to ensure proper initialization
       laborHarassment: 150,
       sexualHarassment: 300,
       largeCompanies: 200,
       womenReporters: 350
     };
     
+    // Initialize all counters with small initial values to trigger the first update
+    // This helps especially with the "cases" counter that might get stuck at 0
+    const keys = Object.keys(targetValues) as Array<keyof CounterValues>;
+    keys.forEach(key => {
+      // Initialize with a very small value > 0 to ensure animation starts
+      internalValues.current[key] = targetValues[key] * 0.01; 
+    });
+    
+    // Update state once before animation to ensure initial values are not 0
+    setAnimatedValues({
+      cases: Math.ceil(internalValues.current.cases),
+      laborHarassment: Math.ceil(internalValues.current.laborHarassment),
+      sexualHarassment: Math.ceil(internalValues.current.sexualHarassment),
+      largeCompanies: Math.ceil(internalValues.current.largeCompanies),
+      womenReporters: Math.ceil(internalValues.current.womenReporters)
+    });
+    
     // Calculate whether each counter has started based on frame
     const hasCounterStarted = (key: keyof CounterValues, currentFrame: number) => {
       const delayFrames = Math.round(staggerDelays[key] / frameDuration);
-      return currentFrame >= delayFrames;
+      // For cases specifically, ensure it starts immediately even at frame 0
+      return key === 'cases' ? true : currentFrame >= delayFrames;
     };
 
     animationRef.current = setInterval(() => {
@@ -103,8 +125,8 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
       const increment = progress - lastProgress;
       lastProgress = progress;
       
-      // Update internal reference values (with decimals for smooth calculations)
-      const keys = Object.keys(targetValues) as Array<keyof CounterValues>;
+      let updatedValues = { ...internalValues.current };
+      let hasChanges = false;
       
       // Update each internal value separately based on stagger timing
       keys.forEach(key => {
@@ -112,7 +134,9 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
           const target = targetValues[key];
           // Calculate actual progress for this specific counter
           const counterStartFrame = Math.round(staggerDelays[key] / frameDuration);
-          const counterProgress = (frame - counterStartFrame) / (totalFrames - counterStartFrame);
+          // Ensure at least 1 frame for cases counter
+          const adjustedCounterStartFrame = Math.max(0, counterStartFrame);
+          const counterProgress = (frame - adjustedCounterStartFrame) / (totalFrames - adjustedCounterStartFrame);
           
           // Apply easing to counter-specific progress
           const easedProgress = counterProgress < 0.8 ? 
@@ -120,19 +144,29 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
             easeOutQuart((counterProgress - 0.8) / 0.2);
             
           // Set internal value with decimal precision
-          internalValues.current[key] = Math.min(easedProgress * target, target);
+          const newValue = Math.min(easedProgress * target, target);
+          
+          // Only mark as changed if there's a significant difference
+          if (Math.abs(updatedValues[key] - newValue) > 0.1) {
+            updatedValues[key] = newValue;
+            hasChanges = true;
+          }
         }
       });
       
-      // Update React state with rounded values for display
-      // This creates a visual "stepping" effect that looks more natural
-      setAnimatedValues({
-        cases: Math.round(internalValues.current.cases),
-        laborHarassment: Math.round(internalValues.current.laborHarassment),
-        sexualHarassment: Math.round(internalValues.current.sexualHarassment),
-        largeCompanies: Math.round(internalValues.current.largeCompanies),
-        womenReporters: Math.round(internalValues.current.womenReporters)
-      });
+      if (hasChanges) {
+        internalValues.current = updatedValues;
+        
+        // Update React state with rounded values for display
+        // Use ceiling function for "cases" to ensure it's never 0 after animation starts
+        setAnimatedValues({
+          cases: Math.ceil(internalValues.current.cases),
+          laborHarassment: Math.round(internalValues.current.laborHarassment),
+          sexualHarassment: Math.round(internalValues.current.sexualHarassment),
+          largeCompanies: Math.round(internalValues.current.largeCompanies),
+          womenReporters: Math.round(internalValues.current.womenReporters)
+        });
+      }
       
       // End animation and set final exact values
       if (frame >= totalFrames) {
@@ -141,6 +175,7 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
         clearInterval(animationRef.current!);
         animationRef.current = null;
         setHasAnimated(true);
+        isAnimatingRef.current = false;
       }
     }, frameDuration);
   };
