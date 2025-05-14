@@ -7,6 +7,7 @@ import { trackNavClick } from '../utils/analytics';
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,10 +18,39 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Function to handle navigation clicks with analytics tracking
+  // Function to handle navigation clicks with analytics tracking and smooth scroll
   const handleNavClick = (linkName: string, href: string) => {
     trackNavClick(linkName, href);
     setMobileMenuOpen(false);
+    
+    // Prevent default anchor link behavior
+    event?.preventDefault();
+    
+    // Extract the ID from href
+    const targetId = href.startsWith('#') ? href.substring(1) : href;
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      // Set scrolling state to true to potentially pause parallax effects
+      setIsScrolling(true);
+      
+      // Get header height for offset
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      
+      // Calculate scroll position with offset
+      const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 16; // 16px extra padding
+
+      // Use smooth scrolling
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Reset scrolling state after animation completes
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000); // 1 second should be enough for most scroll animations to complete
+    }
   };
 
   return (
@@ -37,27 +67,27 @@ const Header: React.FC = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
           <a href="#leykarin" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Ley Karin", "#leykarin")}>
+             onClick={(e) => { e.preventDefault(); handleNavClick("Ley Karin", "#leykarin"); }}>
             Ley Karin
           </a>
           <a href="#entornos" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Entornos Seguros", "#entornos")}>
+             onClick={(e) => { e.preventDefault(); handleNavClick("Entornos Seguros", "#entornos"); }}>
             Entornos Seguros
           </a>
           <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Cifras", "#inspeccion-trabajo")}>
+             onClick={(e) => { e.preventDefault(); handleNavClick("Cifras", "#inspeccion-trabajo"); }}>
             Cifras
           </a>
           <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("FAQ", "#preguntas-frecuentes")}>
+             onClick={(e) => { e.preventDefault(); handleNavClick("FAQ", "#preguntas-frecuentes"); }}>
             FAQ
           </a>
           <a href="#roles-responsabilidades" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Roles", "#roles-responsabilidades")}>
+             onClick={(e) => { e.preventDefault(); handleNavClick("Roles", "#roles-responsabilidades"); }}>
             Roles y Resp.
           </a>
           <a href="#contacto-info" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Contacto", "#contacto-info")}>
+             onClick={(e) => { e.preventDefault(); handleNavClick("Contacto", "#contacto-info"); }}>
             Contacto
           </a>
         </nav>
@@ -80,27 +110,27 @@ const Header: React.FC = () => {
           <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-50">
             <nav className="flex flex-col space-y-4">
               <a href="#leykarin" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("Ley Karin (móvil)", "#leykarin")}>
+                 onClick={(e) => { e.preventDefault(); handleNavClick("Ley Karin (móvil)", "#leykarin"); }}>
                 Ley Karin
               </a>
               <a href="#entornos" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("Entornos Seguros (móvil)", "#entornos")}>
+                 onClick={(e) => { e.preventDefault(); handleNavClick("Entornos Seguros (móvil)", "#entornos"); }}>
                 Entornos Seguros
               </a>
               <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("Cifras (móvil)", "#inspeccion-trabajo")}>
+                 onClick={(e) => { e.preventDefault(); handleNavClick("Cifras (móvil)", "#inspeccion-trabajo"); }}>
                 Cifras
               </a>
               <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("FAQ (móvil)", "#preguntas-frecuentes")}>
+                 onClick={(e) => { e.preventDefault(); handleNavClick("FAQ (móvil)", "#preguntas-frecuentes"); }}>
                 FAQ
               </a>
               <a href="#roles-responsabilidades" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("Roles (móvil)", "#roles-responsabilidades")}>
+                 onClick={(e) => { e.preventDefault(); handleNavClick("Roles (móvil)", "#roles-responsabilidades"); }}>
                 Roles y Resp.
               </a>
               <a href="#contacto-info" className="text-gray-700 hover:text-azul py-2" 
-                 onClick={() => handleNavClick("Contacto (móvil)", "#contacto-info")}>
+                 onClick={(e) => { e.preventDefault(); handleNavClick("Contacto (móvil)", "#contacto-info"); }}>
                 Contacto
               </a>
             </nav>

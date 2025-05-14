@@ -15,9 +15,18 @@ export const useParallax = ({
   max = 20 
 }: ParallaxOptions = {}) => {
   const [offset, setOffset] = useState(0);
+  const [isUserScrolling, setIsUserScrolling] = useState(false);
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+    
     const handleScroll = () => {
+      // Set flag to identify user-initiated scrolling
+      setIsUserScrolling(true);
+      
+      // Clear any existing timeout
+      clearTimeout(scrollTimeout);
+      
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.body.clientHeight;
@@ -32,12 +41,20 @@ export const useParallax = ({
       const finalOffset = reverse ? -calculatedOffset * speed : calculatedOffset * speed;
       
       setOffset(finalOffset);
+      
+      // Reset the flag after a small delay to indicate scrolling has finished
+      scrollTimeout = setTimeout(() => {
+        setIsUserScrolling(false);
+      }, 50);
     };
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial calculation
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, [speed, reverse, min, max]);
 
   return offset;
