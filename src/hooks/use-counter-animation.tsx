@@ -22,8 +22,14 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
     largeCompanies: 0,
     womenReporters: 0
   });
+  
+  // Add a state to track if animation has already completed
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const startCountAnimation = () => {
+    // Only start the animation if it hasn't been completed already
+    if (hasAnimated) return;
+    
     const duration = 1500;
     const frameDuration = 1000 / 60;
     const totalFrames = Math.round(duration / frameDuration);
@@ -43,6 +49,8 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
       
       if (frame === totalFrames) {
         clearInterval(counter);
+        // Mark animation as completed
+        setHasAnimated(true);
       }
     }, frameDuration);
   };
