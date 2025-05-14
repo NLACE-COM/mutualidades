@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, RadialBarChart, RadialBar, Legend } from "recharts";
@@ -86,7 +87,7 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Tipos de Denuncias</h3>
-            <div className="h-64 w-full">
+            <div className="h-64 w-full flex items-center justify-center">
               <ChartContainer config={{
               acoso_laboral: {
                 color: colors.acoso_laboral
@@ -168,13 +169,13 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Distribución por Género de Denunciantes</h3>
-            <div className="h-64 w-full">
+            <div className="h-80 w-full">
               <ChartContainer config={{
               mujeres: {
                 color: colors.mujeres
               }
             }}>
-                <RadialBarChart innerRadius="30%" outerRadius="80%" data={genderData} startAngle={180} endAngle={0} cx="50%" cy="60%">
+                <RadialBarChart innerRadius="30%" outerRadius="85%" data={genderData} startAngle={180} endAngle={0} cx="50%" cy="60%">
                   <RadialBar label={{
                   fill: '#666',
                   position: 'insideStart'
