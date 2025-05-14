@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { trackTabChange } from '../utils/analytics';
 import SectionHeader from './carousel/SectionHeader';
@@ -7,14 +7,10 @@ import { rolesData } from '../data/rolesData';
 import RoleContent from './roles/RoleContent';
 import RoleTabsList from './roles/RoleTabsList';
 import { useIsMobile } from '../hooks/use-mobile';
-import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const RolesResponsabilidades: React.FC = () => {
   const [activeTab, setActiveTab] = useState("mutualidades");
-  const [showLeftIndicator, setShowLeftIndicator] = useState(false);
-  const [showRightIndicator, setShowRightIndicator] = useState(true);
   const contentRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   
   // Handle tab change for analytics tracking and scrolling
@@ -38,45 +34,6 @@ const RolesResponsabilidades: React.FC = () => {
     }
   };
 
-  // Check scroll position for indicators
-  const handleScroll = () => {
-    if (!scrollRef.current) return;
-    
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setShowLeftIndicator(scrollLeft > 10);
-    setShowRightIndicator(scrollLeft < scrollWidth - clientWidth - 10);
-  };
-
-  // Handle scroll button clicks
-  const scrollTabs = (direction: 'left' | 'right') => {
-    if (!scrollRef.current) return;
-    
-    const scrollAmount = 150;
-    scrollRef.current.scrollBy({
-      top: 0,
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth'
-    });
-  };
-
-  // Set initial scroll indicators and add listener
-  useEffect(() => {
-    if (scrollRef.current) {
-      handleScroll();
-      scrollRef.current.addEventListener('scroll', handleScroll);
-      
-      // Add resize listener to update scroll indicators
-      window.addEventListener('resize', handleScroll);
-    }
-    
-    return () => {
-      if (scrollRef.current) {
-        scrollRef.current.removeEventListener('scroll', handleScroll);
-      }
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
   return (
     <section id="roles-responsabilidades" className="py-6 md:py-16 bg-white">
       <div className="container mx-auto px-3 md:px-4 fade-in-section">
@@ -93,31 +50,7 @@ const RolesResponsabilidades: React.FC = () => {
             value={activeTab}
           >
             <div className="relative">
-              {/* Left scroll indicator */}
-              {isMobile && showLeftIndicator && (
-                <button 
-                  onClick={() => scrollTabs('left')} 
-                  className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md z-10"
-                  aria-label="Scroll tabs left"
-                >
-                  <ChevronLeft className="h-5 w-5 text-azul" />
-                </button>
-              )}
-              
-              <div ref={scrollRef} className="overflow-x-auto scrollbar-none">
-                <RoleTabsList roles={rolesData} scrollRef={scrollRef} />
-              </div>
-              
-              {/* Right scroll indicator */}
-              {isMobile && showRightIndicator && (
-                <button 
-                  onClick={() => scrollTabs('right')} 
-                  className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-1 shadow-md z-10"
-                  aria-label="Scroll tabs right"
-                >
-                  <ChevronRight className="h-5 w-5 text-azul" />
-                </button>
-              )}
+              <RoleTabsList roles={rolesData} />
             </div>
             
             {rolesData.map((role) => (
