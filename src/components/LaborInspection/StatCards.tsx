@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, RadialBarChart, RadialBar, Legend } from "recharts";
+import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 interface StatCardsProps {
@@ -27,7 +27,8 @@ const StatCards: React.FC<StatCardsProps> = ({
     // celeste
     empresas: "#108cb0",
     // celeste
-    mujeres: "#f5a034" // naranja
+    mujeres: "#f5a034", // naranja
+    hombres: "#9ca3af" // gray
   };
 
   // Data for the pie chart
@@ -57,7 +58,7 @@ const StatCards: React.FC<StatCardsProps> = ({
   } // gray
   ];
 
-  // Data for the reporter gender radial bar
+  // Data for the gender distribution pie chart
   const genderData = [{
     name: "Mujeres",
     value: animatedValues.womenReporters,
@@ -65,9 +66,30 @@ const StatCards: React.FC<StatCardsProps> = ({
   }, {
     name: "Hombres",
     value: 100 - animatedValues.womenReporters,
-    fill: "#9ca3af"
-  } // gray
-  ];
+    fill: colors.hombres
+  }];
+  
+  // Custom label for pie charts to show percentages
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index, name }: any) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * Math.PI / 180);
+    const y = cy + radius * Math.sin(-midAngle * Math.PI / 180);
+    
+    return (
+      <text 
+        x={x} 
+        y={y} 
+        fill="white" 
+        textAnchor="middle" 
+        dominantBaseline="central"
+        fontSize={12}
+        fontWeight="bold"
+      >
+        {`${(percent * 100).toFixed(0)}%`}
+      </text>
+    );
+  };
+
   return <div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         {/* Total Cases Card */}
@@ -100,15 +122,23 @@ const StatCards: React.FC<StatCardsProps> = ({
               }
             }}>
                 <PieChart margin={{
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
+                top: 10,
+                right: 10,
+                bottom: 10,
+                left: 10
               }}>
-                  <Pie data={pieData} cx="50%" cy="50%" labelLine={false} outerRadius={80} innerRadius={40} fill="#8884d8" dataKey="value" nameKey="name" label={({
-                  name,
-                  percent
-                }) => `${name}: ${(percent * 100).toFixed(0)}%`}>
+                  <Pie 
+                    data={pieData} 
+                    cx="50%" 
+                    cy="50%" 
+                    labelLine={false} 
+                    outerRadius={100} 
+                    innerRadius={40} 
+                    fill="#8884d8" 
+                    dataKey="value" 
+                    nameKey="name" 
+                    label={renderCustomizedLabel}
+                  >
                     {pieData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
                   </Pie>
                   <ChartTooltip content={<ChartTooltipContent />} />
@@ -164,27 +194,55 @@ const StatCards: React.FC<StatCardsProps> = ({
           </CardContent>
         </Card>
 
-        {/* Gender Distribution Radial Chart */}
+        {/* Gender Distribution Pie Chart (replaced RadialBarChart) */}
         <Card className="border-2 border-azul overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Distribución por Género de Denunciantes</h3>
-            <div className="h-80 w-full">
+            <div className="h-80 w-full flex items-center justify-center">
               <ChartContainer config={{
               mujeres: {
                 color: colors.mujeres
+              },
+              hombres: {
+                color: colors.hombres
               }
             }}>
-                <RadialBarChart innerRadius="30%" outerRadius="85%" data={genderData} startAngle={180} endAngle={0} cx="50%" cy="60%">
-                  <RadialBar label={{
-                  fill: '#666',
-                  position: 'insideStart'
-                }} background dataKey="value" />
-                  <Legend iconSize={10} layout="horizontal" verticalAlign="bottom" wrapperStyle={{
-                  bottom: 0
-                }} />
+                <PieChart margin={{
+                  top: 10,
+                  right: 10,
+                  bottom: 30,
+                  left: 10
+                }}>
+                  <Pie
+                    data={genderData}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    outerRadius={90}
+                    innerRadius={40}
+                    fill="#8884d8"
+                    dataKey="value"
+                    nameKey="name"
+                    label={renderCustomizedLabel}
+                    startAngle={0}
+                    endAngle={360}
+                  >
+                    {genderData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={entry.fill} />
+                    ))}
+                  </Pie>
+                  <Legend 
+                    iconSize={10} 
+                    layout="horizontal" 
+                    verticalAlign="bottom" 
+                    wrapperStyle={{
+                      bottom: 0,
+                      padding: '10px 0'
+                    }} 
+                  />
                   <ChartTooltip content={<ChartTooltipContent />} />
-                </RadialBarChart>
+                </PieChart>
               </ChartContainer>
             </div>
             <p className="text-center text-sm text-gray-600 mt-2">
