@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
-import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
+import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, Cell, Legend } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { useIsMobile } from "@/hooks/use-mobile";
 
@@ -97,14 +97,8 @@ const StatCards: React.FC<StatCardsProps> = ({
     );
   };
 
-  // Adjust chart dimensions based on device
-  const chartHeight = isMobile ? 180 : 256; // h-64 = 256px, h-48 = 192px (reduced for mobile)
-  const genderChartHeight = isMobile ? 200 : 320; // h-80 = 320px
-  const pieOuterRadius = isMobile ? 70 : 100;
-  const pieInnerRadius = isMobile ? 30 : 40;
-  const legendVerticalAlign = isMobile ? "bottom" : "bottom";
-
-  return <div>
+  return (
+    <div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         {/* Total Cases Card */}
         <Card className="border-2 border-azul overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-center justify-center">
@@ -123,31 +117,23 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Tipos de Denuncias</h3>
-            <div className="h-[200px] md:h-[256px] w-full flex items-center justify-center" style={{ minHeight: isMobile ? "200px" : "256px" }}>
-              <ChartContainer config={{
-                acoso_laboral: {
-                  color: colors.acoso_laboral
-                },
-                acoso_sexual: {
-                  color: colors.acoso_sexual
-                },
-                violencia_trabajo: {
-                  color: colors.violencia_trabajo
-                }
-              }}>
-                <PieChart width={isMobile ? 250 : 400} height={isMobile ? 180 : 220} margin={{
-                  top: 10,
-                  right: isMobile ? 5 : 10,
-                  bottom: isMobile ? 5 : 10,
-                  left: isMobile ? 5 : 10
-                }}>
+            <div className="relative" style={{ height: "250px" }}>
+              <ChartContainer 
+                className="w-full h-full"
+                config={{
+                  acoso_laboral: { color: colors.acoso_laboral },
+                  acoso_sexual: { color: colors.acoso_sexual },
+                  violencia_trabajo: { color: colors.violencia_trabajo }
+                }}
+              >
+                <PieChart>
                   <Pie 
                     data={pieData} 
                     cx="50%" 
                     cy="50%" 
                     labelLine={false} 
-                    outerRadius={pieOuterRadius} 
-                    innerRadius={pieInnerRadius} 
+                    outerRadius={isMobile ? 70 : 90} 
+                    innerRadius={isMobile ? 30 : 40} 
                     fill="#8884d8" 
                     dataKey="value" 
                     nameKey="name" 
@@ -160,12 +146,14 @@ const StatCards: React.FC<StatCardsProps> = ({
               </ChartContainer>
             </div>
             <div className={`flex ${isMobile ? 'flex-wrap text-xs' : ''} justify-center items-center gap-2 mt-4`}>
-              {pieData.map((entry, index) => <div key={index} className="flex items-center">
+              {pieData.map((entry, index) => (
+                <div key={index} className="flex items-center">
                   <div className="w-3 h-3 mr-1" style={{
-                backgroundColor: entry.color
-              }}></div>
+                    backgroundColor: entry.color
+                  }}></div>
                   <span className={isMobile ? "text-xs" : "text-sm"}>{entry.name}</span>
-                </div>)}
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
@@ -177,24 +165,18 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-celeste h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Denuncias por Tamaño de Empresa</h3>
-            <div className="w-full h-[180px] md:h-[256px]" style={{ minHeight: isMobile ? "180px" : "256px" }}>
-              <ChartContainer config={{
-              empresas: {
-                color: colors.empresas
-              }
-            }}>
-                <BarChart width={isMobile ? 250 : 400} height={isMobile ? 160 : 200} data={companyData} margin={{
-                top: 20,
-                right: isMobile ? 20 : 30,
-                left: isMobile ? 10 : 20,
-                bottom: 5
-              }}>
+            <div className="relative" style={{ height: "250px" }}>
+              <ChartContainer 
+                className="w-full h-full" 
+                config={{ empresas: { color: colors.empresas } }}
+              >
+                <BarChart data={companyData}>
                   <XAxis dataKey="name" />
                   <YAxis label={isMobile ? undefined : {
-                  value: 'Porcentaje (%)',
-                  angle: -90,
-                  position: 'insideLeft'
-                }} />
+                    value: 'Porcentaje (%)',
+                    angle: -90,
+                    position: 'insideLeft'
+                  }} />
                   <ChartTooltip content={<ChartTooltipContent />} />
                   <Bar dataKey="value">
                     {companyData.map((entry, index) => <Cell key={`cell-${index}`} fill={entry.color} />)}
@@ -208,26 +190,20 @@ const StatCards: React.FC<StatCardsProps> = ({
           </CardContent>
         </Card>
 
-        {/* Gender Distribution Pie Chart (replaced RadialBarChart) */}
+        {/* Gender Distribution Pie Chart */}
         <Card className="border-2 border-azul overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Distribución por Género de Denunciantes</h3>
-            <div className="w-full h-[200px] md:h-[320px] flex items-center justify-center" style={{ minHeight: isMobile ? "200px" : "320px" }}>
-              <ChartContainer config={{
-              mujeres: {
-                color: colors.mujeres
-              },
-              hombres: {
-                color: colors.hombres
-              }
-            }}>
-                <PieChart width={isMobile ? 250 : 400} height={isMobile ? 180 : 220} margin={{
-                  top: 10,
-                  right: 10,
-                  bottom: isMobile ? 10 : 30,
-                  left: 10
-                }}>
+            <div className="relative" style={{ height: "250px" }}>
+              <ChartContainer
+                className="w-full h-full" 
+                config={{
+                  mujeres: { color: colors.mujeres },
+                  hombres: { color: colors.hombres }
+                }}
+              >
+                <PieChart>
                   <Pie
                     data={genderData}
                     cx="50%"
@@ -249,7 +225,7 @@ const StatCards: React.FC<StatCardsProps> = ({
                   <Legend 
                     iconSize={10} 
                     layout="horizontal" 
-                    verticalAlign={legendVerticalAlign} 
+                    verticalAlign="bottom" 
                     wrapperStyle={{
                       bottom: 0,
                       padding: '10px 0',
@@ -266,7 +242,8 @@ const StatCards: React.FC<StatCardsProps> = ({
           </CardContent>
         </Card>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default StatCards;
