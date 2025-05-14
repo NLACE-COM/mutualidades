@@ -59,16 +59,6 @@ const RolesResponsabilidades: React.FC = () => {
               </TabsContent>
             ))}
           </Tabs>
-          
-          <div className="mt-6 md:mt-10 text-center">
-            <p className="text-base md:text-lg text-gray-700">
-              Es importante conocer los roles de cada entidad para saber a quién acudir en caso de necesitar ayuda o información.
-            </p>
-            <p className="text-sm text-azul mt-2">
-              Para más información sobre la Inspección del Trabajo y su rol en la implementación de la Ley Karin, 
-              consulta la pestaña "Inspección del Trabajo" en esta sección.
-            </p>
-          </div>
         </div>
       </div>
     </section>

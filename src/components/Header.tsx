@@ -44,13 +44,9 @@ const Header: React.FC = () => {
              onClick={() => handleNavClick("Entornos Seguros", "#entornos")}>
             Entornos Seguros
           </a>
-          <a href="#importancia" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Importancia", "#importancia")}>
-            Importancia
-          </a>
           <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
-             onClick={() => handleNavClick("Inspección", "#inspeccion-trabajo")}>
-            Inspección
+             onClick={() => handleNavClick("Cifras", "#inspeccion-trabajo")}>
+            Cifras
           </a>
           <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
              onClick={() => handleNavClick("FAQ", "#preguntas-frecuentes")}>
@@ -91,13 +87,9 @@ const Header: React.FC = () => {
                  onClick={() => handleNavClick("Entornos Seguros (móvil)", "#entornos")}>
                 Entornos Seguros
               </a>
-              <a href="#importancia" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("Importancia (móvil)", "#importancia")}>
-                Importancia
-              </a>
               <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
-                 onClick={() => handleNavClick("Inspección (móvil)", "#inspeccion-trabajo")}>
-                Inspección
+                 onClick={() => handleNavClick("Cifras (móvil)", "#inspeccion-trabajo")}>
+                Cifras
               </a>
               <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
                  onClick={() => handleNavClick("FAQ (móvil)", "#preguntas-frecuentes")}>

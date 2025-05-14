@@ -1,9 +1,9 @@
+
 import React, { useRef } from 'react';
 import Hero from './Hero';
 import LeyKarin from './LeyKarin';
 import SafeEnvironments from './SafeEnvironments';
 import PositiveWorkplace from './PositiveWorkplace';
-import Importance from './Importance';
 import ContactInfo from './ContactInfo';
 import FrequentQuestions from './FrequentQuestions';
 import LaborInspection from './LaborInspection';
@@ -19,7 +19,6 @@ const HomeContent: React.FC = () => {
   const sectionRefs = {
     leykarin: useRef<HTMLElement | null>(null),
     entornos: useRef<HTMLElement | null>(null),
-    importancia: useRef<HTMLElement | null>(null),
     inspeccion: useRef<HTMLElement | null>(null),
     preguntas: useRef<HTMLElement | null>(null),
     roles: useRef<HTMLElement | null>(null),
@@ -30,8 +29,7 @@ const HomeContent: React.FC = () => {
   const sectionNames: Record<string, string> = {
     'leykarin': 'Ley Karin',
     'entornos': 'Entornos Seguros',
-    'importancia': 'Importancia',
-    'inspeccion-trabajo': 'Inspección del Trabajo',
+    'inspeccion-trabajo': 'Cifras',
     'preguntas-frecuentes': 'Preguntas Frecuentes',
     'roles-responsabilidades': 'Roles y Responsabilidades',
     'contacto-info': 'Información de Contacto',
@@ -66,11 +64,6 @@ const HomeContent: React.FC = () => {
       
       <PositiveWorkplace />
       
-      {/* Importance with enhanced animations */}
-      <div ref={(el) => { sectionRefs.importancia.current = el as HTMLElement | null }}>
-        <Importance />
-      </div>
-      
       <div ref={(el) => { sectionRefs.inspeccion.current = el as HTMLElement | null }}>
         <LaborInspection />
       </div>
@@ -82,7 +75,7 @@ const HomeContent: React.FC = () => {
         </ParallaxBackground>
       </div>
       
-      {/* New Roles y Responsabilidades section */}
+      {/* Roles y Responsabilidades section */}
       <div ref={(el) => { sectionRefs.roles.current = el as HTMLElement | null }}>
         <RolesResponsabilidades />
       </div>

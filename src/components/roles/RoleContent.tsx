@@ -1,8 +1,6 @@
 
 import React from 'react';
 import { Separator } from "@/components/ui/separator";
-import { FileText } from "lucide-react";
-import { trackExternalLinkClick } from '../../utils/analytics';
 import { RoleData } from '../../data/rolesData';
 import { useIsMobile } from '../../hooks/use-mobile';
 
@@ -12,10 +10,6 @@ interface RoleContentProps {
 
 const RoleContent: React.FC<RoleContentProps> = ({ role }) => {
   const isMobile = useIsMobile();
-  
-  const handleExternalLinkClick = (linkName: string, url: string) => {
-    trackExternalLinkClick(linkName, url);
-  };
 
   return (
     <div className="bg-gray-50 p-3 md:p-6 rounded-lg shadow-sm border border-gray-100">
@@ -26,7 +20,7 @@ const RoleContent: React.FC<RoleContentProps> = ({ role }) => {
       
       <Separator className="my-3 md:my-4 bg-azul/20" />
       
-      <div className="mb-4 md:mb-6">
+      <div>
         <h4 className={`${isMobile ? 'text-base' : 'text-lg'} font-semibold text-naranja mb-2 md:mb-3`}>
           Rol y Responsabilidades:
         </h4>
@@ -35,22 +29,6 @@ const RoleContent: React.FC<RoleContentProps> = ({ role }) => {
             <li key={index} className="text-gray-700 text-xs md:text-base">{item}</li>
           ))}
         </ul>
-      </div>
-      
-      <div className="bg-blue-50 p-2 md:p-4 rounded-md border-l-4 border-azul text-xs md:text-base">
-        <h4 className={`${isMobile ? 'text-sm' : 'text-base md:text-lg'} font-semibold mb-1 md:mb-2`}>
-          Fuente:
-        </h4>
-        <a 
-          href={role.content.source.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline flex items-center"
-          onClick={() => handleExternalLinkClick(role.content.source.name, role.content.source.url)}
-        >
-          <FileText className="h-3 w-3 md:h-4 md:w-4 mr-1 md:mr-2" />
-          {role.content.source.name}
-        </a>
       </div>
     </div>
   );
