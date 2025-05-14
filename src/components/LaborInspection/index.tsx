@@ -23,9 +23,22 @@ const LaborInspection: React.FC = () => {
   return (
     <section id="inspeccion-trabajo" className="py-16 bg-gradient-to-br from-azul/5 to-azul/15">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-azul mb-12 border-b-2 border-azul pb-4 max-w-2xl mx-auto">
+        <h2 className="text-4xl font-bold text-center text-azul mb-4 border-b-2 border-azul pb-4 max-w-2xl mx-auto">
           ALGUNAS CIFRAS
         </h2>
+        
+        <p className="text-center text-gray-600 mb-8 max-w-3xl mx-auto">
+          Entre el 1 de agosto y el 31 de diciembre de 2024 
+          <br />
+          <a 
+            href="https://www.dt.gob.cl/portal/1626/articles-127329_archivo_01.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-azul hover:underline"
+          >
+            Fuente: Dirección del Trabajo
+          </a>
+        </p>
         
         <div className="fade-in-section" id="stats-section" ref={statsSectionRef}>
           <StatCards animatedValues={animatedValues} />
