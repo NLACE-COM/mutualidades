@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RoleData } from '../../data/rolesData';
@@ -24,7 +25,7 @@ const RoleTabsList: React.FC<RoleTabsListProps> = ({ roles, scrollRef }) => {
         // Mobile view with two-row grid layout
         <div className="space-y-2">
           {/* First row - 3 tabs */}
-          <div className="grid grid-cols-3 gap-2 mb-2">
+          <TabsList className="grid grid-cols-3 gap-2 mb-2">
             {firstRowRoles.map((role) => (
               <TabsTrigger 
                 key={role.id}
@@ -37,10 +38,10 @@ const RoleTabsList: React.FC<RoleTabsListProps> = ({ roles, scrollRef }) => {
                 </span>
               </TabsTrigger>
             ))}
-          </div>
+          </TabsList>
           
           {/* Second row - 2 tabs centered */}
-          <div className="grid grid-cols-2 gap-2 mx-auto w-2/3">
+          <TabsList className="grid grid-cols-2 gap-2 mx-auto w-2/3">
             {secondRowRoles.map((role) => (
               <TabsTrigger 
                 key={role.id}
@@ -53,7 +54,7 @@ const RoleTabsList: React.FC<RoleTabsListProps> = ({ roles, scrollRef }) => {
                 </span>
               </TabsTrigger>
             ))}
-          </div>
+          </TabsList>
         </div>
       ) : (
         // Desktop view remains unchanged
