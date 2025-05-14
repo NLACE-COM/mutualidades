@@ -123,7 +123,7 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Tipos de Denuncias</h3>
-            <div className={`h-auto flex items-center justify-center`} style={{ height: chartHeight }}>
+            <div className="h-[200px] md:h-[256px] w-full flex items-center justify-center" style={{ minHeight: isMobile ? "200px" : "256px" }}>
               <ChartContainer config={{
                 acoso_laboral: {
                   color: colors.acoso_laboral
@@ -135,7 +135,7 @@ const StatCards: React.FC<StatCardsProps> = ({
                   color: colors.violencia_trabajo
                 }
               }}>
-                <PieChart margin={{
+                <PieChart width={isMobile ? 250 : 400} height={isMobile ? 180 : 220} margin={{
                   top: 10,
                   right: isMobile ? 5 : 10,
                   bottom: isMobile ? 5 : 10,
@@ -177,13 +177,13 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-celeste h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Denuncias por Tamaño de Empresa</h3>
-            <div className="w-full" style={{ height: chartHeight }}>
+            <div className="w-full h-[180px] md:h-[256px]" style={{ minHeight: isMobile ? "180px" : "256px" }}>
               <ChartContainer config={{
               empresas: {
                 color: colors.empresas
               }
             }}>
-                <BarChart data={companyData} margin={{
+                <BarChart width={isMobile ? 250 : 400} height={isMobile ? 160 : 200} data={companyData} margin={{
                 top: 20,
                 right: isMobile ? 20 : 30,
                 left: isMobile ? 10 : 20,
@@ -213,7 +213,7 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="bg-naranja h-1.5"></div>
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-2 text-center">Distribución por Género de Denunciantes</h3>
-            <div className="w-full flex items-center justify-center" style={{ height: isMobile ? 200 : 320 }}>
+            <div className="w-full h-[200px] md:h-[320px] flex items-center justify-center" style={{ minHeight: isMobile ? "200px" : "320px" }}>
               <ChartContainer config={{
               mujeres: {
                 color: colors.mujeres
@@ -222,7 +222,7 @@ const StatCards: React.FC<StatCardsProps> = ({
                 color: colors.hombres
               }
             }}>
-                <PieChart margin={{
+                <PieChart width={isMobile ? 250 : 400} height={isMobile ? 180 : 220} margin={{
                   top: 10,
                   right: 10,
                   bottom: isMobile ? 10 : 30,
