@@ -132,7 +132,7 @@ const StatCards: React.FC<StatCardsProps> = ({ animatedValues }) => {
                   <XAxis dataKey="name" />
                   <YAxis label={{ value: 'Porcentaje (%)', angle: -90, position: 'insideLeft' }} />
                   <ChartTooltip content={<ChartTooltipContent />} />
-                  <Bar dataKey="value" nameKey="name">
+                  <Bar dataKey="value">
                     {companyData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
@@ -165,12 +165,9 @@ const StatCards: React.FC<StatCardsProps> = ({ animatedValues }) => {
                   cy="60%"
                 >
                   <RadialBar
-                    minAngle={15}
                     label={{ fill: '#666', position: 'insideStart' }}
                     background
-                    clockWise={true}
                     dataKey="value"
-                    nameKey="name"
                   />
                   <Legend 
                     iconSize={10} 
@@ -193,3 +190,4 @@ const StatCards: React.FC<StatCardsProps> = ({ animatedValues }) => {
 };
 
 export default StatCards;
+
