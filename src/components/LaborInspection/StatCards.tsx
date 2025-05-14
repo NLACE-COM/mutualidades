@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { PieChart, Pie, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, RadialBarChart, RadialBar, Legend } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+
 interface StatCardsProps {
   animatedValues: {
     cases: number;
@@ -11,6 +12,7 @@ interface StatCardsProps {
     womenReporters: number;
   };
 }
+
 const StatCards: React.FC<StatCardsProps> = ({
   animatedValues
 }) => {
@@ -68,7 +70,7 @@ const StatCards: React.FC<StatCardsProps> = ({
   return <div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         {/* Total Cases Card */}
-        <Card className="border-2 border-azul overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+        <Card className="border-2 border-azul overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex items-center justify-center">
           <div className="bg-azul h-1.5"></div>
           <CardContent className="p-6">
             <div className="text-5xl font-bold mb-3 text-azul flex items-center justify-center">
@@ -192,4 +194,5 @@ const StatCards: React.FC<StatCardsProps> = ({
       </div>
     </div>;
 };
+
 export default StatCards;
