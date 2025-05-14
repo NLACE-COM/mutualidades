@@ -17,12 +17,12 @@ import RolesResponsabilidades from './RolesResponsabilidades';
 const HomeContent: React.FC = () => {
   // Refs for each section to track visibility
   const sectionRefs = {
-    leykarin: useRef<HTMLElement | null>(null),
-    entornos: useRef<HTMLElement | null>(null),
-    inspeccion: useRef<HTMLElement | null>(null),
-    preguntas: useRef<HTMLElement | null>(null),
-    roles: useRef<HTMLElement | null>(null),
-    contacto: useRef<HTMLElement | null>(null)
+    'leykarin': useRef<HTMLElement | null>(null),
+    'entornos': useRef<HTMLElement | null>(null),
+    'inspeccion-trabajo': useRef<HTMLElement | null>(null),
+    'preguntas-frecuentes': useRef<HTMLElement | null>(null),
+    'roles-responsabilidades': useRef<HTMLElement | null>(null),
+    'contacto-info': useRef<HTMLElement | null>(null)
   };
   
   // Section names mapping for analytics
@@ -48,12 +48,12 @@ const HomeContent: React.FC = () => {
       </div>
       
       {/* LeyKarin with proper positioning */}
-      <div className="relative z-20" ref={(el) => { sectionRefs.leykarin.current = el as HTMLElement | null }}>
+      <div className="relative z-20" ref={(el) => { sectionRefs['leykarin'].current = el as HTMLElement | null }}>
         <LeyKarin />
       </div>
       
       {/* SafeEnvironments with parallax effect */}
-      <div ref={(el) => { sectionRefs.entornos.current = el as HTMLElement | null }}>
+      <div ref={(el) => { sectionRefs['entornos'].current = el as HTMLElement | null }}>
         <SafeEnvironments />
       </div>
       
@@ -64,23 +64,23 @@ const HomeContent: React.FC = () => {
       
       <PositiveWorkplace />
       
-      <div ref={(el) => { sectionRefs.inspeccion.current = el as HTMLElement | null }}>
+      <div ref={(el) => { sectionRefs['inspeccion-trabajo'].current = el as HTMLElement | null }}>
         <LaborInspection />
       </div>
       
       {/* FAQ section with enhanced animations */}
-      <div ref={(el) => { sectionRefs.preguntas.current = el as HTMLElement | null }}>
+      <div ref={(el) => { sectionRefs['preguntas-frecuentes'].current = el as HTMLElement | null }}>
         <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#108CB0']}>
           <FrequentQuestions />
         </ParallaxBackground>
       </div>
       
       {/* Roles y Responsabilidades section */}
-      <div ref={(el) => { sectionRefs.roles.current = el as HTMLElement | null }}>
+      <div ref={(el) => { sectionRefs['roles-responsabilidades'].current = el as HTMLElement | null }}>
         <RolesResponsabilidades />
       </div>
       
-      <div ref={(el) => { sectionRefs.contacto.current = el as HTMLElement | null }}>
+      <div ref={(el) => { sectionRefs['contacto-info'].current = el as HTMLElement | null }}>
         <ContactInfo />
       </div>
       
