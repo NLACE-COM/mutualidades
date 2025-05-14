@@ -56,6 +56,10 @@ const Header: React.FC = () => {
              onClick={() => handleNavClick("FAQ", "#preguntas-frecuentes")}>
             FAQ
           </a>
+          <a href="#roles-responsabilidades" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
+             onClick={() => handleNavClick("Roles", "#roles-responsabilidades")}>
+            Roles y Resp.
+          </a>
           <a href="#contacto-info" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full"
              onClick={() => handleNavClick("Contacto", "#contacto-info")}>
             Contacto
@@ -98,6 +102,10 @@ const Header: React.FC = () => {
               <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
                  onClick={() => handleNavClick("FAQ (móvil)", "#preguntas-frecuentes")}>
                 FAQ
+              </a>
+              <a href="#roles-responsabilidades" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" 
+                 onClick={() => handleNavClick("Roles (móvil)", "#roles-responsabilidades")}>
+                Roles y Resp.
               </a>
               <a href="#contacto-info" className="text-gray-700 hover:text-azul py-2" 
                  onClick={() => handleNavClick("Contacto (móvil)", "#contacto-info")}>
