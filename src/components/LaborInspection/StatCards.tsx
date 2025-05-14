@@ -29,7 +29,7 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="flex flex-col space-y-3">
             <div className="flex items-center justify-between">
               <p className="font-bold text-azul text-xl">{animatedValues.laborHarassment}%</p>
-              <p>acoso laboral</p>
+              <p>Acoso Laboral</p>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div className="bg-azul h-2.5 rounded-full" style={{
@@ -39,7 +39,7 @@ const StatCards: React.FC<StatCardsProps> = ({
             
             <div className="flex items-center justify-between">
               <p className="font-bold text-naranja text-xl">{animatedValues.sexualHarassment}%</p>
-              <p>acoso sexual</p>
+              <p>Acoso Sexual</p>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div className="bg-naranja h-2.5 rounded-full" style={{
@@ -49,7 +49,7 @@ const StatCards: React.FC<StatCardsProps> = ({
             
             <div className="flex items-center justify-between">
               <p className="font-bold text-celeste text-xl">{100 - animatedValues.laborHarassment - animatedValues.sexualHarassment}%</p>
-              <p>violencia en el trabajo</p>
+              <p>Violencia en el Trabajo</p>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div className="bg-celeste h-2.5 rounded-full" style={{
@@ -66,7 +66,7 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="text-4xl font-bold mb-2 text-celeste flex items-center justify-center">
             <span className="counter-animation">{animatedValues.largeCompanies}%</span>
           </div>
-          <p className="text-center">de las denuncias provienen de grandes empresas (más de 200 trabajadores).</p>
+          <p className="text-center">De las denuncias provienen de grandes empresas (más de 200 trabajadores).</p>
           <div className="w-full bg-gray-200 rounded-full h-3 mt-3">
             <div className="bg-celeste h-3 rounded-full" style={{
             width: `${animatedValues.largeCompanies}%`
@@ -81,7 +81,7 @@ const StatCards: React.FC<StatCardsProps> = ({
           <div className="text-4xl font-bold mb-2 text-naranja flex items-center justify-center">
             +<span className="counter-animation">{animatedValues.womenReporters}</span>%
           </div>
-          <p className="text-center">de las personas denunciantes son mujeres.</p>
+          <p className="text-center">De las personas denunciantes son mujeres.</p>
           <div className="w-full bg-gray-200 rounded-full h-3 mt-3">
             <div className="bg-naranja h-3 rounded-full" style={{
             width: `${animatedValues.womenReporters}%`
