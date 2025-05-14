@@ -14,6 +14,11 @@ interface UseCounterAnimationResult {
   startCountAnimation: () => void;
 }
 
+// Easing function for smoother animation
+const easeOutCubic = (x: number): number => {
+  return 1 - Math.pow(1 - x, 3);
+};
+
 export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnimationResult => {
   const [animatedValues, setAnimatedValues] = useState<CounterValues>({
     cases: 0,
@@ -23,33 +28,38 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
     womenReporters: 0
   });
   
-  // Add a state to track if animation has already completed
   const [hasAnimated, setHasAnimated] = useState(false);
 
   const startCountAnimation = () => {
-    // Only start the animation if it hasn't been completed already
+    // Prevent restarting animation if already completed
     if (hasAnimated) return;
     
-    const duration = 1500;
-    const frameDuration = 1000 / 60;
+    // Increase duration for smoother animation
+    const duration = 2000;
+    // Reduce update frequency for smoother animation (less jerky movements)
+    const frameDuration = 1000 / 30;
     const totalFrames = Math.round(duration / frameDuration);
     let frame = 0;
 
     const counter = setInterval(() => {
       frame++;
-      const progress = frame / totalFrames;
       
+      // Apply easing function for more natural animation curve
+      const progress = easeOutCubic(frame / totalFrames);
+      
+      // Use more precise calculations and avoid rounding until the end
       setAnimatedValues({
-        cases: Math.floor(targetValues.cases * Math.min(progress, 1)),
-        laborHarassment: Math.floor(targetValues.laborHarassment * Math.min(progress, 1)),
-        sexualHarassment: Math.floor(targetValues.sexualHarassment * Math.min(progress, 1)),
-        largeCompanies: Math.floor(targetValues.largeCompanies * Math.min(progress, 1)),
-        womenReporters: Math.floor(targetValues.womenReporters * Math.min(progress, 1))
+        cases: Math.round(targetValues.cases * Math.min(progress, 1)),
+        laborHarassment: Math.round(targetValues.laborHarassment * Math.min(progress, 1)),
+        sexualHarassment: Math.round(targetValues.sexualHarassment * Math.min(progress, 1)),
+        largeCompanies: Math.round(targetValues.largeCompanies * Math.min(progress, 1)),
+        womenReporters: Math.round(targetValues.womenReporters * Math.min(progress, 1))
       });
       
       if (frame === totalFrames) {
+        // Ensure final values match target exactly
+        setAnimatedValues(targetValues);
         clearInterval(counter);
-        // Mark animation as completed
         setHasAnimated(true);
       }
     }, frameDuration);
