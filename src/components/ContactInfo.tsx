@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-
 const ContactInfo: React.FC = () => {
-  return (
-    <section id="contacto-info" className="bg-white py-16" aria-labelledby="contacto-info-heading">
+  return <section id="contacto-info" className="bg-white py-16" aria-labelledby="contacto-info-heading">
       <div className="container mx-auto">
         <h2 id="contacto-info-heading" className="text-4xl font-bold text-center text-naranja mb-4">
           Estamos para ayudarte
@@ -21,10 +18,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
               <Avatar className="w-12 h-12">
-                <AvatarImage 
-                  src="/lovable-uploads/66786ae1-0547-4488-a338-c25149a77bf9.png" 
-                  alt="Logo de Asociación Chilena de Seguridad (ACHS)" 
-                />
+                <AvatarImage alt="Logo de Asociación Chilena de Seguridad (ACHS)" src="/lovable-uploads/215f8050-bf47-4a8b-8a47-5defd6c3c9a3.png" />
               </Avatar>
               <h3 className="text-xl font-bold text-azul">Asociación Chilena de Seguridad</h3>
             </div>
@@ -50,12 +44,7 @@ const ContactInfo: React.FC = () => {
                   <MapPin size={24} />
                 </div>
                 <p>
-                  <a 
-                    href="https://maps.google.com/?q=Ramón+Carnicer+163,+Providencia,+Santiago" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label="Ver ubicación de ACHS en Google Maps: Ramón Carnicer 163, Providencia, Santiago"
-                  >
+                  <a href="https://maps.google.com/?q=Ramón+Carnicer+163,+Providencia,+Santiago" target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de ACHS en Google Maps: Ramón Carnicer 163, Providencia, Santiago">
                     Ramón Carnicer 163, Providencia, Santiago.
                   </a>
                 </p>
@@ -67,10 +56,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
               <Avatar className="w-12 h-12">
-                <AvatarImage 
-                  src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" 
-                  alt="Logo del Instituto de Seguridad del Trabajo (IST)" 
-                />
+                <AvatarImage src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="Logo del Instituto de Seguridad del Trabajo (IST)" />
               </Avatar>
               <h3 className="text-xl font-bold text-azul">Instituto de Seguridad del Trabajo</h3>
             </div>
@@ -96,12 +82,7 @@ const ContactInfo: React.FC = () => {
                   <MapPin size={24} />
                 </div>
                 <p>
-                  <a 
-                    href="https://maps.google.com/?q=1/2+Oriente+1175,+Edificio+Plaza+O'Higgins,+Viña+del+Mar" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label="Ver ubicación de IST en Google Maps: 1/2 Oriente 1175, Edificio Plaza O'Higgins, Viña del Mar"
-                  >
+                  <a href="https://maps.google.com/?q=1/2+Oriente+1175,+Edificio+Plaza+O'Higgins,+Viña+del+Mar" target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de IST en Google Maps: 1/2 Oriente 1175, Edificio Plaza O'Higgins, Viña del Mar">
                     1/2 Oriente 1175, Edificio Plaza O'Higgins, Viña del Mar.
                   </a>
                 </p>
@@ -113,10 +94,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
               <Avatar className="w-12 h-12">
-                <AvatarImage 
-                  src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" 
-                  alt="Logo de Mutual de Seguridad" 
-                />
+                <AvatarImage src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Logo de Mutual de Seguridad" />
               </Avatar>
               <h3 className="text-xl font-bold text-azul">Mutual de Seguridad</h3>
             </div>
@@ -142,12 +120,7 @@ const ContactInfo: React.FC = () => {
                   <MapPin size={24} />
                 </div>
                 <p>
-                  <a 
-                    href="https://maps.google.com/?q=Av.+Lib.+Bernardo+O'Higgins+194,+Santiago+de+Chile" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    aria-label="Ver ubicación de Mutual de Seguridad en Google Maps: Av. Lib. Bernardo O'Higgins 194, Santiago de Chile"
-                  >
+                  <a href="https://maps.google.com/?q=Av.+Lib.+Bernardo+O'Higgins+194,+Santiago+de+Chile" target="_blank" rel="noopener noreferrer" aria-label="Ver ubicación de Mutual de Seguridad en Google Maps: Av. Lib. Bernardo O'Higgins 194, Santiago de Chile">
                     Av. Lib. Bernardo O'Higgins 194, Santiago de Chile
                   </a>
                 </p>
@@ -156,8 +129,6 @@ const ContactInfo: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactInfo;
