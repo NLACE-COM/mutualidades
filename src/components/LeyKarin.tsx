@@ -17,12 +17,7 @@ const LeyKarin: React.FC = () => {
               <div className="absolute -bottom-4 -right-4 bg-[#f5a034]/10 w-full h-full rounded-lg -z-10" aria-hidden="true"></div>
             </div>
             
-            <div className="flex items-center gap-4 bg-white p-4 rounded-lg border-l-4 border-[#108cb0]">
-              <Shield className="text-[#108cb0] w-8 h-8" aria-hidden="true" />
-              <p className="font-medium">
-                Una ley que protege a todas las personas en su entorno laboral
-              </p>
-            </div>
+            
           </div>
           
           <Card className="md:col-span-7 border-none shadow-xl rounded-lg overflow-hidden bg-white relative fade-in-section">
@@ -31,7 +26,7 @@ const LeyKarin: React.FC = () => {
               <div className="flex items-start gap-4 mb-6">
                 <BookOpen className="w-10 h-10 text-[#f5a034] flex-shrink-0 mt-1" aria-hidden="true" />
                 <div>
-                  <h3 className="text-xl font-bold mb-2 text-[#333333]">Ley Karin: una norma que protege a todas las personas en su entorno laboral.</h3>
+                  <h3 className="text-xl font-bold mb-2 text-[#333333]">Una norma que protege a todas las personas en su entorno laboral.</h3>
                   <p className="text-lg mb-4">
                     La Ley Karin (21.643) representa un hito importante en la prevención e intervención en acoso laboral, sexual y violencia en el trabajo.
                   </p>
