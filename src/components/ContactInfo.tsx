@@ -2,7 +2,6 @@
 import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const ContactInfo: React.FC = () => {
   return <section id="contacto-info" className="bg-white py-16" aria-labelledby="contacto-info-heading">
@@ -19,9 +18,11 @@ const ContactInfo: React.FC = () => {
           {/* ACHS */}
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
-              <Avatar className="w-16 h-16">
-                <AvatarImage alt="Logo de Asociación Chilena de Seguridad (ACHS)" src="/lovable-uploads/215f8050-bf47-4a8b-8a47-5defd6c3c9a3.png" />
-              </Avatar>
+              <img 
+                className="w-24 h-24 object-contain"
+                alt="Logo de Asociación Chilena de Seguridad (ACHS)" 
+                src="/lovable-uploads/215f8050-bf47-4a8b-8a47-5defd6c3c9a3.png" 
+              />
               <h3 className="text-xl font-bold text-azul">Asociación Chilena de Seguridad</h3>
             </div>
             
@@ -57,9 +58,11 @@ const ContactInfo: React.FC = () => {
           {/* IST */}
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
-              <Avatar className="w-16 h-16">
-                <AvatarImage src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" alt="Logo del Instituto de Seguridad del Trabajo (IST)" />
-              </Avatar>
+              <img 
+                className="w-24 h-24 object-contain"
+                src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" 
+                alt="Logo del Instituto de Seguridad del Trabajo (IST)" 
+              />
               <h3 className="text-xl font-bold text-azul">Instituto de Seguridad del Trabajo</h3>
             </div>
             
@@ -95,9 +98,11 @@ const ContactInfo: React.FC = () => {
           {/* Mutual de Seguridad */}
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
-              <Avatar className="w-16 h-16">
-                <AvatarImage src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" alt="Logo de Mutual de Seguridad" />
-              </Avatar>
+              <img 
+                className="w-24 h-24 object-contain"
+                src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" 
+                alt="Logo de Mutual de Seguridad" 
+              />
               <h3 className="text-xl font-bold text-azul">Mutual de Seguridad</h3>
             </div>
             
