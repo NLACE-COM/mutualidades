@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Phone, MapPin } from 'lucide-react';
 import { Separator } from "@/components/ui/separator";
@@ -16,7 +17,7 @@ const ContactInfo: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* ACHS */}
           <div className="flex flex-col items-start">
-            <div className="flex items-center space-x-3 mb-4 min-h-[80px]">
+            <div className="flex items-center space-x-3 mb-4 min-h-[120px]">
               <img 
                 className="w-16 h-16 object-contain"
                 alt="Logo de Asociación Chilena de Seguridad (ACHS)" 
@@ -56,7 +57,7 @@ const ContactInfo: React.FC = () => {
           
           {/* IST */}
           <div className="flex flex-col items-start">
-            <div className="flex items-center space-x-3 mb-4 min-h-[80px]">
+            <div className="flex items-center space-x-3 mb-4 min-h-[120px]">
               <img 
                 className="w-20 h-20 object-contain"
                 src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" 
@@ -96,9 +97,9 @@ const ContactInfo: React.FC = () => {
           
           {/* Mutual de Seguridad */}
           <div className="flex flex-col items-start">
-            <div className="flex items-center space-x-3 mb-4 min-h-[80px]">
+            <div className="flex items-center space-x-3 mb-4 min-h-[120px]">
               <img 
-                className="w-32 h-32 object-contain"
+                className="w-24 h-24 object-contain"
                 src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" 
                 alt="Logo de Mutual de Seguridad" 
               />
