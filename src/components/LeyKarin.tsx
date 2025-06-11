@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, BookOpen } from 'lucide-react';
@@ -17,6 +18,9 @@ const LeyKarin: React.FC = () => {
               <div className="absolute -bottom-4 -right-4 bg-[#f5a034]/10 w-full h-full rounded-lg -z-10" aria-hidden="true"></div>
             </div>
             
+            <p className="text-lg font-semibold text-[#333333] bg-[#f5a034]/10 p-4 rounded-lg border-l-4 border-[#f5a034]">
+              Es responsabilidad legal del empleador proporcionar espacios de trabajo seguros y saludables.
+            </p>
             
           </div>
           
