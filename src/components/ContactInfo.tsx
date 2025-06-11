@@ -19,7 +19,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
               <img 
-                className="w-20 h-20 object-contain"
+                className="w-16 h-16 object-contain"
                 alt="Logo de Asociación Chilena de Seguridad (ACHS)" 
                 src="/lovable-uploads/215f8050-bf47-4a8b-8a47-5defd6c3c9a3.png" 
               />
@@ -59,7 +59,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
               <img 
-                className="w-24 h-24 object-contain"
+                className="w-20 h-20 object-contain"
                 src="/lovable-uploads/05983157-652c-402e-aab0-332d1ed243a7.png" 
                 alt="Logo del Instituto de Seguridad del Trabajo (IST)" 
               />
@@ -99,7 +99,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4">
               <img 
-                className="w-28 h-28 object-contain"
+                className="w-32 h-32 object-contain"
                 src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" 
                 alt="Logo de Mutual de Seguridad" 
               />
