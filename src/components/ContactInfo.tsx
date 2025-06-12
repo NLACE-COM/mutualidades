@@ -99,7 +99,7 @@ const ContactInfo: React.FC = () => {
           <div className="flex flex-col items-start">
             <div className="flex items-center space-x-3 mb-4 min-h-[120px]">
               <img 
-                className="w-24 h-24 object-contain"
+                className="w-28 h-28 object-contain"
                 src="/lovable-uploads/a7ac7a98-7ccb-47fb-9357-e8a94c4194bc.png" 
                 alt="Logo de Mutual de Seguridad" 
               />
