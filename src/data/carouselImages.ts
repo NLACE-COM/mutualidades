@@ -7,8 +7,8 @@ export const workplaceImages = [
     caption: "Diálogo y colaboración"
   },
   {
-    src: "/lovable-uploads/de41e8a3-a45a-4cea-a814-839e9b10e2b6.png",
-    alt: "Carpinteros trabajando con equipo de protección adecuado",
+    src: "/lovable-uploads/03a3b598-eba3-430f-8535-7809766ccfd5.png",
+    alt: "Chefs profesionales colaborando en una cocina moderna con respeto y trabajo en equipo",
     caption: "Respeto y profesionalismo"
   },
   {
