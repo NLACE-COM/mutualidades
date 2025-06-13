@@ -13,8 +13,8 @@ const ImageCard: React.FC<ImageCardProps> = ({ image }) => {
   return (
     <div className="overflow-hidden rounded-lg bg-white shadow-xl h-64 relative transition-all duration-500">
       <img 
-        src={image.src} 
-        alt={image.alt} 
+        src="/lovable-uploads/448d43b5-e3b5-4b65-8297-e77e2e5e2fa0.png" 
+        alt="Chefs profesionales colaborando en una cocina moderna" 
         className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
         loading="lazy"
       />
