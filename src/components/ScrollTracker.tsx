@@ -23,7 +23,7 @@ const ScrollTracker: React.FC<{
     
     // Time on page tracking for anti-bounce
     const timeIntervals = [10, 30, 60, 120, 300]; // seconds
-    const timeoutIds: NodeJS.Timeout[] = [];
+    const timeoutIds: ReturnType<typeof setTimeout>[] = [];
     
     timeIntervals.forEach(seconds => {
       const timeoutId = setTimeout(() => {

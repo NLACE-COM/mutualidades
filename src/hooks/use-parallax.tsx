@@ -18,7 +18,7 @@ export const useParallax = ({
   const [isUserScrolling, setIsUserScrolling] = useState(false);
 
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
+    let scrollTimeout: ReturnType<typeof setTimeout>;
     
     const handleScroll = () => {
       // Set flag to identify user-initiated scrolling

@@ -43,7 +43,7 @@ export const useCounterAnimation = (targetValues: CounterValues): UseCounterAnim
   });
   
   const [hasAnimated, setHasAnimated] = useState(false);
-  const animationRef = useRef<NodeJS.Timeout | null>(null);
+  const animationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isAnimatingRef = useRef<boolean>(false);
 
   // Cleanup on unmount
