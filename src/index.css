@@ -370,3 +370,6 @@
   transition: transform 0.3s ease-out;
   transform-style: preserve-3d;
 }
+.texto-fuf {
+  font-size: 1rem; /* el tamaño que tú quieras */
+}

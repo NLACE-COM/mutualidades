@@ -1,23 +1,20 @@
 
 import React, { useRef } from 'react';
 import Hero from './Hero';
-import LeyKarin from './LeyKarin';
-import SafeEnvironments from './SafeEnvironments';
-import PositiveWorkplace from './PositiveWorkplace';
+import Decretosupremo from './Decretosupremo';
 import ContactInfo from './ContactInfo';
-import FrequentQuestions from './FrequentQuestions';
-import LaborInspection from './LaborInspection';
 import MutualSearch from './MutualSearch';
-import WorkplaceImageSlider from './WorkplaceImageSlider';
-import ParallaxBackground from './ParallaxBackground';
 import AnimationsObserver from './AnimationsObserver';
 import ScrollTracker from './ScrollTracker';
-import RolesResponsabilidades from './RolesResponsabilidades';
+import BenefitsSection from './Beneficios';
+import Formulariounico from './fuf';
+import Aplicacion from './aplicacion';
+
 
 const HomeContent: React.FC = () => {
   // Refs for each section to track visibility
   const sectionRefs = {
-    'leykarin': useRef<HTMLElement | null>(null),
+    'decretosupremo': useRef<HTMLElement | null>(null),
     'entornos': useRef<HTMLElement | null>(null),
     'inspeccion-trabajo': useRef<HTMLElement | null>(null),
     'preguntas-frecuentes': useRef<HTMLElement | null>(null),
@@ -27,7 +24,7 @@ const HomeContent: React.FC = () => {
   
   // Section names mapping for analytics
   const sectionNames: Record<string, string> = {
-    'leykarin': 'Ley Karin',
+    'Decretosupremo': 'Decreto Supremo',
     'entornos': 'Entornos Seguros',
     'inspeccion-trabajo': 'Cifras',
     'preguntas-frecuentes': 'Preguntas Frecuentes',
@@ -48,37 +45,19 @@ const HomeContent: React.FC = () => {
       </div>
       
       {/* LeyKarin with proper positioning */}
-      <div className="relative z-20" ref={(el) => { sectionRefs['leykarin'].current = el as HTMLElement | null }}>
-        <LeyKarin />
+      <div className="relative z-20" ref={(el) => { sectionRefs['decretosupremo'].current = el as HTMLElement | null }}>
+        <Decretosupremo />
       </div>
-      
-      {/* SafeEnvironments with parallax effect */}
-      <div ref={(el) => { sectionRefs['entornos'].current = el as HTMLElement | null }}>
-        <SafeEnvironments />
+    <div className="relative z-20" ref={(el) => { sectionRefs['decretosupremo'].current = el as HTMLElement | null }}>
+      <BenefitsSection />
       </div>
-      
-      {/* WorkplaceImageSlider with dynamic background */}
-      <ParallaxBackground density="medium" colors={['#F5A034', '#FFC000', '#108CB0']}>
-        <WorkplaceImageSlider />
-      </ParallaxBackground>
-      
-      <PositiveWorkplace />
-      
-      <div ref={(el) => { sectionRefs['inspeccion-trabajo'].current = el as HTMLElement | null }}>
-        <LaborInspection />
+      <div className="relative z-20" ref={(el) => { sectionRefs['decretosupremo'].current = el as HTMLElement | null }}>
+      <Formulariounico />
       </div>
-      
-      {/* FAQ section with enhanced animations */}
-      <div ref={(el) => { sectionRefs['preguntas-frecuentes'].current = el as HTMLElement | null }}>
-        <ParallaxBackground density="low" colors={['#108CB0', '#F5A034', '#108CB0']}>
-          <FrequentQuestions />
-        </ParallaxBackground>
+       <div className="relative z-20" ref={(el) => { sectionRefs['decretosupremo'].current = el as HTMLElement | null }}>
+      <Aplicacion />
       </div>
-      
-      {/* Roles y Responsabilidades section */}
-      <div ref={(el) => { sectionRefs['roles-responsabilidades'].current = el as HTMLElement | null }}>
-        <RolesResponsabilidades />
-      </div>
+  
       
       <div ref={(el) => { sectionRefs['contacto-info'].current = el as HTMLElement | null }}>
         <ContactInfo />

@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
     return Math.max(baseOpacity - scrollFactor, 0);
   };
   return <section className="relative text-white overflow-hidden will-change-transform" style={{
-    height: 'auto',
+    height: isMobile ? 'auto' : '850px',
     zIndex: 1
   }} aria-label="Sección principal">
       {/* Background container with proper aspect ratio */}
@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
         transform: `translate3d(0, ${parallaxOffset * 0.5}px, 0)`,
         willChange: 'transform'
       }}>
-            <div className="absolute inset-0 bg-[url('/lovable-uploads/470feb03-0913-4b9b-b12f-7c6a20f42ef0.png')] bg-center bg-no-repeat bg-cover" role="img" aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"></div>
+            <div className="absolute inset-0 bg-[url('/lovable-uploads/hero1.png')] bg-cover bg-no-repeat bg-bottom" role="img" aria-label="Imagen de fondo representando un entorno laboral seguro y saludable"></div>
           </div>}
         
         {/* Mobile background color */}
@@ -54,35 +54,38 @@ const Hero: React.FC = () => {
       opacity: calculateOpacity(1)
     }}>
         <div className="flex flex-col md:flex-row">
-          {/* Left side - Empty space for image (hidden on mobile) */}
-          <div className={`${isMobile ? 'hidden' : 'w-full md:w-1/2'}`}></div>
+
           
           {/* Right side - Text content (full width on mobile) with automatic height */}
           <div className={`${isMobile ? 'w-full px-4 flex flex-col justify-center items-center text-center' : 'w-full md:w-1/2 px-4 md:px-6 flex flex-col justify-center'}`} style={{
           transform: `translate3d(0, ${parallaxOffset * -0.2}px, 0)`,
           willChange: 'transform'
         }}>
-            {/* Animated subtitle with staggered entry */}
-            <p className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]`}>Promovamos entornos de trabajo seguros y saludables, a través de una buena convivencia</p>
-            
-            {/* Card with glass effect and hover animation */}
-            <div className={`${isMobile ? 'bg-white/20' : 'backdrop-blur-sm bg-white/10 hover:bg-white/20'} p-6 rounded-lg max-w-2xl border-t border-l border-white/30 transition-all duration-500 animate-[fadeInUp_1s_ease_0.4s_both] shadow-lg hover-lift mb-8`}>
-              <p className="text-white text-base md:text-lg">
-                En un entorno seguro y saludable, las personas trabajadoras se sienten escuchadas, pueden 
-                desarrollarse con confianza y se relacionan desde el respeto mutuo. No te restes y sé parte de este cambio cultural en las organizaciones.
-              </p>
-            </div>
+           
+   
             
             {/* Main headline with animated entry - Now moved below the card */}
-            <h1 className={`${isMobile ? 'text-4xl' : 'text-5xl md:text-6xl lg:text-8xl'} font-bold mb-8 leading-tight text-[#ffc000] animate-[fadeInUp_1s_ease_0.6s_both]`}>
-              TÓMATELO<br />EN SERIO
+            <h1 className={`${isMobile ? 'text-3xl' : 'text-5xl md:text-4xl lg:text-6xl'} font-bold mb-8 leading-tight text-[#fff] animate-[fadeInUp_1s_ease_0.6s_both]`}>
+              AHORA <span className="text-[#E6BE4D]">TODOS</span><br />
+              LE PONEMOS <br />
+              <span className="text-[#E6BE4D]">MÁS OJO</span> A LA<br />
+              SEGURIDAD Y SALUD
+              LABORAL CON EL<br />
+              <span className="text-[#E6BE4D]">DS N° 44 </span>
             </h1>
+             {/* Animated subtitle with staggered entry */}
+            <p className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]`}>Principales características:</p>
+                        <p className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]`}>El Decreto Supremo N° 44 actualiza la gestión preventiva de
+riesgos laborales, estableciendo nuevas obligaciones y regulando
+la organización y estructura de SST de las entidades empleadoras
+y sus lugares de trabajo.</p>
+            
           </div>
         </div>
+                  {/* Right side - Empty space for image (hidden on mobile) */}
+          <div className={`${isMobile ? 'hidden' : 'w-full md:w-1/2'}`}></div>
       </div>
-      
-      {/* Connection element for LeyKarin section - using a more reliable gradient approach */}
-      <div className="absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[#f3f3e9]" aria-hidden="true"></div>
+
     </section>;
 };
 export default Hero;

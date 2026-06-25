@@ -51,8 +51,8 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-6">
-            <img alt="ACHS Logo" className="h-14 md:h-20 w-auto transition-transform hover:scale-105" src="/lovable-uploads/92cbeb0a-0a49-4b7c-a682-f18c3effd7ab.png" />
-            <img alt="IST Logo" className="h-14 md:h-20 w-auto transition-transform hover:scale-105" src="/lovable-uploads/80023b50-526a-4ac3-bbe0-8700f5524db5.png" />
+            <img alt="ACHS Logo" className="h-10 md:h-10 w-auto transition-transform hover:scale-105" src="/lovable-uploads/92cbeb0a-0a49-4b7c-a682-f18c3effd7ab.png" />
+            <img alt="IST Logo" className="h-10 md:h-10 w-auto transition-transform hover:scale-105" src="/lovable-uploads/80023b50-526a-4ac3-bbe0-8700f5524db5.png" />
             <img alt="Mutual de Seguridad Logo" src="/lovable-uploads/e553e536-691a-4d35-86b3-8f401cf79873.png" className="h-14 md:h-15 w-auto transition-transform hover:scale-95" />
           </div>
         </div>
@@ -63,38 +63,28 @@ const Header: React.FC = () => {
           e.preventDefault();
           handleNavClick("Ley Karin", "#leykarin");
         }}>
-            Ley Karin
+            DS N° 44
           </a>
           <a href="#entornos" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
           handleNavClick("Entornos Seguros", "#entornos");
         }}>
-            Entornos Seguros
+            Beneficios
           </a>
           <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
           handleNavClick("Cifras", "#inspeccion-trabajo");
         }}>
-            Cifras
+            Qué es el FUF
           </a>
           <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
           handleNavClick("FAQ", "#preguntas-frecuentes");
         }}>
-            FAQ
+            Cómo se aplica
           </a>
-          <a href="#roles-responsabilidades" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
-          e.preventDefault();
-          handleNavClick("Roles", "#roles-responsabilidades");
-        }}>
-            Roles y Resp.
-          </a>
-          <a href="#contacto-info" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
-          e.preventDefault();
-          handleNavClick("Contacto", "#contacto-info");
-        }}>
-            Contacto
-          </a>
+
+
         </nav>
 
         <Button variant="ghost" className="md:hidden" aria-label="Menu" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -108,38 +98,27 @@ const Header: React.FC = () => {
             e.preventDefault();
             handleNavClick("Ley Karin (móvil)", "#leykarin");
           }}>
-                Ley Karin
+                DS N° 44
               </a>
               <a href="#entornos" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
             handleNavClick("Entornos Seguros (móvil)", "#entornos");
           }}>
-                Entornos Seguros
+              Beneficios
               </a>
               <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
             handleNavClick("Cifras (móvil)", "#inspeccion-trabajo");
           }}>
-                Cifras
+               Qué es el FUF
               </a>
               <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
             handleNavClick("FAQ (móvil)", "#preguntas-frecuentes");
           }}>
-                FAQ
+                Cómo se aplica
               </a>
-              <a href="#roles-responsabilidades" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
-            e.preventDefault();
-            handleNavClick("Roles (móvil)", "#roles-responsabilidades");
-          }}>
-                Roles y Resp.
-              </a>
-              <a href="#contacto-info" className="text-gray-700 hover:text-azul py-2" onClick={e => {
-            e.preventDefault();
-            handleNavClick("Contacto (móvil)", "#contacto-info");
-          }}>
-                Contacto
-              </a>
+      
             </nav>
           </div>}
       </div>
