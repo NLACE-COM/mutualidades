@@ -58,10 +58,7 @@ const HomeContent: React.FC = () => {
       <Aplicacion />
       </div>
   
-      
-      <div ref={(el) => { sectionRefs['contacto-info'].current = el as HTMLElement | null }}>
-        <ContactInfo />
-      </div>
+  
       
       <MutualSearch />
     </>

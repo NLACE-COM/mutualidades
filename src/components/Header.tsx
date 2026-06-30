@@ -51,35 +51,35 @@ const Header: React.FC = () => {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-6">
-            <img alt="ACHS Logo" className="h-10 md:h-10 w-auto transition-transform hover:scale-105" src="/lovable-uploads/92cbeb0a-0a49-4b7c-a682-f18c3effd7ab.png" />
-            <img alt="IST Logo" className="h-10 md:h-10 w-auto transition-transform hover:scale-105" src="/lovable-uploads/80023b50-526a-4ac3-bbe0-8700f5524db5.png" />
+            <img alt="ACHS Logo" className="h-14 md:h-20 w-auto transition-transform hover:scale-105" src="/lovable-uploads/92cbeb0a-0a49-4b7c-a682-f18c3effd7ab.png" />
+            <img alt="IST Logo" className="h-14 md:h-20 w-auto transition-transform hover:scale-105" src="/lovable-uploads/80023b50-526a-4ac3-bbe0-8700f5524db5.png" />
             <img alt="Mutual de Seguridad Logo" src="/lovable-uploads/e553e536-691a-4d35-86b3-8f401cf79873.png" className="h-14 md:h-15 w-auto transition-transform hover:scale-95" />
           </div>
         </div>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          <a href="#leykarin" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
+          <a href="#decretosupremo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
-          handleNavClick("Ley Karin", "#leykarin");
+          handleNavClick("Decreto Supremo", "#decretosupremo");
         }}>
             DS N° 44
           </a>
-          <a href="#entornos" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
+          <a href="#beneficios" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
-          handleNavClick("Entornos Seguros", "#entornos");
+          handleNavClick("Beneficios", "#beneficios");
         }}>
             Beneficios
           </a>
-          <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
+          <a href="#fuf" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
-          handleNavClick("Cifras", "#inspeccion-trabajo");
+          handleNavClick("Formulario único", "#fuf");
         }}>
             Qué es el FUF
           </a>
-          <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
+          <a href="#aplicacion" className="text-gray-700 hover:text-azul transition-colors after:content-[''] after:block after:w-0 after:h-0.5 after:bg-naranja after:transition-all hover:after:w-full" onClick={e => {
           e.preventDefault();
-          handleNavClick("FAQ", "#preguntas-frecuentes");
+          handleNavClick("aplicacion", "#aplicacion");
         }}>
             Cómo se aplica
           </a>

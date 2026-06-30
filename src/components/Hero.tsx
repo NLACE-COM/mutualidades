@@ -71,14 +71,13 @@ const Hero: React.FC = () => {
               <span className="text-[#E6BE4D]">MÁS OJO</span> A LA<br />
               SEGURIDAD Y SALUD
               LABORAL CON EL<br />
-              <span className="text-[#E6BE4D]">DS N° 44 </span>
+              <span className="text-[#E6BE4D]">Decreto Supremo<br /> N° 44 </span>
             </h1>
              {/* Animated subtitle with staggered entry */}
-            <p className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]`}>Principales características:</p>
-                        <p className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]`}>El Decreto Supremo N° 44 actualiza la gestión preventiva de
-riesgos laborales, estableciendo nuevas obligaciones y regulando
-la organización y estructura de SST de las entidades empleadoras
-y sus lugares de trabajo.</p>
+                        <p className={`${isMobile ? 'text-lg' : 'text-xl md:text-2xl'} mb-6 font-medium animate-[fadeInUp_1s_ease_0.2s_both]`}>
+                          El Decreto Supremo N°44 actualiza la gestión preventiva de riesgos laborales en Chile, estableciendo nuevas obligaciones,
+                           con la finalidad de asegurar entornos de trabajo seguros y saludables.
+                        </p>
             
           </div>
         </div>
