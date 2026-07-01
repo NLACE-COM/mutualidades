@@ -33,7 +33,7 @@ Cómo se aplica el DS N° 44 según el tamaño de las empresas
   <CardContent className="p-8 overflow-visible">
     <div className="flex items-start gap-4 mb-2">
       <div>
-        <h3 className="text-xl font-bold text-[#333333]">Micro y Pequeñas Empresas<br />
+        <h3 className="text-xl font-bold text-[#333333]">Micro y pequeñas empresas<br />
 (1 a 24 personas trabajadoras).</h3>
    <p className="text-md text-[#333333]  texto-fuf">
 Identificar riesgos y prevenirlos desde el inicio es fundamental. Cuenta con el apoyo de  Achs, IST, Mutual de Seguridad o el ISL, 
@@ -50,7 +50,7 @@ que ofrecen asesoría, herramientas y guías para implementar un plan de segurid
       {/* Columna texto + botón */}
       <div className="md:col-span-8">
         <h3 className="text-xl font-bold text-[#333333] leading-snug">
-        Medianas Empresa<br />
+        Medianas empresas<br />
 (25 a 99 personas trabajadoras).
         </h3>
 
@@ -59,7 +59,7 @@ El cumplimiento del Decreto Supremo N.° 44 es supervisado por la Dirección del
 las SEREMI de Salud, quienes verifican en terreno las obligaciones en materia de seguridad y salud laboral.
         </p>
   <h3 className="text-xl font-bold text-[#333333] leading-snug">
-      Grandes Empresas <br />
+      Grandes empresas <br />
 (100 personas trabajadoras).
         </h3>
         <p className="text-md text-[#333333] mb-6 texto-fuf">
