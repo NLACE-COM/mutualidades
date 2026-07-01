@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
     form.reset();
     alert("Mensaje enviado con éxito");
   }
-  return <footer id="contacto" className="bg-[#f3f3e9] pt-16 pb-8 scroll-mt-20">
+  return <footer id="contacto" className="bg-[#fff] pt-16 pb-8 scroll-mt-20">
       <div className="container mx-auto flex justify-center">
         <div className="flex flex-col items-center text-center max-w-4xl">
           <div className="flex flex-wrap gap-10 mb-10 justify-center">
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
               <img alt="IST" className="h-24 w-auto" src="/lovable-uploads/f7c1a926-5ada-44d8-b066-58b80841b046.png" />
             </a>
             <a href="https://www.mutual.cl/" target="_blank" rel="noopener noreferrer" className="bg-white p-4 rounded-lg flex items-center justify-center w-48 h-32 shadow-sm hover:shadow-md transition-shadow" aria-label="Visitar sitio web de Mutual de Seguridad">
-              <img alt="Mutual de Seguridad" src="/lovable-uploads/edadc9a2-7bb8-4b3c-acb8-ed9067be2bf0.png" className="h-13 w-auto" />
+              <img alt="Mutual de Seguridad" src="/lovable-uploads/logo-mutual.png" className="h-13 w-auto" />
             </a>
           </div>
           

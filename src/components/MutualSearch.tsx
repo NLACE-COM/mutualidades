@@ -3,7 +3,7 @@ import React from 'react';
 
 const MutualSearch: React.FC = () => {
   return (
-    <section id="buscador-mutualidades" className="section-padding bg-[#cd8649] py-20 md:py-24">
+    <section id="buscador-mutualidades" className="section-padding bg-[#EFF2F3] py-20 md:py-24">
       <div className="container mx-auto">
         <div className="fade-in-section">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
