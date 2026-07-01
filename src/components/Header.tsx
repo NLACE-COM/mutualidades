@@ -94,27 +94,27 @@ const Header: React.FC = () => {
         {/* Mobile menu */}
         {mobileMenuOpen && <div className="absolute top-full left-0 right-0 bg-white shadow-md p-4 md:hidden z-50">
             <nav className="flex flex-col space-y-4">
-              <a href="#leykarin" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
+              <a href="#decretosupremo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
-            handleNavClick("Ley Karin (móvil)", "#leykarin");
+            handleNavClick("Decreto Supremo", "#decretosupremo");
           }}>
                 DS N° 44
               </a>
-              <a href="#entornos" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
+              <a href="#beneficios" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
-            handleNavClick("Entornos Seguros (móvil)", "#entornos");
+             handleNavClick("Beneficios", "#beneficios");
           }}>
               Beneficios
               </a>
-              <a href="#inspeccion-trabajo" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
+              <a href="#fuf" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
-            handleNavClick("Cifras (móvil)", "#inspeccion-trabajo");
+           handleNavClick("Formulario único", "#fuf");
           }}>
                Qué es el FUF
               </a>
-              <a href="#preguntas-frecuentes" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
+              <a href="#aplicacion" className="text-gray-700 hover:text-azul py-2 border-b border-gray-100" onClick={e => {
             e.preventDefault();
-            handleNavClick("FAQ (móvil)", "#preguntas-frecuentes");
+             handleNavClick("aplicacion", "#aplicacion");
           }}>
                 Cómo se aplica
               </a>
