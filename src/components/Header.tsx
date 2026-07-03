@@ -53,7 +53,7 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-6">
             <img alt="ACHS Logo" className="h-14 md:h-20 w-auto transition-transform hover:scale-105" src="/lovable-uploads/92cbeb0a-0a49-4b7c-a682-f18c3effd7ab.png" />
             <img alt="IST Logo" className="h-14 md:h-20 w-auto transition-transform hover:scale-105" src="/lovable-uploads/80023b50-526a-4ac3-bbe0-8700f5524db5.png" />
-            <img alt="Mutual de Seguridad Logo" src="/lovable-uploads/e553e536-691a-4d35-86b3-8f401cf79873.png" className="h-14 md:h-15 w-auto transition-transform hover:scale-95" />
+            <img alt="Mutual de Seguridad Logo" src="/lovable-uploads/logo-mutual.png" className="h-14 md:h-20 w-auto transition-transform hover:scale-95" />
           </div>
         </div>
         
