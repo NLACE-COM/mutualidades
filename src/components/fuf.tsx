@@ -98,7 +98,7 @@ Y en el mundo laboral, eso se traduce en algo concreto: revisar, evaluar y asegu
           trabajadoras.
         </p>
 
-        <a href="https://previsionsocial.gob.cl/wp-content/uploads/2025/01/FUF-DS-44-DEL-2024.pdf"
+        <a href="/lovable-uploads/FUF-DS-44-DEL-2024.pdf"
           target="_blank"
   rel="noopener noreferrer"
           className="inline-block bg-gradient-to-r from-[#f5a034] to-[#ffc000] text-white font-bold text-sm px-8 py-4 rounded-full hover:opacity-90 transition-opacity">
