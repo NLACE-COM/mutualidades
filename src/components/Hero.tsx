@@ -51,7 +51,6 @@ const Hero: React.FC = () => {
       
       {/* Content container with flexible padding based on viewport size */}
       <div className={`container relative mx-auto z-10 flex flex-col justify-center ${isMobile ? 'py-12' : 'py-16 md:py-20 lg:py-24'}`} style={{
-      opacity: calculateOpacity(1)
     }}>
         <div className="flex flex-col md:flex-row">
 
