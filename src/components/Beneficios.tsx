@@ -19,19 +19,6 @@ const BenefitsSection = () => {
     <section id="beneficios" className="py-20 bg-white">
       <div className="container mx-auto px-4">
 
-        <div className="w-full max-w-4xl mx-auto mb-12">
-          <div className="relative w-full aspect-video rounded-[16px] md:rounded-[24px] overflow-hidden shadow-lg">
-            <iframe
-              className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/CDZnQt6XQ-c?si=9U2L9qm_O-znOsiO"
-              title="Video explicativo"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        </div>
-
         <h2 className="text-2xl md:text-4xl font-bold text-center text-[#333333] mb-8">
          Impacto de tener una mejor gestión preventiva
         </h2>
