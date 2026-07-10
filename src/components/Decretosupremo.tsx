@@ -8,7 +8,20 @@ const Decretosupremo: React.FC = () => {
     zIndex: 10
   }}>
       <div className="container mx-auto px-4 pt-16 md:pt-24">
+          <div className="w-full max-w-4xl mx-auto mb-12">
+          <div className="relative w-full aspect-video rounded-[16px] md:rounded-[24px] overflow-hidden shadow-lg">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full"
+              src="https://www.youtube.com/embed/CDZnQt6XQ-c?si=9U2L9qm_O-znOsiO"
+              title="Video explicativo"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          
           <div className="md:col-span-5 fade-in-section">
 
       
